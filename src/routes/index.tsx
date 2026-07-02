@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { HeroTemp } from "@/components/HeroTemp";
+import { OpeningSequence } from "@/components/OpeningSequence";
+import { PlantedCounter } from "@/components/PlantedCounter";
 import { DoubleFrame } from "@/components/DoubleFrame";
 import { FadeUp } from "@/components/FadeUp";
 import { Eyebrow } from "@/components/Eyebrow";
@@ -33,9 +34,11 @@ const cards = [
 function Home() {
   return (
     <>
-      <HeroTemp />
+      <OpeningSequence />
 
-      <section className="px-6 py-24 md:py-32">
+      <PlantedCounter />
+
+      <section className="px-6 pb-24 md:pb-32">
         <div className="mx-auto w-full max-w-6xl">
           <FadeUp>
             <Eyebrow>Kort översikt</Eyebrow>
