@@ -9,8 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SmaartyRouteImport } from './routes/smaarty'
+import { Route as ProjektRouteImport } from './routes/projekt'
+import { Route as OmOssRouteImport } from './routes/om-oss'
+import { Route as KalkylatorRouteImport } from './routes/kalkylator'
+import { Route as ForetagRouteImport } from './routes/foretag'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SmaartyRoute = SmaartyRouteImport.update({
+  id: '/smaarty',
+  path: '/smaarty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjektRoute = ProjektRouteImport.update({
+  id: '/projekt',
+  path: '/projekt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmOssRoute = OmOssRouteImport.update({
+  id: '/om-oss',
+  path: '/om-oss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KalkylatorRoute = KalkylatorRouteImport.update({
+  id: '/kalkylator',
+  path: '/kalkylator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForetagRoute = ForetagRouteImport.update({
+  id: '/foretag',
+  path: '/foretag',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +49,96 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/foretag': typeof ForetagRoute
+  '/kalkylator': typeof KalkylatorRoute
+  '/om-oss': typeof OmOssRoute
+  '/projekt': typeof ProjektRoute
+  '/smaarty': typeof SmaartyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/foretag': typeof ForetagRoute
+  '/kalkylator': typeof KalkylatorRoute
+  '/om-oss': typeof OmOssRoute
+  '/projekt': typeof ProjektRoute
+  '/smaarty': typeof SmaartyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/foretag': typeof ForetagRoute
+  '/kalkylator': typeof KalkylatorRoute
+  '/om-oss': typeof OmOssRoute
+  '/projekt': typeof ProjektRoute
+  '/smaarty': typeof SmaartyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/foretag'
+    | '/kalkylator'
+    | '/om-oss'
+    | '/projekt'
+    | '/smaarty'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/foretag' | '/kalkylator' | '/om-oss' | '/projekt' | '/smaarty'
+  id:
+    | '__root__'
+    | '/'
+    | '/foretag'
+    | '/kalkylator'
+    | '/om-oss'
+    | '/projekt'
+    | '/smaarty'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ForetagRoute: typeof ForetagRoute
+  KalkylatorRoute: typeof KalkylatorRoute
+  OmOssRoute: typeof OmOssRoute
+  ProjektRoute: typeof ProjektRoute
+  SmaartyRoute: typeof SmaartyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/smaarty': {
+      id: '/smaarty'
+      path: '/smaarty'
+      fullPath: '/smaarty'
+      preLoaderRoute: typeof SmaartyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projekt': {
+      id: '/projekt'
+      path: '/projekt'
+      fullPath: '/projekt'
+      preLoaderRoute: typeof ProjektRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/om-oss': {
+      id: '/om-oss'
+      path: '/om-oss'
+      fullPath: '/om-oss'
+      preLoaderRoute: typeof OmOssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kalkylator': {
+      id: '/kalkylator'
+      path: '/kalkylator'
+      fullPath: '/kalkylator'
+      preLoaderRoute: typeof KalkylatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/foretag': {
+      id: '/foretag'
+      path: '/foretag'
+      fullPath: '/foretag'
+      preLoaderRoute: typeof ForetagRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +151,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ForetagRoute: ForetagRoute,
+  KalkylatorRoute: KalkylatorRoute,
+  OmOssRoute: OmOssRoute,
+  ProjektRoute: ProjektRoute,
+  SmaartyRoute: SmaartyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
