@@ -1,0 +1,41 @@
+{
+  "desktop": {
+    "src": "/opening/film.mp4",
+    "duration": 37.583,
+    "fps": 12
+  },
+  "mobile": {
+    "pattern": "/opening/frames/f-{i}.webp",
+    "pad": 4,
+    "count": 301,
+    "duration": 37.583
+  },
+  "loop": {
+    "d": "/opening/loop.mp4",
+    "m": "/opening/loop-m.mp4",
+    "posterD": "/opening/loop-poster.jpg",
+    "posterM": "/opening/loop-m-poster.jpg"
+  },
+  "beats": {
+    "dyk": [
+      0.0,
+      7.4
+    ],
+    "fro": [
+      7.4,
+      14.8
+    ],
+    "trad": [
+      14.8,
+      22.2
+    ],
+    "skog": [
+      22.2,
+      29.6
+    ],
+    "utzoom": [
+      29.6,
+      37.583
+    ]
+  }
+}
