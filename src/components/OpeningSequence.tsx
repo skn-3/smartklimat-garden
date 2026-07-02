@@ -9,39 +9,37 @@ if (typeof window !== "undefined") {
 }
 
 /**
- * Öppningssekvensen: Planeten -> Fröet -> Skogen -> Planeten.
- * En pinnad scrubb-film. Desktop scrubbar all-intra-video (/opening/film.mp4),
- * mobil scrubbar en 9:16-bildsekvens på canvas (/opening/frames/f-0001..0301.webp).
- * Hero-lagret (glob-loop + rubrik) ligger överst och tonar ut när dyket börjar.
- * Ersätter HeroTemp. Assets byggda från godkända ImagineArt-tagningar 2026-07-02.
+ * Öppningssekvensen v2. Fixar mot v1:
+ * - var(--p, 0) överallt + inline-default => inget textkaos före hydrering
+ * - pinnhöjd via responsiva klasser (mobil 380vh, desktop 560vh) => rätt scrubbsträcka
+ * - scrub: 0.7 => mjuk eftersläpning, inget teleport-känsla med mushjul
+ * - 96 frames à 640px på mobil => inom iOS Safaris minnesbudget (Lodra-lärdomen)
+ * - trapets-branten räknas per beat => full opacity med platå
+ * - filmen scrubbas till 97 % och payoff-texten stannar in i släppet => ingen död svans
  */
 
 const FILM = {
   desktopSrc: "/opening/film.mp4",
-  duration: 37.583,
   frame: (i: number) => `/opening/frames/f-${String(i).padStart(4, "0")}.webp`,
-  frameCount: 301,
+  frameCount: 96,
 };
 
-const PIN_VH_DESKTOP = 520;
-const PIN_VH_MOBILE = 380;
-// Filmen scrubbas mellan dessa scroll-progress-punkter (före: hero, efter: stillbild)
 const FILM_START = 0.1;
-const FILM_END = 0.94;
+const FILM_END = 0.97;
 
-// Text-beats: [in-start, ut-slut] i scroll-progress. Trapets-opacity i CSS via --p.
+// [in-start, ut-slut] i scroll-progress. Sista beatens b > 1 => tonar aldrig ut.
 const BEATS = [
-  { a: 0.22, b: 0.38, dark: true,  h: "Ett frö.",              sub: "En affär signeras. Ett träd planteras." },
-  { a: 0.42, b: 0.58, dark: false, h: "Ett träd.",             sub: "Binder ungefär 20 kg koldioxid. Varje år." },
-  { a: 0.62, b: 0.76, dark: false, h: "En skog.",              sub: "Från rader i ett system till rötter i marken." },
-  { a: 0.80, b: 0.95, dark: false, h: "Ett gemensamt klimat.", sub: "Vi bygger bryggan mellan affärer och skog.", tag: "Zambia · Brasilien · Indien" },
+  { a: 0.26, b: 0.44, dark: true,  h: "Ett frö.",              sub: "En affär signeras. Ett träd planteras." },
+  { a: 0.46, b: 0.62, dark: false, h: "Ett träd.",             sub: "Binder ungefär 20 kg koldioxid. Varje år." },
+  { a: 0.64, b: 0.78, dark: false, h: "En skog.",              sub: "Från rader i ett system till rötter i marken." },
+  { a: 0.82, b: 1.2,  dark: false, h: "Ett gemensamt klimat.", sub: "Vi bygger bryggan mellan affärer och skog.", tag: "Zambia · Brasilien · Indien" },
 ] as const;
 
-const EASE = 9; // trapetsens branthet
-
 function beatStyle(a: number, b: number): React.CSSProperties {
+  const k = (4 / (b - a)).toFixed(3); // ramp = 25 % av fönstret, platå på 1
   return {
-    opacity: `min(calc((var(--p) - ${a}) * ${EASE}), calc((${b} - var(--p)) * ${EASE}), 1)` as unknown as number,
+    opacity: `min(calc((var(--p, 0) - ${a}) * ${k}), calc((${b} - var(--p, 0)) * ${k}), 1)` as unknown as number,
+    willChange: "opacity",
   };
 }
 
@@ -57,7 +55,6 @@ export function OpeningSequence() {
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-    root.style.setProperty("--p", "0");
     if (reduced) return; // stillbilds-läge: hero + poster räcker
 
     let cleanupFrames: (() => void) | undefined;
@@ -97,10 +94,11 @@ export function OpeningSequence() {
       const imgs: (HTMLImageElement | undefined)[] = new Array(FILM.frameCount);
       const loaded = new Set<number>();
       let current = -1;
+      let pending = -1;
       const draw = (idx: number) => {
-        // närmaste laddade frame bakåt, så scrubben aldrig blinkar
         let j = idx;
         while (j > 0 && !loaded.has(j)) j--;
+        if (!loaded.has(j)) { pending = idx; return; }
         const im = imgs[j];
         if (!im || j === current) return;
         current = j;
@@ -109,21 +107,27 @@ export function OpeningSequence() {
         const w = im.width * s, h = im.height * s;
         ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
       };
-      const load = (i: number, onload?: () => void) => {
+      const load = (i: number, retried = false) => {
         const im = new Image();
+        im.decoding = "async";
         im.src = FILM.frame(i + 1);
-        im.onload = () => { loaded.add(i); onload?.(); };
+        im.onload = () => {
+          loaded.add(i);
+          if (pending >= 0) { const p2 = pending; pending = -1; draw(p2); }
+          else if (i > current && current >= 0 && i <= current + 2) draw(i);
+        };
+        im.onerror = () => { if (!retried) setTimeout(() => load(i, true), 400); };
         imgs[i] = im;
       };
-      // första ~40 direkt, resten i lugn takt
-      for (let i = 0; i < 40 && i < FILM.frameCount; i++) load(i, i === 0 ? () => draw(0) : undefined);
-      let next = 40;
+      for (let i = 0; i < 24 && i < FILM.frameCount; i++) load(i);
+      let next = 24;
+      let idle = 0;
       const trickle = () => {
-        for (let n = 0; n < 12 && next < FILM.frameCount; n++, next++) load(next);
-        if (next < FILM.frameCount) idle = window.setTimeout(trickle, 120);
+        for (let n = 0; n < 6 && next < FILM.frameCount; n++, next++) load(next);
+        if (next < FILM.frameCount) idle = window.setTimeout(trickle, 100);
       };
-      let idle = window.setTimeout(trickle, 300);
-      const onResize = () => { size(); current = -1; };
+      idle = window.setTimeout(trickle, 250);
+      const onResize = () => { size(); current = -1; draw(pending >= 0 ? pending : 0); };
       window.addEventListener("resize", onResize);
       cleanupFrames = () => { clearTimeout(idle); window.removeEventListener("resize", onResize); };
       applyProgress = (p) => {
@@ -136,7 +140,7 @@ export function OpeningSequence() {
       trigger: root,
       start: "top top",
       end: "bottom bottom",
-      scrub: true,
+      scrub: 0.7,
       onUpdate: (self) => {
         const p = self.progress;
         root.style.setProperty("--p", p.toFixed(4));
@@ -151,14 +155,10 @@ export function OpeningSequence() {
   return (
     <div
       ref={rootRef}
-      className="relative"
-      style={{ height: `var(--pin-vh, ${PIN_VH_MOBILE}vh)` }}
+      className="relative h-[380vh] md:h-[560vh]"
+      style={{ ["--p" as string]: 0 }}
     >
-      <style>{`
-        @media (min-width: 768px) { [data-opening-root] { --pin-vh: ${PIN_VH_DESKTOP}vh; } }
-        [data-opening-hero][data-faded="true"] { pointer-events: none; }
-      `}</style>
-      <div data-opening-root className="absolute inset-0" style={{ height: "100%" }} />
+      <style>{`[data-opening-hero][data-faded="true"] { pointer-events: none; }`}</style>
 
       <div className="sticky top-0 h-[100dvh] overflow-hidden bg-mintpapper">
         {/* FILMLAGER */}
@@ -178,7 +178,7 @@ export function OpeningSequence() {
           data-opening-hero
           data-faded="false"
           className="absolute inset-0"
-          style={{ opacity: `min(1, calc((0.13 - var(--p)) * ${EASE}))` as unknown as number }}
+          style={{ opacity: `min(1, calc((0.13 - var(--p, 0)) * 12))` as unknown as number, willChange: "opacity" }}
         >
           <video
             src="/opening/loop.mp4"
@@ -192,11 +192,10 @@ export function OpeningSequence() {
             autoPlay muted loop playsInline
             className="absolute inset-0 h-full w-full object-cover md:hidden"
           />
-          {/* nedtoning i kanterna, som referensen */}
           <div className="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-mintpapper via-mintpapper/70 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-mintpapper/60 to-transparent" />
 
-          <div className="relative z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-start px-6 pt-32 text-center md:pt-40">
+          <div className="relative z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-start px-6 pt-28 text-center md:pt-36">
             <Eyebrow>Tech möter klimat</Eyebrow>
             <h1 className="mt-6 font-display font-bold leading-[0.95] tracking-tight text-skogsgron text-[clamp(3rem,12vw,7.5rem)]">
               Tänk smart.
