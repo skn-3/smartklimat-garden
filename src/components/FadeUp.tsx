@@ -14,28 +14,40 @@ export function FadeUp({ children, delay = 0, className, as = "div", ...rest }: 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    el.classList.add("fade-up-ready");
+
+    if (!("IntersectionObserver" in window)) {
+      el.classList.remove("fade-up-ready");
+      el.classList.add("fade-up-in");
+      return;
+    }
+
+    let timeout: number | undefined;
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const t = window.setTimeout(() => {
-              el.classList.remove("fade-up-init");
+            timeout = window.setTimeout(() => {
+              el.classList.remove("fade-up-ready");
               el.classList.add("fade-up-in");
             }, delay);
             io.disconnect();
-            return () => window.clearTimeout(t);
           }
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      if (timeout) window.clearTimeout(timeout);
+    };
   }, [delay]);
 
   const Tag = as as "div";
   return (
-    <Tag ref={ref as never} className={cn("fade-up-init", className)} {...rest}>
+    <Tag ref={ref as never} className={className} {...rest}>
       {children}
     </Tag>
   );
