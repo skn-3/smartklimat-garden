@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Eyebrow } from "./Eyebrow";
@@ -9,10 +9,11 @@ if (typeof window !== "undefined") {
 }
 
 /**
- * Öppningssekvensen v5. Nytt mot v3: text-beatsen graderas filmiskt (kantlös
- * gradient över textzonen + mjuk textskugga) istället för frostad platta.
- * Hero-looparna är Johannes egna tagningar, positionslåsta och sömlöst loopade
- * i efterbearbetning. Fixar mot v1:
+ * Öppningssekvensen v6. Nytt mot v5: hero-looparna är äkta pendel-loopar
+ * (första = sista bildrutan, ingen fade); globen nedflyttad på desktop så
+ * texten går fri; ScrollTrigger mäts om efter load/typsnitt (fixar
+ * "kalibreringen"); desktopfilmen har laddgate — stillbild + diskret chip
+ * tills 22 MB-filmen är buffrad, sen tar scrubben över sömlöst. Fixar mot v1:
  * - var(--p, 0) överallt + inline-default => inget textkaos före hydrering
  * - pinnhöjd via responsiva klasser (mobil 380vh, desktop 560vh) => rätt scrubbsträcka
  * - scrub: 0.7 => mjuk eftersläpning, inget teleport-känsla med mushjul
@@ -48,6 +49,7 @@ function beatStyle(a: number, b: number): React.CSSProperties {
 
 export function OpeningSequence() {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const [filmReady, setFilmReady] = useState(false);
   const heroRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -68,6 +70,7 @@ export function OpeningSequence() {
       if (!video) return;
       video.preload = "auto";
       video.load();
+      if (video.readyState >= 4) setFilmReady(true);
       let target = 0;
       let raf = 0;
       const tick = () => {
@@ -152,7 +155,16 @@ export function OpeningSequence() {
       },
     });
 
-    return () => { st.kill(); cleanupFrames?.(); };
+    const doRefresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", doRefresh);
+    const settle = window.setTimeout(doRefresh, 700);
+    (document as unknown as { fonts?: { ready?: Promise<unknown> } }).fonts?.ready?.then(doRefresh);
+
+    return () => {
+      st.kill(); cleanupFrames?.();
+      window.removeEventListener("load", doRefresh);
+      clearTimeout(settle);
+    };
   }, []);
 
   return (
@@ -171,8 +183,26 @@ export function OpeningSequence() {
           muted
           playsInline
           preload="auto"
+          onCanPlayThrough={() => setFilmReady(true)}
           className="absolute inset-0 hidden h-full w-full object-cover md:block"
         />
+        {!filmReady && (
+          <img
+            src="/opening/film-poster.jpg"
+            alt=""
+            className="absolute inset-0 hidden h-full w-full object-cover md:block"
+          />
+        )}
+        {!filmReady && (
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-8 z-30 hidden justify-center md:flex"
+            style={{ opacity: `min(1, calc(var(--p, 0) * 10))` as unknown as number }}
+          >
+            <span className="rounded-full border border-linje bg-papper/90 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">
+              Förbereder filmen
+            </span>
+          </div>
+        )}
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full md:hidden" />
 
         {/* HEROLAGER: glob-loop + rubrik, tonar ut i dyket */}
@@ -187,7 +217,7 @@ export function OpeningSequence() {
             src="/opening/loop.mp4"
             poster="/opening/loop-poster.jpg"
             autoPlay muted loop playsInline
-            className="absolute inset-0 hidden h-full w-full object-cover md:block"
+            className="absolute inset-0 hidden h-full w-full object-cover will-change-transform md:block md:translate-y-[22%] md:scale-110"
           />
           <video
             src="/opening/loop-m.mp4"
@@ -232,7 +262,7 @@ export function OpeningSequence() {
                 b.dark ? "from-skogsgron/70 via-skogsgron/35" : "from-mintpapper/80 via-mintpapper/40"
               }`}
             />
-            <div className="absolute inset-x-0 top-[19%] px-6 text-center">
+            <div className="absolute inset-x-0 top-[19%] px-6 text-center md:top-[24%]">
               <h2
                 className={`font-display font-bold tracking-tight text-[clamp(2.4rem,9vw,5.5rem)] ${
                   b.dark
