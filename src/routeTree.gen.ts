@@ -10,20 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SmaartyRouteImport } from './routes/smaarty'
-import { Route as ProjektRouteImport } from './routes/projekt'
 import { Route as OmOssRouteImport } from './routes/om-oss'
 import { Route as KalkylatorRouteImport } from './routes/kalkylator'
 import { Route as ForetagRouteImport } from './routes/foretag'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjektIndexRouteImport } from './routes/projekt.index'
+import { Route as ProjektPontalRouteImport } from './routes/projekt.pontal'
+import { Route as ProjektKhasiHillsRouteImport } from './routes/projekt.khasi-hills'
+import { Route as ProjektCopperbeltRouteImport } from './routes/projekt.copperbelt'
 
 const SmaartyRoute = SmaartyRouteImport.update({
   id: '/smaarty',
   path: '/smaarty',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjektRoute = ProjektRouteImport.update({
-  id: '/projekt',
-  path: '/projekt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OmOssRoute = OmOssRouteImport.update({
@@ -46,22 +44,48 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjektIndexRoute = ProjektIndexRouteImport.update({
+  id: '/projekt/',
+  path: '/projekt/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjektPontalRoute = ProjektPontalRouteImport.update({
+  id: '/projekt/pontal',
+  path: '/projekt/pontal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjektKhasiHillsRoute = ProjektKhasiHillsRouteImport.update({
+  id: '/projekt/khasi-hills',
+  path: '/projekt/khasi-hills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjektCopperbeltRoute = ProjektCopperbeltRouteImport.update({
+  id: '/projekt/copperbelt',
+  path: '/projekt/copperbelt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
   '/om-oss': typeof OmOssRoute
-  '/projekt': typeof ProjektRoute
   '/smaarty': typeof SmaartyRoute
+  '/projekt/copperbelt': typeof ProjektCopperbeltRoute
+  '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
+  '/projekt/pontal': typeof ProjektPontalRoute
+  '/projekt/': typeof ProjektIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
   '/om-oss': typeof OmOssRoute
-  '/projekt': typeof ProjektRoute
   '/smaarty': typeof SmaartyRoute
+  '/projekt/copperbelt': typeof ProjektCopperbeltRoute
+  '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
+  '/projekt/pontal': typeof ProjektPontalRoute
+  '/projekt': typeof ProjektIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +93,11 @@ export interface FileRoutesById {
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
   '/om-oss': typeof OmOssRoute
-  '/projekt': typeof ProjektRoute
   '/smaarty': typeof SmaartyRoute
+  '/projekt/copperbelt': typeof ProjektCopperbeltRoute
+  '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
+  '/projekt/pontal': typeof ProjektPontalRoute
+  '/projekt/': typeof ProjektIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,18 +106,33 @@ export interface FileRouteTypes {
     | '/foretag'
     | '/kalkylator'
     | '/om-oss'
-    | '/projekt'
     | '/smaarty'
+    | '/projekt/copperbelt'
+    | '/projekt/khasi-hills'
+    | '/projekt/pontal'
+    | '/projekt/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/foretag' | '/kalkylator' | '/om-oss' | '/projekt' | '/smaarty'
+  to:
+    | '/'
+    | '/foretag'
+    | '/kalkylator'
+    | '/om-oss'
+    | '/smaarty'
+    | '/projekt/copperbelt'
+    | '/projekt/khasi-hills'
+    | '/projekt/pontal'
+    | '/projekt'
   id:
     | '__root__'
     | '/'
     | '/foretag'
     | '/kalkylator'
     | '/om-oss'
-    | '/projekt'
     | '/smaarty'
+    | '/projekt/copperbelt'
+    | '/projekt/khasi-hills'
+    | '/projekt/pontal'
+    | '/projekt/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -98,8 +140,11 @@ export interface RootRouteChildren {
   ForetagRoute: typeof ForetagRoute
   KalkylatorRoute: typeof KalkylatorRoute
   OmOssRoute: typeof OmOssRoute
-  ProjektRoute: typeof ProjektRoute
   SmaartyRoute: typeof SmaartyRoute
+  ProjektCopperbeltRoute: typeof ProjektCopperbeltRoute
+  ProjektKhasiHillsRoute: typeof ProjektKhasiHillsRoute
+  ProjektPontalRoute: typeof ProjektPontalRoute
+  ProjektIndexRoute: typeof ProjektIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -109,13 +154,6 @@ declare module '@tanstack/react-router' {
       path: '/smaarty'
       fullPath: '/smaarty'
       preLoaderRoute: typeof SmaartyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projekt': {
-      id: '/projekt'
-      path: '/projekt'
-      fullPath: '/projekt'
-      preLoaderRoute: typeof ProjektRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/om-oss': {
@@ -146,6 +184,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projekt/': {
+      id: '/projekt/'
+      path: '/projekt'
+      fullPath: '/projekt/'
+      preLoaderRoute: typeof ProjektIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projekt/pontal': {
+      id: '/projekt/pontal'
+      path: '/projekt/pontal'
+      fullPath: '/projekt/pontal'
+      preLoaderRoute: typeof ProjektPontalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projekt/khasi-hills': {
+      id: '/projekt/khasi-hills'
+      path: '/projekt/khasi-hills'
+      fullPath: '/projekt/khasi-hills'
+      preLoaderRoute: typeof ProjektKhasiHillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projekt/copperbelt': {
+      id: '/projekt/copperbelt'
+      path: '/projekt/copperbelt'
+      fullPath: '/projekt/copperbelt'
+      preLoaderRoute: typeof ProjektCopperbeltRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -154,8 +220,11 @@ const rootRouteChildren: RootRouteChildren = {
   ForetagRoute: ForetagRoute,
   KalkylatorRoute: KalkylatorRoute,
   OmOssRoute: OmOssRoute,
-  ProjektRoute: ProjektRoute,
   SmaartyRoute: SmaartyRoute,
+  ProjektCopperbeltRoute: ProjektCopperbeltRoute,
+  ProjektKhasiHillsRoute: ProjektKhasiHillsRoute,
+  ProjektPontalRoute: ProjektPontalRoute,
+  ProjektIndexRoute: ProjektIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
