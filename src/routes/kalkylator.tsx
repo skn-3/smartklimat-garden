@@ -236,5 +236,4 @@ function KalkylatorPage() {
   );
 }
 
-// Referens för routern
-void Link;
+
