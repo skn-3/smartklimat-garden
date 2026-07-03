@@ -9,7 +9,9 @@ if (typeof window !== "undefined") {
 }
 
 /**
- * Öppningssekvensen v2. Fixar mot v1:
+ * Öppningssekvensen v3. Nytt mot v2: frostad platta bakom text-beatsen
+ * (läsbarhet mot blandad filmbakgrund) + sömlösa korstonings-loopar på assetsidan.
+ * Fixar mot v1:
  * - var(--p, 0) överallt + inline-default => inget textkaos före hydrering
  * - pinnhöjd via responsiva klasser (mobil 380vh, desktop 560vh) => rätt scrubbsträcka
  * - scrub: 0.7 => mjuk eftersläpning, inget teleport-känsla med mushjul
@@ -221,22 +223,28 @@ export function OpeningSequence() {
         {BEATS.map((b) => (
           <div
             key={b.h}
-            className="pointer-events-none absolute inset-x-0 top-[24%] z-20 px-6 text-center"
+            className="pointer-events-none absolute inset-x-0 top-[22%] z-20 flex justify-center px-6 text-center"
             style={beatStyle(b.a, b.b)}
           >
-            <h2
-              className={`font-display font-bold tracking-tight text-[clamp(2.4rem,9vw,5.5rem)] ${b.dark ? "text-papper" : "text-skogsgron"}`}
+            <div
+              className={`max-w-[92vw] rounded-[2rem] px-7 py-6 backdrop-blur-md md:max-w-2xl md:px-10 md:py-8 ${
+                b.dark ? "bg-skogsgron/35" : "bg-mintpapper/55"
+              }`}
             >
-              {b.h}
-            </h2>
-            <p className={`mx-auto mt-3 max-w-md text-base md:text-lg ${b.dark ? "text-mint" : "text-skogsgron/75"}`}>
-              {b.sub}
-            </p>
-            {"tag" in b && b.tag ? (
-              <p className={`mt-4 font-mono text-[11px] uppercase tracking-[0.2em] ${b.dark ? "text-mint/80" : "text-smaragd-dark"}`}>
-                {b.tag}
+              <h2
+                className={`font-display font-bold tracking-tight text-[clamp(2.4rem,9vw,5.5rem)] ${b.dark ? "text-papper" : "text-skogsgron"}`}
+              >
+                {b.h}
+              </h2>
+              <p className={`mx-auto mt-3 max-w-md text-base md:text-lg ${b.dark ? "text-mint" : "text-skogsgron/80"}`}>
+                {b.sub}
               </p>
-            ) : null}
+              {"tag" in b && b.tag ? (
+                <p className={`mt-4 font-mono text-[11px] uppercase tracking-[0.2em] ${b.dark ? "text-mint/80" : "text-smaragd-dark"}`}>
+                  {b.tag}
+                </p>
+              ) : null}
+            </div>
           </div>
         ))}
       </div>
