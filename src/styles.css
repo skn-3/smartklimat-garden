@@ -105,6 +105,10 @@
 }
 
 @utility fade-up-init {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+@utility fade-up-ready {
   opacity: 0;
   transform: translate3d(0, 24px, 0);
 }
