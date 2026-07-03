@@ -18,7 +18,7 @@ export function FadeUp({ children, delay = 0, className, as = "div", ...rest }: 
     el.classList.add("fade-up-ready");
 
     if (!("IntersectionObserver" in window)) {
-      el.classList.remove("fade-up-init", "fade-up-ready");
+      el.classList.remove("fade-up-ready");
       el.classList.add("fade-up-in");
       return;
     }
@@ -29,7 +29,7 @@ export function FadeUp({ children, delay = 0, className, as = "div", ...rest }: 
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             timeout = window.setTimeout(() => {
-              el.classList.remove("fade-up-init", "fade-up-ready");
+              el.classList.remove("fade-up-ready");
               el.classList.add("fade-up-in");
             }, delay);
             io.disconnect();
@@ -47,7 +47,7 @@ export function FadeUp({ children, delay = 0, className, as = "div", ...rest }: 
 
   const Tag = as as "div";
   return (
-    <Tag ref={ref as never} className={cn("fade-up-init", className)} {...rest}>
+    <Tag ref={ref as never} className={className} {...rest}>
       {children}
     </Tag>
   );
