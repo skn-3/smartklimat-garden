@@ -175,7 +175,7 @@ function SmaartyPage() {
             <DoubleFrame innerClassName="px-6 py-12 md:px-14 md:py-20">
               <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:items-end">
                 <div>
-                  <Eyebrow>Starta ert lag</Eyebrow>
+                  <Eyebrow>Smaarty</Eyebrow>
                   <h2 className="mt-5 font-display text-3xl md:text-5xl font-bold leading-[1.05] tracking-tight text-skogsgron">
                     Starta ert lag.
                   </h2>
