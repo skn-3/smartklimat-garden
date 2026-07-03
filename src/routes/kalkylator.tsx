@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
+
 import { ArrowRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { PageIntro } from "@/components/PageIntro";
