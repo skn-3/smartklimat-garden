@@ -9,9 +9,10 @@ if (typeof window !== "undefined") {
 }
 
 /**
- * Öppningssekvensen v3. Nytt mot v2: frostad platta bakom text-beatsen
- * (läsbarhet mot blandad filmbakgrund) + sömlösa korstonings-loopar på assetsidan.
- * Fixar mot v1:
+ * Öppningssekvensen v5. Nytt mot v3: text-beatsen graderas filmiskt (kantlös
+ * gradient över textzonen + mjuk textskugga) istället för frostad platta.
+ * Hero-looparna är Johannes egna tagningar, positionslåsta och sömlöst loopade
+ * i efterbearbetning. Fixar mot v1:
  * - var(--p, 0) överallt + inline-default => inget textkaos före hydrering
  * - pinnhöjd via responsiva klasser (mobil 380vh, desktop 560vh) => rätt scrubbsträcka
  * - scrub: 0.7 => mjuk eftersläpning, inget teleport-känsla med mushjul
@@ -223,20 +224,25 @@ export function OpeningSequence() {
         {BEATS.map((b) => (
           <div
             key={b.h}
-            className="pointer-events-none absolute inset-x-0 top-[22%] z-20 flex justify-center px-6 text-center"
+            className="pointer-events-none absolute inset-0 z-20"
             style={beatStyle(b.a, b.b)}
           >
             <div
-              className={`max-w-[92vw] rounded-[2rem] px-7 py-6 backdrop-blur-md md:max-w-2xl md:px-10 md:py-8 ${
-                b.dark ? "bg-skogsgron/35" : "bg-mintpapper/55"
+              className={`absolute inset-x-0 top-0 h-[52%] bg-gradient-to-b to-transparent ${
+                b.dark ? "from-skogsgron/70 via-skogsgron/35" : "from-mintpapper/80 via-mintpapper/40"
               }`}
-            >
+            />
+            <div className="absolute inset-x-0 top-[19%] px-6 text-center">
               <h2
-                className={`font-display font-bold tracking-tight text-[clamp(2.4rem,9vw,5.5rem)] ${b.dark ? "text-papper" : "text-skogsgron"}`}
+                className={`font-display font-bold tracking-tight text-[clamp(2.4rem,9vw,5.5rem)] ${
+                  b.dark
+                    ? "text-papper [text-shadow:0_2px_26px_rgba(7,40,30,0.85)]"
+                    : "text-skogsgron [text-shadow:0_2px_26px_rgba(234,247,238,0.95)]"
+                }`}
               >
                 {b.h}
               </h2>
-              <p className={`mx-auto mt-3 max-w-md text-base md:text-lg ${b.dark ? "text-mint" : "text-skogsgron/80"}`}>
+              <p className={`mx-auto mt-3 max-w-md text-base md:text-lg ${b.dark ? "text-mint" : "text-skogsgron/85 [text-shadow:0_1px_18px_rgba(234,247,238,0.9)]"}`}>
                 {b.sub}
               </p>
               {"tag" in b && b.tag ? (
