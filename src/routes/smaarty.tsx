@@ -64,9 +64,10 @@ function ProblemSection() {
               <div key={label} className="relative rounded-2xl border border-linje bg-white px-6 py-4">
                 <p className="text-skogsgron/55">{label}</p>
                 <span
-                  className="absolute left-1/2 top-1/2 h-[2.5px] w-[62%] origin-left -translate-x-1/2 -translate-y-1/2 rounded-full bg-apricot-2"
+                  className="absolute left-[19%] top-1/2 h-[2.5px] w-[62%] rounded-full bg-apricot-2"
                   style={{
-                    transform: `translate(-50%,-50%) scaleX(clamp(0, calc((var(--sp, 0) - ${a}) * 4), 1))`,
+                    transformOrigin: "left center",
+                    transform: `translateY(-50%) scaleX(clamp(0, calc((var(--sp, 0) - ${a}) * 4), 1))`,
                   }}
                 />
               </div>
@@ -88,6 +89,123 @@ function ProblemSection() {
               Träd som planteras
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CaseSection() {
+  const [mediaReady, setMediaReady] = useState(false);
+  useEffect(() => {
+    const im = new Image();
+    im.onload = () => setMediaReady(true);
+    im.src = "/smaarty/hammarby-poster.jpg";
+  }, []);
+  return (
+    <section className="px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-5xl">
+        <FadeUp>
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-smaragd-dark">Ur verkligheten</p>
+        </FadeUp>
+        <FadeUp delay={60}>
+          <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+            Hammarby P06 tog sig till Gothia Cup — på träd.
+          </h2>
+        </FadeUp>
+        <FadeUp delay={100}>
+          <p className="mt-4 max-w-2xl text-skogsgron/70">
+            Istället för att sälja prylar sålde laget skog. Föräldrar, grannar och farföräldrar
+            fick värdebevis med sina namn — och laget fick sin cup. Så här såg resan ut.
+          </p>
+        </FadeUp>
+        <FadeUp delay={140}>
+          <div className="mt-10 rounded-[2rem] bg-mintpapper p-1.5">
+            <div className="overflow-hidden rounded-[1.6rem] border border-linje bg-skogsgron">
+              {mediaReady ? (
+                <video
+                  controls
+                  playsInline
+                  preload="none"
+                  poster="/smaarty/hammarby-poster.jpg"
+                  className="aspect-video w-full"
+                >
+                  <source src="/smaarty/hammarby.mp4" type="video/mp4" />
+                </video>
+              ) : (
+                <div className="flex aspect-video w-full flex-col items-center justify-center gap-3">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-salvia/40">
+                    <svg viewBox="0 0 16 16" className="ml-0.5 h-4 w-4" aria-hidden="true">
+                      <path d="M4 2.5 L13 8 L4 13.5 Z" fill="#9FD9B6" />
+                    </svg>
+                  </span>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-salvia">
+                    Film från resan — kommer snart
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+const FAQ_ITEMS: Array<[string, string]> = [
+  ["Vad kostar ett träd?", "35 kronor. Köparen betalar digitalt i samband med köpet, och varje träd ger säljaren poäng i appen."],
+  ["Hur får barnen sina konton?", "Du som ledare skapar laget och bjuder in säljarna — barnen registrerar sig aldrig själva. Kontot är knutet till laget."],
+  ["Vad får den som köper?", "Ett personligt värdebevis med sitt namn, antal träd och en egen verifieringslänk — går att visa upp, dela och kontrollera."],
+  ["Var planteras träden?", "I våra tre WeForest-projekt: molnskogen i Khasi Hills, miombon i Copperbelt och vilddjurskorridorerna i Pontal. Klassen kan läsa om alla tre under Projekt."],
+  ["Behövs kontanter eller Swish-lappar?", "Nej. Inga kontanter, inga lappar, inget att räkna ihop efteråt — allt sker digitalt i appen."],
+  ["Hur följer laget hur det går?", "Topplistan uppdateras live, veckans hjälte koras varje vecka, och lagets samlade skog tickar uppåt för alla att se."],
+];
+
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="rounded-2xl border border-linje bg-white">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left"
+        aria-expanded={open}
+      >
+        <span className="font-medium text-skogsgron">{q}</span>
+        <span
+          className={`text-xl leading-none text-smaragd-dark transition-transform duration-500 [transition-timing-function:var(--ease-smart)] ${open ? "rotate-45" : ""}`}
+          aria-hidden="true"
+        >
+          +
+        </span>
+      </button>
+      <div
+        className="grid transition-[grid-template-rows] duration-500 [transition-timing-function:var(--ease-smart)]"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+      >
+        <div className="overflow-hidden">
+          <p className="px-6 pb-5 text-sm leading-relaxed text-skogsgron/70">{a}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FaqSection() {
+  return (
+    <section className="bg-mintpapper/60 px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-3xl">
+        <FadeUp>
+          <h2 className="text-center font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+            Bra att veta.
+          </h2>
+        </FadeUp>
+        <div className="mt-10 space-y-3">
+          {FAQ_ITEMS.map(([q, a], i) => (
+            <FadeUp key={q} delay={i * 50}>
+              <FaqItem q={q} a={a} />
+            </FadeUp>
+          ))}
         </div>
       </div>
     </section>
@@ -160,6 +278,8 @@ function SmaartyPage() {
         <PhoneJourney />
       </section>
 
+      <CaseSection />
+
       {/* FUNKTIONER */}
       <section className="px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
@@ -216,6 +336,8 @@ function SmaartyPage() {
           </FadeUp>
         </div>
       </section>
+
+      <FaqSection />
 
       {/* KLIMATNYTTAN */}
       <section className="px-6 py-24 md:py-32">
