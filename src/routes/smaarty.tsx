@@ -1,11 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import { PageIntro } from "@/components/PageIntro";
-import { FadeUp } from "@/components/FadeUp";
+import { useEffect, useRef, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Eyebrow } from "@/components/Eyebrow";
-import { DoubleFrame } from "@/components/DoubleFrame";
 import { CtaButton } from "@/components/CtaButton";
-import { StatBand } from "@/components/projekt/Parts";
+import { FadeUp } from "@/components/FadeUp";
+import { PhoneFrame } from "@/components/smaarty/PhoneFrame";
+import { ScreenHome, ScreenTop } from "@/components/smaarty/screens";
+import { PhoneJourney } from "@/components/smaarty/PhoneJourney";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export const Route = createFileRoute("/smaarty")({
   head: () => ({
@@ -16,192 +22,294 @@ export const Route = createFileRoute("/smaarty")({
         content:
           "Insamlingen som planterar skog. Barnen säljer träd, köparna får bevis, laget ser skogen växa.",
       },
-      { property: "og:title", content: "Smaarty — för lag och skolor — SmartKlimat" },
-      {
-        property: "og:description",
-        content:
-          "Insamlingen som planterar skog. Barnen säljer träd, köparna får bevis, laget ser skogen växa.",
-      },
-      { property: "og:url", content: "/smaarty" },
     ],
-    links: [{ rel: "canonical", href: "/smaarty" }],
   }),
   component: SmaartyPage,
 });
 
-const STEG = [
-  {
-    n: "1",
-    title: "Ledaren skapar laget",
-    body: "Vi lägger upp ert lag eller er klass och bjuder in säljarna. Klart på en dag.",
-  },
-  {
-    n: "2",
-    title: "Barnen säljer träd",
-    body:
-      "Var och en har sitt eget konto i Smaarty. Varje sålt träd ger poäng, milstolpar och en plats på lagets topplista.",
-  },
-  {
-    n: "3",
-    title: "Köparen får beviset",
-    body:
-      "Ett personligt värdebevis med köparens namn — och trädet planteras i något av våra projekt.",
-  },
+/* Problemet: rader som stryks över i scroll-takt */
+function ProblemSection() {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      ref.current?.style.setProperty("--sp", "1");
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    const st = ScrollTrigger.create({
+      trigger: el,
+      start: "top 78%",
+      end: "top 22%",
+      scrub: 0.4,
+      onUpdate: (self) => el.style.setProperty("--sp", self.progress.toFixed(4)),
+    });
+    return () => st.kill();
+  }, []);
+
+  const struck = ["Kartonger att dela ut", "Leveranser att jaga", "Kontanter att räkna"];
+
+  return (
+    <section ref={ref} className="px-6 py-24 md:py-32" style={{ ["--sp" as string]: 0 }}>
+      <div className="mx-auto max-w-2xl text-center">
+        <FadeUp>
+          <h2 className="font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+            Insamling utan allt det där.
+          </h2>
+        </FadeUp>
+        <div className="mt-10 space-y-3">
+          {struck.map((label, i) => {
+            const a = i * 0.22;
+            return (
+              <div key={label} className="relative rounded-2xl border border-linje bg-white px-6 py-4">
+                <p className="text-skogsgron/55">{label}</p>
+                <span
+                  className="absolute left-1/2 top-1/2 h-[2.5px] w-[62%] origin-left -translate-x-1/2 -translate-y-1/2 rounded-full bg-apricot-2"
+                  style={{
+                    transform: `translate(-50%,-50%) scaleX(clamp(0, calc((var(--sp, 0) - ${a}) * 4), 1))`,
+                  }}
+                />
+              </div>
+            );
+          })}
+          <div
+            className="rounded-2xl border border-smaragd-light bg-mintpapper px-6 py-4 transition-all duration-700 [transition-timing-function:var(--ease-smart)]"
+            style={{
+              opacity: `min(1, calc((var(--sp, 0) - 0.66) * 4))` as unknown as number,
+              transform: `translateY(clamp(0px, calc((0.9 - var(--sp, 0)) * 40px), 12px))`,
+            }}
+          >
+            <p className="flex items-center justify-center gap-3 font-medium text-skogsgron">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-smaragd text-white">
+                <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
+                  <path d="M2 6.2 L4.8 9 L10 3.2" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              Träd som planteras
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const FEATURES = [
+  { eb: "Nivåer", title: "Från Skott till Fullvuxet träd", body: "Varje sålt träd växer säljarens eget nivåträd — fem stadier, från första skottet till fullvuxen krona." },
+  { eb: "Märken", title: "Grön tumme, Skogshjälte, Eldsjäl", body: "Riktiga milstolpar med riktiga namn — och Veckans hjälte koras i varje lag, varje vecka." },
+  { eb: "Laget", title: "Veckomål som ger alla bonus", body: "När laget når målet tillsammans får varenda säljare poäng. Helg-sprintar håller tempot uppe." },
+  { eb: "Belöningar", title: "Poängen blir priser", body: "Säljarna löser in sina poäng mot belöningar direkt i appen. Motivationen sköter sig själv." },
 ];
 
-const APP_FEATURES = [
-  {
-    eyebrow: "POÄNG",
-    title: "Milstolpar och streaks",
-    body: "Varje sälj räknas, varje vecka kan bli en ny toppnotering.",
-  },
-  {
-    eyebrow: "TOPPLISTA",
-    title: "Veckans säljare",
-    body: "Laget tävlar tillsammans — och firar tillsammans.",
-  },
-  {
-    eyebrow: "BELÖNINGAR",
-    title: "Poängen blir priser",
-    body: "Säljarna löser in sina poäng mot belöningar i appen.",
-  },
-  {
-    eyebrow: "LIVE",
-    title: "Lagets skog växer",
-    body: "Alla ser samma räknare ticka — träd för träd.",
-  },
-];
-
-const LEADER_BENEFITS = [
+const LEADER_POINTS = [
   "Full översikt över försäljning och aktivitet",
   "Inga kontanter — allt sker digitalt",
   "Inget att beställa hem, lagra eller dela ut",
-  "Kontona skapas av er som ledare, inte av barnen",
+  "Kontona skapas av dig som ledare, inte av barnen",
 ];
 
 function SmaartyPage() {
   return (
     <>
-      <PageIntro
-        eyebrow="Smaarty"
-        title="För lag och skolor"
-        lead="Insamlingen som planterar skog. Inga kartonger att dela ut, inget att leverera — barnen säljer träd, köparna får bevis, och hela laget ser skogen växa."
-      />
+      {/* HERO */}
+      <section className="overflow-hidden px-6 pb-16 pt-28 md:pb-24 md:pt-36">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+          <div className="text-center md:text-left">
+            <FadeUp>
+              <Eyebrow>Smaarty · För lag och skolor</Eyebrow>
+            </FadeUp>
+            <FadeUp delay={60}>
+              <h1 className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight text-skogsgron md:text-6xl">
+                Insamlingen som <span className="text-smaragd">planterar skog.</span>
+              </h1>
+            </FadeUp>
+            <FadeUp delay={120}>
+              <p className="mx-auto mt-6 max-w-md text-lg text-skogsgron/70 md:mx-0">
+                Inga kartonger. Ingen leverans. Barnen säljer träd, köparna får bevis, och hela laget ser skogen växa.
+              </p>
+            </FadeUp>
+            <FadeUp delay={180}>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+                <CtaButton to="/smaarty" variant="primary">Starta ert lag</CtaButton>
+                <CtaButton to="/projekt" variant="secondary">Våra projekt</CtaButton>
+              </div>
+            </FadeUp>
+          </div>
+          <FadeUp delay={140}>
+            <div className="mx-auto w-[62vw] max-w-[260px] md:max-w-[300px]">
+              <HeroPhone />
+            </div>
+          </FadeUp>
+        </div>
+      </section>
 
-      {/* Så funkar det */}
-      <section className="px-6 pb-16 md:pb-24">
-        <div className="mx-auto w-full max-w-6xl">
+      <ProblemSection />
+
+      {/* TELEFONRESAN */}
+      <section className="bg-mintpapper/60">
+        <div className="px-6 pt-20 text-center md:pt-28">
           <FadeUp>
             <Eyebrow>Så funkar det</Eyebrow>
           </FadeUp>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {STEG.map((s, i) => (
-              <FadeUp key={s.n} delay={i * 80}>
-                <div className="h-full rounded-[28px] bg-white ring-1 ring-linje px-7 py-10 md:px-8 md:py-12">
-                  <div className="font-mono text-5xl md:text-6xl font-semibold tracking-tight text-smaragd-dark">
-                    {s.n}
-                  </div>
-                  <h3 className="mt-6 font-display text-2xl md:text-[1.75rem] font-bold leading-[1.1] tracking-tight text-skogsgron">
-                    {s.title}
-                  </h3>
-                  <p className="mt-5 text-base text-skogsgron/75">{s.body}</p>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Appen */}
-      <section className="px-6 pb-16 md:pb-24">
-        <div className="mx-auto w-full max-w-6xl">
-          <FadeUp>
-            <Eyebrow>Appen</Eyebrow>
+          <FadeUp delay={60}>
+            <h2 className="mt-6 font-display text-3xl font-bold tracking-tight text-skogsgron md:text-5xl">
+              Hela resan, i din hand.
+            </h2>
           </FadeUp>
-          <div className="mt-8 grid grid-cols-2 gap-4 md:gap-6">
-            {APP_FEATURES.map((f, i) => (
-              <FadeUp key={f.eyebrow} delay={i * 60}>
-                <DoubleFrame innerClassName="px-5 py-6 md:px-7 md:py-8 h-full">
-                  <div className="flex h-full flex-col">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">
-                      {f.eyebrow}
-                    </p>
-                    <h3 className="mt-3 font-display text-lg md:text-xl font-bold leading-[1.15] tracking-tight text-skogsgron">
-                      {f.title}
-                    </h3>
-                    <p className="mt-4 text-sm md:text-base text-skogsgron/75">{f.body}</p>
-                  </div>
-                </DoubleFrame>
-              </FadeUp>
-            ))}
-          </div>
         </div>
+        <PhoneJourney />
       </section>
 
-      {/* För dig som ledare */}
-      <section className="px-6 pb-16 md:pb-24">
-        <div className="mx-auto w-full max-w-6xl">
-          <FadeUp>
-            <Eyebrow>För dig som ledare</Eyebrow>
-          </FadeUp>
-          <ul className="mt-8 grid gap-4 md:grid-cols-2">
-            {LEADER_BENEFITS.map((b, i) => (
-              <FadeUp key={b} delay={i * 60} as="li">
-                <div className="flex items-start gap-4">
-                  <span
-                    aria-hidden
-                    className="mt-2 inline-block h-2 w-2 shrink-0 rounded-full bg-guld"
-                  />
-                  <p className="text-base md:text-lg text-skogsgron/80">{b}</p>
-                </div>
-              </FadeUp>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <StatBand
-        items={[
-          { value: "20 kg", label: "Koldioxid binder ett träd, varje år" },
-          { value: "3", label: "Projekt på tre kontinenter" },
-          { value: "27 393", label: "Träd planterade hittills" },
-        ]}
-      />
-
-      {/* Avslutande CTA */}
+      {/* FUNKTIONER */}
       <section className="px-6 py-24 md:py-32">
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="mx-auto max-w-6xl">
           <FadeUp>
-            <DoubleFrame innerClassName="px-6 py-12 md:px-14 md:py-20">
-              <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:items-end">
-                <div>
-                  <Eyebrow>Smaarty</Eyebrow>
-                  <h2 className="mt-5 font-display text-3xl md:text-5xl font-bold leading-[1.05] tracking-tight text-skogsgron">
-                    Starta ert lag.
-                  </h2>
-                  <p className="mt-6 max-w-xl text-base md:text-lg text-skogsgron/75">
-                    Berätta vilket lag eller vilken klass det gäller, så hör vi av oss med allt ni behöver för att komma igång.
-                  </p>
+            <h2 className="font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+              Byggd för att kännas som ett spel.
+            </h2>
+          </FadeUp>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {FEATURES.map((f, i) => (
+              <FadeUp key={f.eb} delay={i * 70}>
+                <div className="group rounded-[2rem] bg-mintpapper p-1.5">
+                  <div className="rounded-[1.6rem] border border-linje bg-white p-7 transition-transform duration-500 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] group-hover:-translate-y-1">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">{f.eb}</p>
+                    <h3 className="mt-3 font-display text-xl font-bold text-skogsgron">{f.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-skogsgron/70">{f.body}</p>
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-3 md:justify-end">
-                  <a
-                    href="mailto:kontakt@smartklimat.org?subject=Smaarty — lag/skola"
-                    className="group inline-flex items-center gap-3 rounded-full pl-6 pr-1.5 py-1.5 text-sm font-medium transition-transform duration-500 [transition-timing-function:var(--ease-smart)] bg-skogsgron text-papper hover:-translate-y-0.5"
-                  >
-                    <span className="py-2">Kom igång</span>
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-smaragd text-white transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:translate-x-0.5">
-                      <ArrowRight className="h-4 w-4" strokeWidth={2} />
-                    </span>
-                  </a>
-                  <CtaButton to="/projekt" variant="secondary">
-                    Våra projekt
-                  </CtaButton>
-                </div>
-              </div>
-            </DoubleFrame>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FÖR LEDAREN */}
+      <section className="bg-sand px-6 py-24 md:py-32">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+          <div>
+            <FadeUp>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8A7A52]">Ur ledarens sits</p>
+            </FadeUp>
+            <FadeUp delay={60}>
+              <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-[#3D3524] md:text-4xl">
+                Du har full koll. Barnen har kul.
+              </h2>
+            </FadeUp>
+            <ul className="mt-8 space-y-4">
+              {LEADER_POINTS.map((p, i) => (
+                <FadeUp key={p} delay={100 + i * 60}>
+                  <li className="flex items-start gap-3 text-[15.5px] text-[#5C5238]">
+                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-guld" />
+                    {p}
+                  </li>
+                </FadeUp>
+              ))}
+            </ul>
+          </div>
+          <FadeUp delay={120}>
+            <div className="mx-auto w-[58vw] max-w-[250px]">
+              <PhoneFrame className="w-full" tilt={-4}>
+                <ScreenTop active />
+              </PhoneFrame>
+            </div>
           </FadeUp>
         </div>
+      </section>
+
+      {/* KLIMATNYTTAN */}
+      <section className="px-6 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl text-center">
+          <FadeUp>
+            <h2 className="font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+              Och allt detta planterar skog.
+            </h2>
+          </FadeUp>
+          <FadeUp delay={80}>
+            <div className="mt-12 border-y border-linje py-10">
+              <div className="grid gap-10 md:grid-cols-3">
+                {[
+                  ["20 kg", "koldioxid per träd, varje år"],
+                  ["3", "projekt på tre kontinenter"],
+                  ["27 393", "träd planterade hittills"],
+                ].map(([a, b]) => (
+                  <div key={a}>
+                    <p className="font-mono text-4xl font-semibold text-skogsgron tabular-nums">{a}</p>
+                    <p className="mt-2 text-sm text-skogsgron/60">{b}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeUp>
+          <FadeUp delay={140}>
+            <p className="mx-auto mt-10 max-w-xl text-skogsgron/70">
+              Träden går in i samma projekt som allt annat vi planterar — Khasi Hills, Copperbelt och Pontal. Klassen kan läsa om sitt.
+            </p>
+          </FadeUp>
+          <FadeUp delay={180}>
+            <div className="mt-8">
+              <CtaButton to="/projekt" variant="secondary">Se projekten</CtaButton>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-6 pb-28">
+        <FadeUp>
+          <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-skogsgron px-8 py-16 text-center md:py-20">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-papper md:text-5xl">
+              Starta ert lag.
+            </h2>
+            <p className="mx-auto mt-4 max-w-md text-salvia">
+              Berätta vilket lag eller vilken klass det gäller, så hör vi av oss med allt ni behöver.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="mailto:kontakt@smartklimat.org?subject=Smaarty%20—%20lag/skola"
+                className="rounded-full bg-smaragd px-7 py-3 text-[15px] font-medium text-white transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
+              >
+                Kom igång
+              </a>
+              <Link
+                to="/projekt"
+                className="rounded-full border border-salvia/50 px-7 py-3 text-[15px] font-medium text-salvia transition-colors duration-500 hover:border-salvia"
+              >
+                Våra projekt
+              </Link>
+            </div>
+          </div>
+        </FadeUp>
       </section>
     </>
+  );
+}
+
+function HeroPhone() {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [seen, setSeen] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setSeen(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref}>
+      <PhoneFrame className="w-full" tilt={5}>
+        <ScreenHome active={seen} />
+      </PhoneFrame>
+    </div>
   );
 }
