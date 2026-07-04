@@ -27,7 +27,8 @@ const N = BEATS.length;
 function windowFor(i: number): [number, number] {
   const a = i / N;
   const b = (i + 1) / N;
-  return [i === 0 ? 0 : a - 0.02, i === N - 1 ? 1.01 : b + 0.02];
+  // första skärmen fullt synlig redan när pinnen tar vid, sista följer med ut
+  return [i === 0 ? -0.25 : a - 0.02, i === N - 1 ? 1.25 : b + 0.02];
 }
 
 function beatStyle(i: number): React.CSSProperties {

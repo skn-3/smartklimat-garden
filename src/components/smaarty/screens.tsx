@@ -76,7 +76,10 @@ export function ScreenHome({ active = false }: { active?: boolean }) {
             </div>
           </div>
           <div className="mt-2 h-1.5 rounded-full bg-mint">
-            <div className="h-full w-[86%] rounded-full bg-guld transition-[width] duration-700" />
+            <div
+              className="h-full rounded-full bg-guld transition-[width] duration-1000 [transition-timing-function:var(--ease-smart)]"
+              style={{ width: active ? "86%" : "58%" }}
+            />
           </div>
         </div>
 
@@ -96,13 +99,37 @@ export function ScreenHome({ active = false }: { active?: boolean }) {
             5 träd i helgen → +10 poäng
           </p>
         </div>
+
+        <div className="rounded-2xl border border-linje bg-white p-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <svg viewBox="0 0 20 20" className="h-4 w-4" aria-hidden="true">
+                <rect x="3" y="7" width="14" height="10" rx="2" fill="#3CB680" />
+                <rect x="3" y="9.4" width="14" height="2" fill="#fff" opacity="0.7" />
+                <rect x="9" y="7" width="2" height="10" fill="#fff" opacity="0.7" />
+                <path d="M10 7 C7 7 6 4.6 7.6 3.8 C9 3.1 10 5 10 7 C10 5 11 3.1 12.4 3.8 C14 4.6 13 7 10 7 Z" fill="#15784F" />
+              </svg>
+              <div>
+                <p className="text-[10.5px] font-medium text-skogsgron">Biobiljett</p>
+                <p className="text-[8.5px] text-skogsgron/50">260 poäng kvar</p>
+              </div>
+            </div>
+            <p className="font-mono text-[8.5px] text-smaragd-dark tabular-nums">1 240/1 500</p>
+          </div>
+          <div className="mt-2 h-1.5 rounded-full bg-mint">
+            <div
+              className="h-full rounded-full bg-smaragd transition-[width] duration-1000 [transition-timing-function:var(--ease-smart)]"
+              style={{ width: active ? "83%" : "52%" }}
+            />
+          </div>
+        </div>
       </div>
       <style>{`@keyframes wiggle { 0%,100%{transform:rotate(-4deg)} 50%{transform:rotate(5deg) scale(1.06)} }`}</style>
     </div>
   );
 }
 
-export function ScreenTeam() {
+export function ScreenTeam({ active = false }: { active?: boolean }) {
   const members = ["Vera", "Melvin", "Aisha", "Otis"];
   return (
     <div className="flex h-full flex-col bg-mintpapper">
@@ -112,7 +139,11 @@ export function ScreenTeam() {
           Säljare i laget
         </p>
         {members.map((m, i) => (
-          <div key={m} className="flex items-center gap-2.5 rounded-2xl border border-linje bg-white p-2.5">
+          <div
+            key={m}
+            className={`flex items-center gap-2.5 rounded-2xl border border-linje bg-white p-2.5 transition-all duration-500 [transition-timing-function:var(--ease-smart)] ${active ? "translate-y-0 opacity-100" : "translate-y-1.5 opacity-40"}`}
+            style={{ transitionDelay: `${i * 90}ms` }}
+          >
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-mint font-display text-[11px] font-bold text-skogsgron">
               {m[0]}
             </div>
@@ -175,9 +206,10 @@ export function ScreenTop({ active = false }: { active?: boolean }) {
         {rows.map((r) => (
           <div
             key={r.name}
-            className={`flex items-center gap-2.5 rounded-2xl border border-linje bg-white p-2.5 transition-transform duration-700 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] ${
-              active && r.nr === 1 ? "-translate-y-0.5 scale-[1.02] border-guld" : ""
-            }`}
+            className={`flex items-center gap-2.5 rounded-2xl border border-linje bg-white p-2.5 transition-all duration-700 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] ${
+              active ? "translate-x-0 opacity-100" : "translate-x-2 opacity-40"
+            } ${active && r.nr === 1 ? "-translate-y-0.5 scale-[1.02] border-guld" : ""}`}
+            style={{ transitionDelay: `${(r.nr - 1) * 90}ms` }}
           >
             <div className={`flex h-6 w-6 items-center justify-center rounded-full ${r.medal} font-display text-[10px] font-bold text-skogsgron`}>
               {r.nr}
@@ -209,7 +241,10 @@ export function ScreenCert({ active = false }: { active?: boolean }) {
           <p className="mt-3 font-display text-[15px] font-bold text-skogsgron">Farmor Ingrid</p>
           <p className="mt-2 font-display text-[44px] font-bold leading-none text-smaragd">3</p>
           <p className="text-[10px] text-skogsgron/60">träd planterade</p>
-          <div className="mx-auto mt-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-guld">
+          <div
+            className={`mx-auto mt-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-guld transition-all duration-700 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] ${active ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
+            style={{ transitionDelay: "250ms" }}
+          >
             <p className="font-mono text-[6px] uppercase tracking-[0.1em] text-guld">
               Smart
               <br />
