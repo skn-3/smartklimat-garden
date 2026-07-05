@@ -49,7 +49,7 @@ export function Nav() {
               </Link>
             ))}
             <Link
-              to="/kalkylator"
+              to="/plantera"
               className="group ml-2 inline-flex items-center gap-2.5 rounded-full bg-skogsgron py-1 pl-4 pr-1 text-sm font-medium text-papper transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
             >
               <span className="py-1.5">Plantera träd</span>
@@ -112,7 +112,7 @@ export function Nav() {
             </Link>
           ))}
           <Link
-            to="/kalkylator"
+            to="/plantera"
             onClick={() => setOpen(false)}
             className={cn(
               "group mt-8 inline-flex items-center gap-3 rounded-full bg-skogsgron py-1.5 pl-6 pr-1.5 text-base font-medium text-papper transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",

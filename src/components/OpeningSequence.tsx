@@ -240,7 +240,7 @@ export function OpeningSequence() {
               Klimatkompensation, byggd som teknik.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <CtaButton to="/kalkylator" variant="primary">Plantera träd</CtaButton>
+              <CtaButton to="/plantera" variant="primary">Plantera träd</CtaButton>
               <CtaButton to="/projekt" variant="secondary">Våra projekt</CtaButton>
             </div>
             {/* TODO: hämta talet från publika stats-endpointen (SUM över betalda köp) när den finns */}
