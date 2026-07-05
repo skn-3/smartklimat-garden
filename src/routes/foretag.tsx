@@ -55,7 +55,19 @@ const FAQ_ITEMS: Array<[string, string]> = [
   ["Kan beviset bära vårt varumärke?", "Ja. Er logotyp och avsändare är standard i alla upplägg, och i Skräddarsytt designar vi certifikatet helt efter er profil."],
 ];
 
-function CertInView({ large = false, tilt = 0 }: { large?: boolean; tilt?: number }) {
+function CertInView({
+  large = false,
+  tilt = 0,
+  brand,
+  name,
+  trees,
+}: {
+  large?: boolean;
+  tilt?: number;
+  brand?: string;
+  name?: string;
+  trees?: number;
+}) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [seen, setSeen] = useState(false);
 
@@ -77,7 +89,7 @@ function CertInView({ large = false, tilt = 0 }: { large?: boolean; tilt?: numbe
 
   return (
     <div ref={ref} style={tilt ? { transform: `rotate(${tilt}deg)` } : undefined}>
-      <CertCard large={large} active={seen} />
+      <CertCard large={large} active={seen} brand={brand} name={name} trees={trees} />
     </div>
   );
 }
@@ -155,21 +167,47 @@ function ForetagPage() {
         <PipelineJourney />
       </section>
 
-      {/* CASE */}
+      {/* KUNDCASE */}
       <section className="bg-sand px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-4xl">
-          <FadeUp>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8A7A52]">Ur verkligheten</p>
-          </FadeUp>
-          <FadeUp delay={60}>
-            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-[#3D3524] md:text-4xl">
-              En rikstäckande fönsterkedja planterar ett träd per installerat fönster —
-            </h2>
-          </FadeUp>
-          <FadeUp delay={100}>
-            <p className="mt-4 max-w-2xl text-lg text-[#5C5238]">
-              automatiskt i samma stund som affären signeras. Säljarna säljer som vanligt. Kunderna får ett bevis de kan visa upp. Skogen växer i takt med orderboken.
-            </p>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_1fr]">
+          <div>
+            <FadeUp>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8A7A52]">
+                Kundcase · Mockfjärds Fönster
+              </p>
+            </FadeUp>
+            <FadeUp delay={60}>
+              <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-[#3D3524] md:text-4xl">
+                Region 050–096 planterar ett träd per installerat fönster.
+              </h2>
+            </FadeUp>
+            <FadeUp delay={100}>
+              <p className="mt-4 max-w-xl text-lg text-[#5C5238]">
+                I Stockholmsregionen får varje slutfört fönsterbyte hos Mockfjärds ett träd planterat — automatiskt, i samma stund som ordern går igenom. Säljarna säljer som vanligt. Kunden får ett personligt värdebevis med Mockfjärds som avsändare, verifierbart via en egen länk.
+              </p>
+            </FadeUp>
+            <FadeUp delay={140}>
+              <div className="mt-7 flex flex-wrap gap-2.5">
+                {["Region 050–096", "Ett träd per fönster", "Automatiskt vid order"].map((c) => (
+                  <span
+                    key={c}
+                    className="rounded-full border border-[#D9CBA8] bg-white/70 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-[#6B5C33]"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </FadeUp>
+            <FadeUp delay={180}>
+              <p className="mt-6 text-sm text-[#8A7A52]">
+                Ett upplägg i klassen Integrerad — kopplat direkt till orderflödet.
+              </p>
+            </FadeUp>
+          </div>
+          <FadeUp delay={120}>
+            <div className="mx-auto w-full max-w-[300px]">
+              <CertInView tilt={-4} brand="Mockfjärds Fönster" name="Villa Ek, Täby" trees={8} />
+            </div>
           </FadeUp>
         </div>
       </section>
