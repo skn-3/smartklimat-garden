@@ -11,11 +11,13 @@ export function CertCard({
   trees = 8,
   active = false,
   large = false,
+  brand,
 }: {
   name?: string;
   trees?: number;
   active?: boolean;
   large?: boolean;
+  brand?: string;
 }) {
   return (
     <div
@@ -42,7 +44,9 @@ export function CertCard({
         </p>
       </div>
       <p className="mt-4 font-mono text-[9px] text-skogsgron/45">Verifiera: smartklimat.org/v/8f2k1</p>
-      <p className="mt-2 font-mono text-[8px] uppercase tracking-[0.18em] text-skogsgron/35">Ert varumärke här</p>
+      <p className="mt-2 font-mono text-[8px] uppercase tracking-[0.18em] text-skogsgron/35">
+        {brand ?? "Ert varumärke här"}
+      </p>
     </div>
   );
 }
