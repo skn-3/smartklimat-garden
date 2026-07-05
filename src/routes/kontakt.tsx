@@ -24,14 +24,14 @@ const SPAR = [
     eb: "För företag",
     title: "Berätta om ert flöde",
     body: "Hur många affärer gör ni i månaden? Vi återkommer med ett konkret upplägg — uppstarten tar dagar, inte månader.",
-    href: "mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat",
+    href: "mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=Hej!%0A%0AVi%20g%C3%B6r%20ungef%C3%A4r%20___%20aff%C3%A4rer%20per%20m%C3%A5nad.%0A%0AF%C3%B6retag%3A%0AKontaktperson%3A%0A",
     cta: "Maila om företagsupplägg",
   },
   {
     eb: "Smaarty · Lag och skolor",
     title: "Starta ert lag",
     body: "Berätta vilket lag eller vilken klass det gäller, så hör vi av oss med allt ni behöver för att komma igång.",
-    href: "mailto:kontakt@smartklimat.org?subject=Smaarty%20%E2%80%94%20lag%2Fskola",
+    href: "mailto:kontakt@smartklimat.org?subject=Smaarty%20%E2%80%94%20lag%2Fskola&body=Hej!%0A%0AVi%20vill%20starta%20en%20insamling.%0A%0ALag%2Fklass%3A%0AAntal%20s%C3%A4ljare%20(ungef%C3%A4r)%3A%0A",
     cta: "Maila om Smaarty",
   },
 ];

@@ -6,6 +6,7 @@ import { FadeUp } from "@/components/FadeUp";
 import { FaqList } from "@/components/Faq";
 import { CertCard, CaseFlow } from "@/components/foretag/scenes";
 import { PipelineJourney } from "@/components/foretag/PipelineJourney";
+import { PlantedCounter } from "@/components/PlantedCounter";
 import { VarforTrad } from "@/components/VarforTrad";
 
 export const Route = createFileRoute("/foretag")({
@@ -31,7 +32,7 @@ const PLANS = [
   {
     eb: "Integrerad",
     title: "Automatiskt, affär för affär",
-    body: "Vår gateway kopplas till ert affärsflöde — bevis i realtid och live-statistik för er marknadsföring.",
+    body: "Vår gateway kopplas till ert affärsflöde — bevis i realtid och live-statistik för er marknadsföring. Tekniskt: ett anrop per affär.",
   },
   {
     eb: "Skräddarsytt",
@@ -51,10 +52,78 @@ const FAQ_ITEMS: Array<[string, string]> = [
   ["Hur lång är uppstarten?", "Dagar, inte månader. Starter kräver ingen integration alls — vi lägger upp er samma vecka och första rapporteringen kan ske direkt."],
   ["Måste vi integrera tekniskt?", "Nej. Starter bygger på enkel månadsrapportering av era affärer. När ni vill växla upp kopplar vi vår gateway till ert flöde — då sker allt automatiskt."],
   ["Vad får våra kunder?", "Ett personligt värdebevis med sitt namn, ert varumärke och en egen verifieringslänk som de kan kontrollera och dela när som helst."],
+  ["Hur vet vi att träden faktiskt finns?", "Varje träd planteras i WeForests program och granskas externt av Preferred by Nature. Ert flöde syns i vår live-data, och varje kunds värdebevis har en öppen verifieringslänk — ni behöver inte lita på oss, ni kan kontrollera själva."],
   ["Vad kostar det?", "Prissättningen följer volymen. Berätta hur många affärer ni gör i månaden, så återkommer vi med ett konkret upplägg."],
   ["Var planteras träden?", "I våra tre WeForest-projekt — molnskogen i Khasi Hills, miombon i Copperbelt och vilddjurskorridorerna i Pontal. Arbetet granskas externt av Preferred by Nature."],
   ["Kan beviset bära vårt varumärke?", "Ja. Er logotyp och avsändare är standard i alla upplägg, och i Skräddarsytt designar vi certifikatet helt efter er profil."],
 ];
+
+function FlowCalc() {
+  const [deals, setDeals] = useState(150);
+  const treesPerYear = deals * 12;
+  const tonsPerYear = (treesPerYear * 20) / 1000;
+  const body = encodeURIComponent(
+    `Hej!\n\nVi gör ungefär ${deals} affärer per månad och vill veta mer om ett upplägg.\n\nFöretag:\nKontaktperson:\n`,
+  );
+
+  return (
+    <div className="rounded-[2rem] bg-mintpapper p-1.5">
+      <div className="rounded-[1.6rem] border border-linje bg-white p-8 md:p-12">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">Räkna på ert flöde</p>
+        <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-skogsgron md:text-3xl">
+          Vad blir era affärer i skog?
+        </h2>
+
+        <div className="mt-8">
+          <div className="flex items-end justify-between">
+            <label htmlFor="deals" className="text-sm text-skogsgron/70">
+              Affärer per månad
+            </label>
+            <p className="font-mono text-3xl font-semibold text-skogsgron tabular-nums">{deals}</p>
+          </div>
+          <input
+            id="deals"
+            type="range"
+            min={10}
+            max={1000}
+            step={10}
+            value={deals}
+            onChange={(e) => setDeals(Number(e.target.value))}
+            className="mt-3 w-full"
+            style={{ accentColor: "#1E9E6A" }}
+          />
+        </div>
+
+        <div className="mt-8 grid grid-cols-2 gap-6 border-y border-linje py-8">
+          <div>
+            <p className="font-mono text-3xl font-semibold text-smaragd tabular-nums md:text-4xl">
+              {treesPerYear.toLocaleString("sv-SE")}
+            </p>
+            <p className="mt-1.5 text-sm text-skogsgron/60">träd per år</p>
+          </div>
+          <div>
+            <p className="font-mono text-3xl font-semibold text-skogsgron tabular-nums md:text-4xl">
+              {tonsPerYear.toLocaleString("sv-SE", { maximumFractionDigits: 1 })}
+            </p>
+            <p className="mt-1.5 text-sm text-skogsgron/60">ton koldioxid bundet, per år</p>
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <p className="max-w-xs text-xs text-skogsgron/50">
+            Räknat på ett träd per affär och 20 kg koldioxid per träd och år. Fler träd per affär? Vi skalar.
+          </p>
+          <a
+            href={`mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=${body}`}
+            className="rounded-full bg-skogsgron px-7 py-3 text-[15px] font-medium text-papper transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
+          >
+            Skicka volymen till oss
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function CertInView({
   large = false,
@@ -118,7 +187,7 @@ function ForetagPage() {
             <FadeUp delay={180}>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
                 <a
-                  href="mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat"
+                  href="mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=Hej!%0A%0AVi är intresserade av ett upplägg.%0A%0AFöretag:%0AAffärer per månad (ungefär):%0A"
                   className="rounded-full bg-skogsgron px-7 py-3 text-[15px] font-medium text-papper transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
                 >
                   Boka ett samtal
@@ -150,6 +219,49 @@ function ForetagPage() {
               Varje träd hos oss får ett verifierbart värdebevis med en egen länk — som kunden kan kontrollera själv, när som helst. Ingen årsrapport i en byrålåda. Ett kvitto i handen.
             </p>
           </FadeUp>
+        </div>
+      </section>
+
+      {/* AFFÄRSNYTTAN */}
+      <section className="px-6 pb-24 md:pb-32">
+        <div className="mx-auto max-w-6xl">
+          <FadeUp>
+            <Eyebrow>Vad det gör för affären</Eyebrow>
+          </FadeUp>
+          <FadeUp delay={60}>
+            <h2 className="mt-6 max-w-2xl font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+              Klimatnytta som säljer, syns och går att redovisa.
+            </h2>
+          </FadeUp>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                eb: "Vid köksbordet",
+                title: "Ett argument konkurrenten saknar",
+                body: "Era säljare kan säga: varje fönster ni köper planterar ett träd — och ni får beviset. Det avgör jämna affärer.",
+              },
+              {
+                eb: "I marknadsföringen",
+                title: "Innehåll som gör jobbet självt",
+                body: "Live-statistik att visa upp, bevis kunderna delar vidare, och en berättelse som växer med varje order.",
+              },
+              {
+                eb: "I redovisningen",
+                title: "Data, inte uppskattningar",
+                body: "Exakta träd, exakta datum, exakt projekt — färdigt underlag när hållbarhetsrapporten ska skrivas.",
+              },
+            ].map((c, i) => (
+              <FadeUp key={c.eb} delay={i * 70}>
+                <div className="h-full rounded-[2rem] bg-mintpapper p-1.5">
+                  <div className="flex h-full flex-col rounded-[1.6rem] border border-linje bg-white p-7">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">{c.eb}</p>
+                    <h3 className="mt-3 font-display text-xl font-bold text-skogsgron">{c.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-skogsgron/70">{c.body}</p>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -250,6 +362,15 @@ function ForetagPage() {
         </div>
       </section>
 
+      {/* RÄKNA PÅ FLÖDET */}
+      <section className="px-6 pb-24 md:pb-32">
+        <div className="mx-auto max-w-4xl">
+          <FadeUp>
+            <FlowCalc />
+          </FadeUp>
+        </div>
+      </section>
+
       {/* VÄRDEBEVISET */}
       <section className="bg-mintpapper/60 px-6 py-24 md:py-32">
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
@@ -305,6 +426,8 @@ function ForetagPage() {
         </div>
       </section>
 
+      <PlantedCounter />
+
       {/* TRUST-RAD */}
       <section className="px-6 py-16 md:py-20">
         <FadeUp>
@@ -345,7 +468,7 @@ function ForetagPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat"
+                href="mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=Hej!%0A%0AVi är intresserade av ett upplägg.%0A%0AFöretag:%0AAffärer per månad (ungefär):%0A"
                 className="rounded-full bg-smaragd px-7 py-3 text-[15px] font-medium text-white transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
               >
                 Boka ett samtal
