@@ -173,9 +173,12 @@ function ForetagPage() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_1fr]">
           <div>
             <FadeUp>
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8A7A52]">
-                Kundcase · Mockfjärds Fönster
-              </p>
+              <div className="flex items-center gap-4">
+                <img src="/brand/mockfjards-badge.png" alt="Mockfjärds" className="h-14 w-14 rounded-full" />
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8A7A52]">
+                  Kundcase · Mockfjärds Fönster
+                </p>
+              </div>
             </FadeUp>
             <FadeUp delay={60}>
               <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-[#3D3524] md:text-4xl">
