@@ -9,6 +9,7 @@ import { StatBand } from "@/components/projekt/Parts";
 
 export const Route = createFileRoute("/om-oss")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://smartklimat.org/om-oss" }],
     meta: [
       { title: "Om oss — SmartKlimat" },
       {

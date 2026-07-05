@@ -14,6 +14,8 @@ export const Route = createFileRoute("/plantera")({
     };
   },
   head: () => ({
+    links: [{ rel: "canonical", href: "https://smartklimat.org/plantera" }],
+    scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@type": "Product", "name": "Trädplantering med värdebevis", "description": "Plantera träd i granskade WeForest-projekt. Spårbart värdebevis i ditt eller mottagarens namn.", "image": "https://smartklimat.org/og.png", "brand": {"@type": "Brand", "name": "SmartKlimat"}, "offers": {"@type": "Offer", "price": "35", "priceCurrency": "SEK", "availability": "https://schema.org/InStock", "url": "https://smartklimat.org/plantera"}}` }],
     meta: [
       { title: "Plantera träd — SmartKlimat" },
       {

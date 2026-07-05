@@ -5,6 +5,7 @@ import { FadeUp } from "@/components/FadeUp";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://smartklimat.org/kontakt" }],
     meta: [
       { title: "Kontakt — SmartKlimat" },
       {

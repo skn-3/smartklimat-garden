@@ -11,6 +11,8 @@ import {
 
 export const Route = createFileRoute("/projekt/copperbelt")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://smartklimat.org/projekt/copperbelt" }],
+    scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hem", "item": "https://smartklimat.org/"}, {"@type": "ListItem", "position": 2, "name": "Projekt", "item": "https://smartklimat.org/projekt"}, {"@type": "ListItem", "position": 3, "name": "Copperbelt", "item": "https://smartklimat.org/projekt/copperbelt"}]}` }],
     meta: [
       { title: "Copperbelt — Våra projekt — SmartKlimat" },
       {

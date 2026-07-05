@@ -11,6 +11,7 @@ import { VarforTrad } from "@/components/VarforTrad";
 
 export const Route = createFileRoute("/foretag")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://smartklimat.org/foretag" }],
     meta: [
       { title: "För företag — SmartKlimat" },
       {

@@ -8,6 +8,7 @@ import { ProjectCard } from "@/components/projekt/Parts";
 
 export const Route = createFileRoute("/projekt/")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://smartklimat.org/projekt" }],
     meta: [
       { title: "Våra projekt — SmartKlimat" },
       {

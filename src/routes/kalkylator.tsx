@@ -11,6 +11,7 @@ import { calcFlight, type Klass } from "@/lib/flight";
 
 export const Route = createFileRoute("/kalkylator")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://smartklimat.org/kalkylator" }],
     meta: [
       { title: "Kalkylatorn — SmartKlimat" },
       {

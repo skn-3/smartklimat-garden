@@ -10,6 +10,13 @@ import { CertCard } from "@/components/foretag/scenes";
 import { ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    links: [{ rel: "canonical", href: "https://smartklimat.org/" }],
+    meta: [
+      { title: "SmartKlimat — plantera träd med spårbart värdebevis" },
+      { name: "description", content: "Plantera träd i granskade WeForest-projekt — från 35 kr, med spårbart värdebevis i ditt namn. Klimatkompensation byggd som teknik, för privatpersoner och företag." },
+    ],
+  }),
   component: Home,
 });
 
