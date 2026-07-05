@@ -48,6 +48,16 @@ export function Nav() {
             ))}
           </div>
 
+          <Link
+            to="/kalkylator"
+            className="group hidden md:inline-flex items-center gap-2 rounded-full bg-skogsgron pl-5 pr-1.5 py-1.5 text-sm font-medium text-papper transition-[transform,opacity] duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
+          >
+            <span className="py-2">Plantera träd</span>
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:translate-x-0.5">
+              <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
+            </span>
+          </Link>
+
           <button
             aria-label={open ? "Stäng meny" : "Öppna meny"}
             aria-expanded={open}
