@@ -6,6 +6,7 @@ import { FadeUp } from "@/components/FadeUp";
 import { FaqList } from "@/components/Faq";
 import { CertCard } from "@/components/foretag/scenes";
 import { PipelineJourney } from "@/components/foretag/PipelineJourney";
+import { VarforTrad } from "@/components/VarforTrad";
 
 export const Route = createFileRoute("/foretag")({
   head: () => ({
@@ -274,6 +275,25 @@ function ForetagPage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* VARFÖR TRÄD */}
+      <section className="px-6 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl">
+          <FadeUp>
+            <Eyebrow>Varför just träd?</Eyebrow>
+          </FadeUp>
+          <FadeUp delay={60}>
+            <h2 className="mt-6 max-w-2xl font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+              Fem skäl era kunder förstår direkt.
+            </h2>
+          </FadeUp>
+          <FadeUp delay={120}>
+            <div className="mt-10">
+              <VarforTrad />
+            </div>
+          </FadeUp>
         </div>
       </section>
 

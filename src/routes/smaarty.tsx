@@ -6,7 +6,8 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { CtaButton } from "@/components/CtaButton";
 import { FadeUp } from "@/components/FadeUp";
 import { PhoneFrame } from "@/components/smaarty/PhoneFrame";
-import { ScreenHome, ScreenTop } from "@/components/smaarty/screens";
+import { ScreenHome, ScreenStats } from "@/components/smaarty/screens";
+import { VarforTrad } from "@/components/VarforTrad";
 import { PhoneJourney } from "@/components/smaarty/PhoneJourney";
 
 if (typeof window !== "undefined") {
@@ -220,10 +221,29 @@ const FEATURES = [
 ];
 
 const LEADER_POINTS = [
-  "Full översikt över försäljning och aktivitet",
+  "Full översikt över försäljning och aktivitet, live",
+  "Sätt lagets veckomål — alla får bonus när ni når det",
   "Inga kontanter — allt sker digitalt",
   "Inget att beställa hem, lagra eller dela ut",
   "Kontona skapas av dig som ledare, inte av barnen",
+];
+
+const STARTPAKET = [
+  {
+    eb: "Färdiga meddelanden",
+    title: "Texterna är redan skrivna",
+    body: "Färdiga meddelanden till klasschatten, föräldrar och släkten — barnen kopierar, klistrar in och säljer.",
+  },
+  {
+    eb: "Kom-igång-guiden",
+    title: "Uppstarten på tio minuter",
+    body: "En enkel genomgång för dig som ledare: så presenterar du upplägget för laget och drar igång samma dag.",
+  },
+  {
+    eb: "Vi finns bakom",
+    title: "Stöd när ni behöver",
+    body: "Fastnar något är vi ett mail bort — och vi hjälper gärna till att sätta ett rimligt mål för er insamling.",
+  },
 ];
 
 function SmaartyPage() {
@@ -304,6 +324,38 @@ function SmaartyPage() {
         </div>
       </section>
 
+      {/* STARTPAKETET */}
+      <section className="px-6 pb-24 md:pb-32">
+        <div className="mx-auto max-w-6xl">
+          <FadeUp>
+            <Eyebrow>Vi hjälper er sälja</Eyebrow>
+          </FadeUp>
+          <FadeUp delay={60}>
+            <h2 className="mt-6 font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+              Startpaketet gör jobbet enkelt.
+            </h2>
+          </FadeUp>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {STARTPAKET.map((f, i) => (
+              <FadeUp key={f.eb} delay={i * 70}>
+                <div className="h-full rounded-[2rem] bg-mintpapper p-1.5">
+                  <div className="flex h-full flex-col rounded-[1.6rem] border border-linje bg-white p-7">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">{f.eb}</p>
+                    <h3 className="mt-3 font-display text-xl font-bold text-skogsgron">{f.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-skogsgron/70">{f.body}</p>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+          <FadeUp delay={240}>
+            <p className="mt-8 text-center text-sm text-skogsgron/55">
+              Allt ingår. Inget att beställa, lagra eller redovisa i efterhand.
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* FÖR LEDAREN */}
       <section className="bg-sand px-6 py-24 md:py-32">
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
@@ -330,7 +382,7 @@ function SmaartyPage() {
           <FadeUp delay={120}>
             <div className="mx-auto w-[58vw] max-w-[250px]">
               <PhoneFrame className="w-full" tilt={-4}>
-                <ScreenTop active />
+                <ScreenStats active />
               </PhoneFrame>
             </div>
           </FadeUp>
@@ -371,6 +423,25 @@ function SmaartyPage() {
           <FadeUp delay={180}>
             <div className="mt-8">
               <CtaButton to="/projekt" variant="secondary">Se projekten</CtaButton>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* VARFÖR TRÄD */}
+      <section className="px-6 pb-24 md:pb-32">
+        <div className="mx-auto max-w-6xl">
+          <FadeUp>
+            <Eyebrow>Varför träd?</Eyebrow>
+          </FadeUp>
+          <FadeUp delay={60}>
+            <h2 className="mt-6 max-w-2xl font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+              Fem skäl som håller i klassrummet.
+            </h2>
+          </FadeUp>
+          <FadeUp delay={120}>
+            <div className="mt-10">
+              <VarforTrad />
             </div>
           </FadeUp>
         </div>
