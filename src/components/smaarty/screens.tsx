@@ -104,10 +104,12 @@ export function ScreenHome({ active = false }: { active?: boolean }) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <svg viewBox="0 0 20 20" className="h-4 w-4" aria-hidden="true">
-                <rect x="3" y="7" width="14" height="10" rx="2" fill="#3CB680" />
-                <rect x="3" y="9.4" width="14" height="2" fill="#fff" opacity="0.7" />
-                <rect x="9" y="7" width="2" height="10" fill="#fff" opacity="0.7" />
-                <path d="M10 7 C7 7 6 4.6 7.6 3.8 C9 3.1 10 5 10 7 C10 5 11 3.1 12.4 3.8 C14 4.6 13 7 10 7 Z" fill="#15784F" />
+                <path d="M5 8.5 L6.4 18 L13.6 18 L15 8.5 Z" fill="#F6B27A" />
+                <path d="M7.4 8.5 L8 18 M10 8.5 L10 18 M12.6 8.5 L12 18" stroke="#fff" strokeWidth="1.4" />
+                <circle cx="6.6" cy="6.6" r="2.3" fill="#FBE3C0" />
+                <circle cx="10" cy="5.4" r="2.6" fill="#fff" />
+                <circle cx="13.4" cy="6.6" r="2.3" fill="#FBE3C0" />
+                <circle cx="10" cy="5" r="0.7" fill="#DCBE6E" />
               </svg>
               <div>
                 <p className="text-[10.5px] font-medium text-skogsgron">Biobiljett</p>
@@ -252,6 +254,64 @@ export function ScreenCert({ active = false }: { active?: boolean }) {
             </p>
           </div>
           <p className="mt-3 font-mono text-[7.5px] text-skogsgron/45">Verifiera: /v/8f2k1</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+export function ScreenStats({ active = false }: { active?: boolean }) {
+  const bars = [4, 7, 5, 9, 6, 11, 8];
+  const max = Math.max(...bars);
+  return (
+    <div className="flex h-full flex-col bg-mintpapper">
+      <AppHeader sub="Lagets vecka" />
+      <div className="flex-1 space-y-2.5 p-3">
+        <div className="rounded-2xl border border-linje bg-white p-3">
+          <div className="flex items-center justify-between">
+            <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-smaragd-dark">
+              Veckomål
+            </p>
+            <p className="font-mono text-[10px] font-semibold text-skogsgron tabular-nums">31/40 träd</p>
+          </div>
+          <div className="mt-2 h-1.5 rounded-full bg-mint">
+            <div
+              className="h-full rounded-full bg-guld transition-[width] duration-1000 [transition-timing-function:var(--ease-smart)]"
+              style={{ width: active ? "78%" : "40%" }}
+            />
+          </div>
+          <p className="mt-1.5 text-[8.5px] text-skogsgron/55">Alla får +5 poäng när ni når det</p>
+        </div>
+
+        <div className="rounded-2xl border border-linje bg-white p-3">
+          <p className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-smaragd-dark">
+            Träd per dag
+          </p>
+          <div className="mt-2 flex h-[64px] items-end gap-1.5">
+            {bars.map((b, i) => (
+              <div
+                key={i}
+                className="flex-1 origin-bottom rounded-t-md bg-smaragd transition-transform duration-700 [transition-timing-function:var(--ease-smart)]"
+                style={{
+                  height: `${(b / max) * 100}%`,
+                  transform: active ? "scaleY(1)" : "scaleY(0.12)",
+                  transitionDelay: `${i * 70}ms`,
+                  opacity: 0.55 + (b / max) * 0.45,
+                }}
+              />
+            ))}
+          </div>
+          <div className="mt-1 flex gap-1.5">
+            {["M", "T", "O", "T", "F", "L", "S"].map((d, i) => (
+              <p key={i} className="flex-1 text-center font-mono text-[7px] text-skogsgron/45">{d}</p>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between rounded-2xl border border-linje bg-white p-3">
+          <p className="text-[10px] font-medium text-skogsgron">214 träd totalt</p>
+          <p className="font-mono text-[8.5px] text-smaragd-dark">12 aktiva säljare</p>
         </div>
       </div>
     </div>
