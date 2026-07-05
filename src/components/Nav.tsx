@@ -32,8 +32,9 @@ export function Nav() {
             "pl-5 pr-2 py-2 shadow-[0_1px_0_rgba(11,61,46,0.04)]",
           )}
         >
-          <Link to="/" className="font-display text-lg font-bold tracking-tight text-skogsgron">
-            SmartKlimat
+          <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-skogsgron">
+            <img src="/brand/logo-stamp-ink.png" alt="" className="h-9 w-9" />
+            <span>SmartKlimat</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
@@ -88,6 +89,14 @@ export function Nav() {
         )}
       >
         <div className="flex min-h-[100dvh] flex-col items-start justify-center gap-2 px-8 pt-24">
+          <img
+            src="/brand/logo-stamp-ink.png"
+            alt=""
+            className={cn(
+              "mb-6 h-16 w-16 transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
+              open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
+            )}
+          />
           {links.map((l, i) => (
             <Link
               key={l.to}
