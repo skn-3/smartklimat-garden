@@ -12,6 +12,7 @@ import { PhoneJourney } from "@/components/smaarty/PhoneJourney";
 import { TurboShowcase } from "@/components/smaarty/TurboShowcase";
 import { FlowPulse } from "@/components/FlowPulse";
 import { GrowingTrees } from "@/components/smaarty/GrowingTrees";
+import { KomIgangLoop } from "@/components/smaarty/KomIgangLoop";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -307,6 +308,7 @@ function SmaartyPage() {
       </section>
 
       <CaseSection />
+      <KomIgangLoop />
 
       {/* FUNKTIONER */}
       <section className="px-6 py-24 md:py-32">
