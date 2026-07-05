@@ -139,4 +139,12 @@
     font-weight: 700;
     letter-spacing: -0.02em;
   }
+  ::selection {
+    background-color: var(--color-smaragd);
+    color: #ffffff;
+  }
+  ::-moz-selection {
+    background-color: var(--color-smaragd);
+    color: #ffffff;
+  }
 }
