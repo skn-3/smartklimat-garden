@@ -10,11 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SmaartyRouteImport } from './routes/smaarty'
+import { Route as PlanteraRouteImport } from './routes/plantera'
 import { Route as OmOssRouteImport } from './routes/om-oss'
+import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KalkylatorRouteImport } from './routes/kalkylator'
 import { Route as ForetagRouteImport } from './routes/foretag'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjektIndexRouteImport } from './routes/projekt.index'
+import { Route as VIdRouteImport } from './routes/v.$id'
 import { Route as ProjektPontalRouteImport } from './routes/projekt.pontal'
 import { Route as ProjektKhasiHillsRouteImport } from './routes/projekt.khasi-hills'
 import { Route as ProjektCopperbeltRouteImport } from './routes/projekt.copperbelt'
@@ -24,9 +27,19 @@ const SmaartyRoute = SmaartyRouteImport.update({
   path: '/smaarty',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlanteraRoute = PlanteraRouteImport.update({
+  id: '/plantera',
+  path: '/plantera',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OmOssRoute = OmOssRouteImport.update({
   id: '/om-oss',
   path: '/om-oss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KalkylatorRoute = KalkylatorRouteImport.update({
@@ -49,6 +62,11 @@ const ProjektIndexRoute = ProjektIndexRouteImport.update({
   path: '/projekt/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VIdRoute = VIdRouteImport.update({
+  id: '/v/$id',
+  path: '/v/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjektPontalRoute = ProjektPontalRouteImport.update({
   id: '/projekt/pontal',
   path: '/projekt/pontal',
@@ -69,22 +87,28 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
+  '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
+  '/v/$id': typeof VIdRoute
   '/projekt/': typeof ProjektIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
+  '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
+  '/v/$id': typeof VIdRoute
   '/projekt': typeof ProjektIndexRoute
 }
 export interface FileRoutesById {
@@ -92,11 +116,14 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
+  '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
+  '/v/$id': typeof VIdRoute
   '/projekt/': typeof ProjektIndexRoute
 }
 export interface FileRouteTypes {
@@ -105,33 +132,42 @@ export interface FileRouteTypes {
     | '/'
     | '/foretag'
     | '/kalkylator'
+    | '/kontakt'
     | '/om-oss'
+    | '/plantera'
     | '/smaarty'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
+    | '/v/$id'
     | '/projekt/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/foretag'
     | '/kalkylator'
+    | '/kontakt'
     | '/om-oss'
+    | '/plantera'
     | '/smaarty'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
+    | '/v/$id'
     | '/projekt'
   id:
     | '__root__'
     | '/'
     | '/foretag'
     | '/kalkylator'
+    | '/kontakt'
     | '/om-oss'
+    | '/plantera'
     | '/smaarty'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
+    | '/v/$id'
     | '/projekt/'
   fileRoutesById: FileRoutesById
 }
@@ -139,11 +175,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ForetagRoute: typeof ForetagRoute
   KalkylatorRoute: typeof KalkylatorRoute
+  KontaktRoute: typeof KontaktRoute
   OmOssRoute: typeof OmOssRoute
+  PlanteraRoute: typeof PlanteraRoute
   SmaartyRoute: typeof SmaartyRoute
   ProjektCopperbeltRoute: typeof ProjektCopperbeltRoute
   ProjektKhasiHillsRoute: typeof ProjektKhasiHillsRoute
   ProjektPontalRoute: typeof ProjektPontalRoute
+  VIdRoute: typeof VIdRoute
   ProjektIndexRoute: typeof ProjektIndexRoute
 }
 
@@ -156,11 +195,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SmaartyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/plantera': {
+      id: '/plantera'
+      path: '/plantera'
+      fullPath: '/plantera'
+      preLoaderRoute: typeof PlanteraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/om-oss': {
       id: '/om-oss'
       path: '/om-oss'
       fullPath: '/om-oss'
       preLoaderRoute: typeof OmOssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kalkylator': {
@@ -191,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjektIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v/$id': {
+      id: '/v/$id'
+      path: '/v/$id'
+      fullPath: '/v/$id'
+      preLoaderRoute: typeof VIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projekt/pontal': {
       id: '/projekt/pontal'
       path: '/projekt/pontal'
@@ -219,11 +279,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ForetagRoute: ForetagRoute,
   KalkylatorRoute: KalkylatorRoute,
+  KontaktRoute: KontaktRoute,
   OmOssRoute: OmOssRoute,
+  PlanteraRoute: PlanteraRoute,
   SmaartyRoute: SmaartyRoute,
   ProjektCopperbeltRoute: ProjektCopperbeltRoute,
   ProjektKhasiHillsRoute: ProjektKhasiHillsRoute,
   ProjektPontalRoute: ProjektPontalRoute,
+  VIdRoute: VIdRoute,
   ProjektIndexRoute: ProjektIndexRoute,
 }
 export const routeTree = rootRouteImport
