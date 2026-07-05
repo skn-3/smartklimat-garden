@@ -186,3 +186,82 @@ export function SceneCert({ active = false }: { active?: boolean }) {
     </div>
   );
 }
+
+
+const FLOW_STEPS = [
+  {
+    label: "Sälj",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+        <rect x="5" y="3.5" width="14" height="17" rx="2.5" fill="none" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M8.5 8.5 H15.5 M8.5 12 H15.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M8.5 15.8 L10.3 17.6 L14.2 13.7" stroke="currentColor" strokeWidth="1.7" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    label: "Fönster",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+        <rect x="4.5" y="4.5" width="15" height="15" rx="2" fill="none" stroke="currentColor" strokeWidth="1.7" />
+        <path d="M12 4.5 V19.5 M4.5 12 H19.5" stroke="currentColor" strokeWidth="1.7" />
+      </svg>
+    ),
+  },
+  {
+    label: "Träd",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+        <rect x="11" y="14" width="2" height="7" rx="1" fill="currentColor" />
+        <circle cx="12" cy="9.5" r="5" fill="currentColor" opacity="0.9" />
+        <circle cx="8.2" cy="12.5" r="3.2" fill="currentColor" opacity="0.7" />
+        <circle cx="15.8" cy="12.5" r="3.2" fill="currentColor" opacity="0.7" />
+      </svg>
+    ),
+  },
+];
+
+/** Mini-pipeline för kundcaset: pulsen vandrar Sälj -> Fönster -> Träd. */
+export function CaseFlow() {
+  return (
+    <div className="case-flow relative max-w-md" aria-label="Sälj, fönster, träd — flödet">
+      <div className="absolute left-[10%] right-[10%] top-7 h-[2px] rounded-full bg-[#D9CBA8]" />
+      <span className="case-flow-dot absolute top-[24px] h-2.5 w-2.5 rounded-full bg-smaragd shadow-[0_0_0_4px_rgba(30,158,106,0.18)]" />
+      <div className="relative flex items-start justify-between">
+        {FLOW_STEPS.map((st, i) => (
+          <div key={st.label} className="flex w-20 flex-col items-center gap-2.5">
+            <span
+              className={`case-flow-node case-flow-node-${i} grid h-14 w-14 place-items-center rounded-full border border-[#D9CBA8] bg-white text-[#6B5C33]`}
+            >
+              {st.icon}
+            </span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8A7A52]">{st.label}</span>
+          </div>
+        ))}
+      </div>
+      <style>{`
+        .case-flow-dot { animation: cfDot 5.2s linear infinite; }
+        @keyframes cfDot {
+          0%   { left: 9%;  opacity: 0; }
+          4%   { opacity: 1; }
+          33%  { left: 48.5%; }
+          66%  { left: 88%; opacity: 1; }
+          74%  { left: 88%; opacity: 0; }
+          100% { left: 88%; opacity: 0; }
+        }
+        .case-flow-node { transition: none; animation: cfNode 5.2s ease-in-out infinite; }
+        .case-flow-node-1 { animation-delay: 1.72s; }
+        .case-flow-node-2 { animation-delay: 3.44s; }
+        @keyframes cfNode {
+          0%, 2% { border-color: #D9CBA8; color: #6B5C33; transform: scale(1); box-shadow: none; }
+          7%, 16% { border-color: #1E9E6A; color: #15784F; transform: scale(1.08); box-shadow: 0 0 0 5px rgba(30,158,106,0.14); }
+          24%, 100% { border-color: #D9CBA8; color: #6B5C33; transform: scale(1); box-shadow: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .case-flow-dot { animation: none; opacity: 0; }
+          .case-flow-node { animation: none; border-color: #1E9E6A; color: #15784F; }
+        }
+      `}</style>
+    </div>
+  );
+}
