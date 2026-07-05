@@ -89,15 +89,7 @@ function KalkylatorPage() {
     return calcFlight(km, klass, turRetur);
   }, [km, klass, turRetur]);
 
-  const mailtoBody = result
-    ? `mailto:kontakt@smartklimat.org?subject=${encodeURIComponent(
-        "Plantera träd — kalkylatorn",
-      )}&body=${encodeURIComponent(
-        `Jag vill plantera ${result.trees} träd (resa: ${km} km, ${klass}, ${
-          turRetur ? "tur och retur" : "enkel"
-        }).`,
-      )}`
-    : "#";
+  const planteraHref = result ? `/plantera?antal=${result.trees}` : "/plantera";
 
   return (
     <>
@@ -199,7 +191,7 @@ function KalkylatorPage() {
 
                     <div className="mt-8 flex flex-wrap items-center gap-3">
                       <a
-                        href={mailtoBody}
+                        href={planteraHref}
                         className="group inline-flex items-center gap-3 rounded-full bg-skogsgron pl-6 pr-1.5 py-1.5 text-sm font-medium text-papper transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
                       >
                         <span className="py-2">Plantera {result.trees} träd</span>
