@@ -21,6 +21,7 @@ export function Footer() {
               <Link to="/om-oss" className="hover:text-papper">Om oss</Link>
               <Link to="/kalkylator" className="hover:text-papper">Kalkylator</Link>
               <Link to="/kontakt" className="hover:text-papper">Kontakt</Link>
+              <Link to="/integritet" className="hover:text-papper">Integritet</Link>
             </nav>
           </div>
           <div>
