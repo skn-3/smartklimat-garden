@@ -160,6 +160,7 @@ const FAQ_ITEMS: Array<[string, string]> = [
   ["Var planteras träden?", "I våra tre WeForest-projekt: molnskogen i Khasi Hills, miombon i Copperbelt och vilddjurskorridorerna i Pontal. Klassen kan läsa om alla tre under Projekt."],
   ["Behövs kontanter eller Swish-lappar?", "Nej. Inga kontanter, inga lappar, inget att räkna ihop efteråt — allt sker digitalt i appen."],
   ["Hur följer laget hur det går?", "Topplistan uppdateras live, veckans hjälte koras varje vecka, och lagets samlade skog tickar uppåt för alla att se."],
+  ["Vilka uppgifter hanteras?", "Ledaren skapar lagets konton — barnen registrerar aldrig sig själva. Vid ett köp används mottagarens namn och e-post för att skapa och skicka värdebeviset, inget mer."],
 ];
 
 function FaqItem({ q, a }: { q: string; a: string }) {
@@ -459,7 +460,7 @@ function SmaartyPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="mailto:kontakt@smartklimat.org?subject=Smaarty%20—%20lag/skola"
+                href="mailto:kontakt@smartklimat.org?subject=Smaarty%20%E2%80%94%20lag%2Fskola&body=Hej!%0A%0AVi%20vill%20starta%20en%20insamling.%0A%0ALag%2Fklass%3A%0AAntal%20s%C3%A4ljare%20(ungef%C3%A4r)%3A%0A"
                 className="rounded-full bg-smaragd px-7 py-3 text-[15px] font-medium text-white transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
               >
                 Kom igång
