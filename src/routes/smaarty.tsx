@@ -10,6 +10,8 @@ import { ScreenHome, ScreenStats } from "@/components/smaarty/screens";
 import { VarforTrad } from "@/components/VarforTrad";
 import { PhoneJourney } from "@/components/smaarty/PhoneJourney";
 import { TurboShowcase } from "@/components/smaarty/TurboShowcase";
+import { FlowPulse } from "@/components/FlowPulse";
+import { GrowingTrees } from "@/components/smaarty/GrowingTrees";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -301,6 +303,7 @@ function SmaartyPage() {
         </div>
         <PhoneJourney />
       <TurboShowcase />
+      <section className="bg-papper px-0 py-20 md:py-24"><FlowPulse variant="smaarty" /></section>
       </section>
 
       <CaseSection />
@@ -394,6 +397,7 @@ function SmaartyPage() {
         </div>
       </section>
 
+      <div className="bg-mintpapper/60 pt-16"><GrowingTrees /></div>
       <FaqSection />
 
       {/* KLIMATNYTTAN */}

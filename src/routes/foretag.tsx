@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Eyebrow } from "@/components/Eyebrow";
+import { FlowPulse } from "@/components/FlowPulse";
 import { CtaButton } from "@/components/CtaButton";
 import { FadeUp } from "@/components/FadeUp";
 import { FaqList } from "@/components/Faq";
@@ -279,6 +280,7 @@ function ForetagPage() {
           </FadeUp>
         </div>
         <PipelineJourney />
+        <section className="bg-papper px-0 py-20 md:py-24"><FlowPulse variant="foretag" /></section>
       </section>
 
       {/* KUNDCASE */}
