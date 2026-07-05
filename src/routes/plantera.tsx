@@ -2,12 +2,16 @@ import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Gift, Repeat, TreePine } from "lucide-react";
 import { PageIntro } from "@/components/PageIntro";
+import { CtaButton } from "@/components/CtaButton";
 import { FadeUp } from "@/components/FadeUp";
 
 export const Route = createFileRoute("/plantera")({
   validateSearch: (search: Record<string, unknown>) => {
     const n = Number(search.antal);
-    return { antal: Number.isFinite(n) && n >= 1 ? Math.min(500, Math.round(n)) : undefined };
+    return {
+      antal: Number.isFinite(n) && n >= 1 ? Math.min(500, Math.round(n)) : undefined,
+      tack: search.tack === "1" || search.tack === 1 ? (1 as const) : undefined,
+    };
   },
   head: () => ({
     meta: [
@@ -56,12 +60,48 @@ const MODES: Array<{ id: Mode; icon: React.ReactNode; title: string; body: strin
 
 const QUICK = [1, 3, 5, 10];
 
+function TackVy() {
+  return (
+    <section className="flex min-h-[70dvh] items-center px-6 pb-28 pt-36">
+      <div className="mx-auto max-w-xl text-center">
+        <FadeUp>
+          <img src="/brand/logo-stamp-guld.png" alt="" className="mx-auto h-24 w-24" />
+        </FadeUp>
+        <FadeUp delay={80}>
+          <h1 className="mt-8 font-display text-4xl font-bold tracking-tight text-skogsgron md:text-5xl">
+            Tack. Nu växer det.
+          </h1>
+        </FadeUp>
+        <FadeUp delay={140}>
+          <p className="mx-auto mt-5 max-w-md text-lg text-skogsgron/75">
+            Ditt värdebevis är på väg till din mail — med en egen verifieringslänk att spara och dela.
+          </p>
+        </FadeUp>
+        <FadeUp delay={180}>
+          <p className="mx-auto mt-3 max-w-md text-sm text-skogsgron/55">
+            Köpte du en gåva skapas beviset i mottagarens namn. Ingen mail inom några minuter? Titta i
+            skräpposten eller skriv till kontakt@smartklimat.org.
+          </p>
+        </FadeUp>
+        <FadeUp delay={240}>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <CtaButton to="/projekt" variant="primary">Se var träden planteras</CtaButton>
+            <CtaButton to="/" variant="secondary">Till startsidan</CtaButton>
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
 function PlanteraPage() {
-  const { antal } = Route.useSearch();
+  const { antal, tack } = Route.useSearch();
   const [mode, setMode] = useState<Mode>("engang");
   const [qty, setQty] = useState(antal ?? 3);
   const [busy, setBusy] = useState<"stripe" | "swish" | null>(null);
   const [fallback, setFallback] = useState<"stripe" | "swish" | null>(null);
+
+  if (tack) return <TackVy />;
 
   const kr = qty * PRICE;
   const kg = qty * KG_PER_TREE;
