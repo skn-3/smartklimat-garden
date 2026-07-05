@@ -152,7 +152,7 @@ function PlanteraPage() {
                     <div className="mt-3 flex items-center gap-4">
                       <button
                         type="button"
-                        onClick={() => setQty((q) => Math.max(1, q - 1))}
+                        onClick={() => setQty((q: number) => Math.max(1, q - 1))}
                         aria-label="Färre träd"
                         className="grid h-11 w-11 place-items-center rounded-full border border-linje text-xl text-skogsgron transition-colors hover:bg-mintpapper"
                       >
@@ -163,7 +163,7 @@ function PlanteraPage() {
                       </p>
                       <button
                         type="button"
-                        onClick={() => setQty((q) => Math.min(500, q + 1))}
+                        onClick={() => setQty((q: number) => Math.min(500, q + 1))}
                         aria-label="Fler träd"
                         className="grid h-11 w-11 place-items-center rounded-full border border-linje text-xl text-skogsgron transition-colors hover:bg-mintpapper"
                       >

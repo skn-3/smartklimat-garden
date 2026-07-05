@@ -10,23 +10,38 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SmaartyRouteImport } from './routes/smaarty'
+import { Route as PlanteraRouteImport } from './routes/plantera'
 import { Route as OmOssRouteImport } from './routes/om-oss'
+import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KalkylatorRouteImport } from './routes/kalkylator'
 import { Route as ForetagRouteImport } from './routes/foretag'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjektIndexRouteImport } from './routes/projekt.index'
+import { Route as VIdRouteImport } from './routes/v.$id'
 import { Route as ProjektPontalRouteImport } from './routes/projekt.pontal'
 import { Route as ProjektKhasiHillsRouteImport } from './routes/projekt.khasi-hills'
 import { Route as ProjektCopperbeltRouteImport } from './routes/projekt.copperbelt'
+import { Route as ApiPublicStripeWebhookRouteImport } from './routes/api/public/stripe-webhook'
+import { Route as ApiPublicCreateCheckoutRouteImport } from './routes/api/public/create-checkout'
 
 const SmaartyRoute = SmaartyRouteImport.update({
   id: '/smaarty',
   path: '/smaarty',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlanteraRoute = PlanteraRouteImport.update({
+  id: '/plantera',
+  path: '/plantera',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OmOssRoute = OmOssRouteImport.update({
   id: '/om-oss',
   path: '/om-oss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KalkylatorRoute = KalkylatorRouteImport.update({
@@ -49,6 +64,11 @@ const ProjektIndexRoute = ProjektIndexRouteImport.update({
   path: '/projekt/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VIdRoute = VIdRouteImport.update({
+  id: '/v/$id',
+  path: '/v/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjektPontalRoute = ProjektPontalRouteImport.update({
   id: '/projekt/pontal',
   path: '/projekt/pontal',
@@ -64,40 +84,65 @@ const ProjektCopperbeltRoute = ProjektCopperbeltRouteImport.update({
   path: '/projekt/copperbelt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicStripeWebhookRoute = ApiPublicStripeWebhookRouteImport.update({
+  id: '/api/public/stripe-webhook',
+  path: '/api/public/stripe-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicCreateCheckoutRoute = ApiPublicCreateCheckoutRouteImport.update({
+  id: '/api/public/create-checkout',
+  path: '/api/public/create-checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
+  '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
+  '/v/$id': typeof VIdRoute
   '/projekt/': typeof ProjektIndexRoute
+  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
+  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
+  '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
+  '/v/$id': typeof VIdRoute
   '/projekt': typeof ProjektIndexRoute
+  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
+  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/foretag': typeof ForetagRoute
   '/kalkylator': typeof KalkylatorRoute
+  '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
+  '/v/$id': typeof VIdRoute
   '/projekt/': typeof ProjektIndexRoute
+  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
+  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -105,46 +150,66 @@ export interface FileRouteTypes {
     | '/'
     | '/foretag'
     | '/kalkylator'
+    | '/kontakt'
     | '/om-oss'
+    | '/plantera'
     | '/smaarty'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
+    | '/v/$id'
     | '/projekt/'
+    | '/api/public/create-checkout'
+    | '/api/public/stripe-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/foretag'
     | '/kalkylator'
+    | '/kontakt'
     | '/om-oss'
+    | '/plantera'
     | '/smaarty'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
+    | '/v/$id'
     | '/projekt'
+    | '/api/public/create-checkout'
+    | '/api/public/stripe-webhook'
   id:
     | '__root__'
     | '/'
     | '/foretag'
     | '/kalkylator'
+    | '/kontakt'
     | '/om-oss'
+    | '/plantera'
     | '/smaarty'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
+    | '/v/$id'
     | '/projekt/'
+    | '/api/public/create-checkout'
+    | '/api/public/stripe-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ForetagRoute: typeof ForetagRoute
   KalkylatorRoute: typeof KalkylatorRoute
+  KontaktRoute: typeof KontaktRoute
   OmOssRoute: typeof OmOssRoute
+  PlanteraRoute: typeof PlanteraRoute
   SmaartyRoute: typeof SmaartyRoute
   ProjektCopperbeltRoute: typeof ProjektCopperbeltRoute
   ProjektKhasiHillsRoute: typeof ProjektKhasiHillsRoute
   ProjektPontalRoute: typeof ProjektPontalRoute
+  VIdRoute: typeof VIdRoute
   ProjektIndexRoute: typeof ProjektIndexRoute
+  ApiPublicCreateCheckoutRoute: typeof ApiPublicCreateCheckoutRoute
+  ApiPublicStripeWebhookRoute: typeof ApiPublicStripeWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -156,11 +221,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SmaartyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/plantera': {
+      id: '/plantera'
+      path: '/plantera'
+      fullPath: '/plantera'
+      preLoaderRoute: typeof PlanteraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/om-oss': {
       id: '/om-oss'
       path: '/om-oss'
       fullPath: '/om-oss'
       preLoaderRoute: typeof OmOssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kalkylator': {
@@ -191,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjektIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v/$id': {
+      id: '/v/$id'
+      path: '/v/$id'
+      fullPath: '/v/$id'
+      preLoaderRoute: typeof VIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projekt/pontal': {
       id: '/projekt/pontal'
       path: '/projekt/pontal'
@@ -212,6 +298,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjektCopperbeltRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/stripe-webhook': {
+      id: '/api/public/stripe-webhook'
+      path: '/api/public/stripe-webhook'
+      fullPath: '/api/public/stripe-webhook'
+      preLoaderRoute: typeof ApiPublicStripeWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/create-checkout': {
+      id: '/api/public/create-checkout'
+      path: '/api/public/create-checkout'
+      fullPath: '/api/public/create-checkout'
+      preLoaderRoute: typeof ApiPublicCreateCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -219,12 +319,17 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ForetagRoute: ForetagRoute,
   KalkylatorRoute: KalkylatorRoute,
+  KontaktRoute: KontaktRoute,
   OmOssRoute: OmOssRoute,
+  PlanteraRoute: PlanteraRoute,
   SmaartyRoute: SmaartyRoute,
   ProjektCopperbeltRoute: ProjektCopperbeltRoute,
   ProjektKhasiHillsRoute: ProjektKhasiHillsRoute,
   ProjektPontalRoute: ProjektPontalRoute,
+  VIdRoute: VIdRoute,
   ProjektIndexRoute: ProjektIndexRoute,
+  ApiPublicCreateCheckoutRoute: ApiPublicCreateCheckoutRoute,
+  ApiPublicStripeWebhookRoute: ApiPublicStripeWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
