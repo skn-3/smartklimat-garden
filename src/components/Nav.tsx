@@ -9,6 +9,7 @@ const links = [
   { to: "/smaarty", label: "Smaarty" },
   { to: "/om-oss", label: "Om oss" },
   { to: "/kalkylator", label: "Kalkylator" },
+  { to: "/kontakt", label: "Kontakt" },
 ] as const;
 
 export function Nav() {
@@ -40,23 +41,22 @@ export function Nav() {
               <Link
                 key={l.to}
                 to={l.to}
-                className="rounded-full px-4 py-2 text-sm text-skogsgron/80 transition-colors hover:text-skogsgron hover:bg-mintpapper"
+                className="rounded-full px-3.5 py-2 text-sm text-skogsgron/80 transition-colors hover:text-skogsgron hover:bg-mintpapper"
                 activeProps={{ className: "bg-mintpapper text-skogsgron" }}
               >
                 {l.label}
               </Link>
             ))}
+            <Link
+              to="/kalkylator"
+              className="group ml-2 inline-flex items-center gap-2.5 rounded-full bg-skogsgron py-1 pl-4 pr-1 text-sm font-medium text-papper transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
+            >
+              <span className="py-1.5">Plantera träd</span>
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:translate-x-0.5">
+                <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
+              </span>
+            </Link>
           </div>
-
-          <Link
-            to="/kalkylator"
-            className="group hidden md:inline-flex items-center gap-2 rounded-full bg-skogsgron pl-5 pr-1.5 py-1.5 text-sm font-medium text-papper transition-[transform,opacity] duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
-          >
-            <span className="py-2">Plantera träd</span>
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:translate-x-0.5">
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
-            </span>
-          </Link>
 
           <button
             aria-label={open ? "Stäng meny" : "Öppna meny"}
@@ -102,19 +102,18 @@ export function Nav() {
               {l.label}
             </Link>
           ))}
-
           <Link
             to="/kalkylator"
             onClick={() => setOpen(false)}
             className={cn(
-              "group mt-6 inline-flex items-center gap-2 rounded-full bg-skogsgron pl-5 pr-1.5 py-1.5 text-sm font-medium text-papper transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
+              "group mt-8 inline-flex items-center gap-3 rounded-full bg-skogsgron py-1.5 pl-6 pr-1.5 text-base font-medium text-papper transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
               open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
             )}
             style={{ transitionDelay: open ? `${120 + links.length * 60}ms` : "0ms" }}
           >
             <span className="py-2">Plantera träd</span>
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:translate-x-0.5">
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-smaragd text-white">
+              <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </span>
           </Link>
         </div>
