@@ -9,6 +9,7 @@ import { PhoneFrame } from "@/components/smaarty/PhoneFrame";
 import { ScreenHome, ScreenStats } from "@/components/smaarty/screens";
 import { VarforTrad } from "@/components/VarforTrad";
 import { PhoneJourney } from "@/components/smaarty/PhoneJourney";
+import { TurboShowcase } from "@/components/smaarty/TurboShowcase";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -297,6 +298,7 @@ function SmaartyPage() {
           </FadeUp>
         </div>
         <PhoneJourney />
+      <TurboShowcase />
       </section>
 
       <CaseSection />
