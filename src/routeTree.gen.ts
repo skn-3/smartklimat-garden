@@ -21,6 +21,7 @@ import { Route as VIdRouteImport } from './routes/v.$id'
 import { Route as ProjektPontalRouteImport } from './routes/projekt.pontal'
 import { Route as ProjektKhasiHillsRouteImport } from './routes/projekt.khasi-hills'
 import { Route as ProjektCopperbeltRouteImport } from './routes/projekt.copperbelt'
+import { Route as ApiPublicCreateCheckoutRouteImport } from './routes/api/public/create-checkout'
 
 const SmaartyRoute = SmaartyRouteImport.update({
   id: '/smaarty',
@@ -82,6 +83,11 @@ const ProjektCopperbeltRoute = ProjektCopperbeltRouteImport.update({
   path: '/projekt/copperbelt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicCreateCheckoutRoute = ApiPublicCreateCheckoutRouteImport.update({
+  id: '/api/public/create-checkout',
+  path: '/api/public/create-checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
   '/projekt/': typeof ProjektIndexRoute
+  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
   '/projekt': typeof ProjektIndexRoute
+  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
   '/projekt/': typeof ProjektIndexRoute
+  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/projekt/pontal'
     | '/v/$id'
     | '/projekt/'
+    | '/api/public/create-checkout'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/projekt/pontal'
     | '/v/$id'
     | '/projekt'
+    | '/api/public/create-checkout'
   id:
     | '__root__'
     | '/'
@@ -169,6 +180,7 @@ export interface FileRouteTypes {
     | '/projekt/pontal'
     | '/v/$id'
     | '/projekt/'
+    | '/api/public/create-checkout'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +196,7 @@ export interface RootRouteChildren {
   ProjektPontalRoute: typeof ProjektPontalRoute
   VIdRoute: typeof VIdRoute
   ProjektIndexRoute: typeof ProjektIndexRoute
+  ApiPublicCreateCheckoutRoute: typeof ApiPublicCreateCheckoutRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjektCopperbeltRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/create-checkout': {
+      id: '/api/public/create-checkout'
+      path: '/api/public/create-checkout'
+      fullPath: '/api/public/create-checkout'
+      preLoaderRoute: typeof ApiPublicCreateCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -288,6 +308,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjektPontalRoute: ProjektPontalRoute,
   VIdRoute: VIdRoute,
   ProjektIndexRoute: ProjektIndexRoute,
+  ApiPublicCreateCheckoutRoute: ApiPublicCreateCheckoutRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

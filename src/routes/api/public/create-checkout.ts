@@ -51,7 +51,7 @@ export const Route = createFileRoute("/api/public/create-checkout")({
         }
         const qty = Math.round(quantity);
 
-        const stripe = new Stripe(secret, { apiVersion: "2024-06-20" as Stripe.LatestApiVersion });
+        const stripe = new Stripe(secret);
 
         const isSubscription = type === "manad";
         const priceData: Stripe.Checkout.SessionCreateParams.LineItem.PriceData = {
