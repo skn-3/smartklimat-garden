@@ -31,18 +31,14 @@ export function CertCard({
         {trees}
       </p>
       <p className="mt-1 text-xs text-skogsgron/60">träd planterade</p>
-      <div
-        className={`mx-auto mt-4 flex items-center justify-center rounded-full border-2 border-guld transition-all duration-700 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] ${
-          large ? "h-16 w-16" : "h-14 w-14"
-        } ${active ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
+      <img
+        src="/brand/logo-stamp-guld.png"
+        alt=""
+        className={`mx-auto mt-4 transition-all duration-700 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] ${
+          large ? "h-20 w-20" : "h-16 w-16"
+        } ${active ? "rotate-0 scale-100 opacity-100" : "-rotate-12 scale-50 opacity-0"}`}
         style={{ transitionDelay: "220ms" }}
-      >
-        <p className="font-mono text-[7px] uppercase tracking-[0.12em] text-guld">
-          Smart
-          <br />
-          Klimat
-        </p>
-      </div>
+      />
       <p className="mt-4 font-mono text-[9px] text-skogsgron/45">Verifiera: smartklimat.org/v/8f2k1</p>
       <p className="mt-2 font-mono text-[8px] uppercase tracking-[0.18em] text-skogsgron/35">
         {brand ?? "Ert varumärke här"}
