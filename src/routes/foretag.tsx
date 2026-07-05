@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { CtaButton } from "@/components/CtaButton";
 import { FadeUp } from "@/components/FadeUp";
 import { FaqList } from "@/components/Faq";
-import { CertCard } from "@/components/foretag/scenes";
+import { CertCard, CaseFlow } from "@/components/foretag/scenes";
 import { PipelineJourney } from "@/components/foretag/PipelineJourney";
 import { VarforTrad } from "@/components/VarforTrad";
 
@@ -190,8 +190,13 @@ function ForetagPage() {
                 I Stockholmsregionen får varje slutfört fönsterbyte hos Mockfjärds ett träd planterat — automatiskt, i samma stund som ordern går igenom. Säljarna säljer som vanligt. Kunden får ett personligt värdebevis med Mockfjärds som avsändare, verifierbart via en egen länk.
               </p>
             </FadeUp>
-            <FadeUp delay={140}>
-              <div className="mt-7 flex flex-wrap gap-2.5">
+            <FadeUp delay={130}>
+              <div className="mt-8">
+                <CaseFlow />
+              </div>
+            </FadeUp>
+            <FadeUp delay={170}>
+              <div className="mt-8 flex flex-wrap gap-2.5">
                 {["Region 050–096", "Ett träd per fönster", "Automatiskt vid order"].map((c) => (
                   <span
                     key={c}
