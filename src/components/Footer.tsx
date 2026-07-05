@@ -38,7 +38,7 @@ export function Footer() {
 
         <div className="mt-10 border-t border-papper/15" />
 
-        <div className="mt-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="mt-6 flex flex-row items-center justify-between gap-4">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-papper/60">
             © {new Date().getFullYear()} SmartKlimat
           </p>
