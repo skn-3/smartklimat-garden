@@ -243,16 +243,12 @@ export function ScreenCert({ active = false }: { active?: boolean }) {
           <p className="mt-3 font-display text-[15px] font-bold text-skogsgron">Farmor Ingrid</p>
           <p className="mt-2 font-display text-[44px] font-bold leading-none text-smaragd">3</p>
           <p className="text-[10px] text-skogsgron/60">träd planterade</p>
-          <div
-            className={`mx-auto mt-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-guld transition-all duration-700 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] ${active ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
+          <img
+            src="/brand/logo-stamp-guld.png"
+            alt=""
+            className={`mx-auto mt-3 h-12 w-12 transition-all duration-700 [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] ${active ? "rotate-0 scale-100 opacity-100" : "-rotate-12 scale-50 opacity-0"}`}
             style={{ transitionDelay: "250ms" }}
-          >
-            <p className="font-mono text-[6px] uppercase tracking-[0.1em] text-guld">
-              Smart
-              <br />
-              Klimat
-            </p>
-          </div>
+          />
           <p className="mt-3 font-mono text-[7.5px] text-skogsgron/45">Verifiera: /v/8f2k1</p>
         </div>
       </div>
