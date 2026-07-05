@@ -70,10 +70,17 @@ export function OpeningSequence() {
       if (!video) return;
       video.preload = "auto";
       video.load();
-      if (video.readyState >= 4) setFilmReady(true);
+      let readyFired = false;
+      const markReady = () => { if (readyFired) return; readyFired = true; setFilmReady(true); };
+      if (video.readyState >= 3) markReady();
+      video.addEventListener("loadeddata", markReady);
+      video.addEventListener("canplay", markReady);
+      const prime = () => { try { if (video.currentTime < 0.001) video.currentTime = 0.001; } catch { /* noop */ } };
+      video.addEventListener("loadedmetadata", prime, { once: true });
       let target = 0;
       let raf = 0;
       const tick = () => {
+        if (!readyFired && video.readyState >= 3) markReady();
         const d = video.duration;
         if (d && Number.isFinite(d)) {
           const t = target * d;
@@ -82,7 +89,12 @@ export function OpeningSequence() {
         raf = requestAnimationFrame(tick);
       };
       raf = requestAnimationFrame(tick);
-      cleanupFrames = () => cancelAnimationFrame(raf);
+      cleanupFrames = () => {
+        cancelAnimationFrame(raf);
+        video.removeEventListener("loadeddata", markReady);
+        video.removeEventListener("canplay", markReady);
+        video.removeEventListener("loadedmetadata", prime);
+      };
       applyProgress = (p) => {
         target = gsap.utils.clamp(0, 1, (p - FILM_START) / (FILM_END - FILM_START));
       };
@@ -120,6 +132,7 @@ export function OpeningSequence() {
         im.onload = () => {
           loaded.add(i);
           if (pending >= 0) { const p2 = pending; pending = -1; draw(p2); }
+          else if (current < 0 && i === 0) draw(0);
           else if (i > current && current >= 0 && i <= current + 2) draw(i);
         };
         im.onerror = () => { if (!retried) setTimeout(() => load(i, true), 400); };
@@ -154,6 +167,9 @@ export function OpeningSequence() {
         applyProgress(p);
       },
     });
+
+    root.style.setProperty("--p", st.progress.toFixed(4));
+    applyProgress(st.progress);
 
     const doRefresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", doRefresh);
