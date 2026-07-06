@@ -44,7 +44,7 @@ function InView({ children }: { children: (seen: boolean) => React.ReactNode }) 
 }
 
 const STEPS = [
-  { nr: "01", title: "En affär eller ett sälj", body: "Ett fönster installeras, en klass säljer, någon räknar på sin resa — startpunkten är er vardag, inte ett formulär." },
+  { nr: "01", title: "En affär eller ett sälj", body: "Ett fönster installeras, en klass säljer, någon räknar på sin resa. Startpunkten är er vardag." },
   { nr: "02", title: "Ett träd i marken", body: "Trädet planteras i något av våra tre WeForest-projekt och registreras som en rad i systemet, med tid och plats." },
   { nr: "03", title: "Ett bevis i handen", body: "Mottagaren får ett personligt värdebevis med egen verifieringslänk — öppet att kontrollera för vem som helst." },
 ];
