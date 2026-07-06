@@ -261,10 +261,10 @@ export function OpeningSequence() {
               <CtaButton to="/plantera" variant="primary">Plantera träd</CtaButton>
               <CtaButton to="/projekt" variant="secondary">Våra projekt</CtaButton>
             </div>
-            {/* TODO: hämta talet från publika stats-endpointen (SUM över betalda köp) när den finns */}
             <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-smaragd-dark">
-              27 393 träd planterade · live
+              {plantedTotal.toLocaleString("sv-SE").replace(/\u00a0/g, " ")} träd planterade · live
             </p>
+
           </div>
         </div>
 
