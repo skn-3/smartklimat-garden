@@ -63,10 +63,19 @@ export const Route = createFileRoute("/projekt/khasi-hills")({
           },
         ]}
       />
+      <NarrativeSection
+        eyebrow="Byarna äger skogen"
+        title="Restaureringen drivs sida vid sida med 59 Khasi-byar."
+        body="Byborna sköter plantskolorna, underhållet och skyddet mot bete. Metoden kallas social fencing: byarna stänger själva områden med brandlinjer, patrullering och berikningsplantering — där rotsystemen finns kvar räcker det ofta att låta skogen få vara ifred."
+      />
       <StoryCard
         eyebrow="Ur fältet"
         title="Khasi är ett av världens få matrilinjära samhällen — kvinnorna bär projektet."
-        body="Självhjälpsgrupper och bondeklubbar bygger inkomster runt skogen, från svampodling till grisuppfödning, och bränslesnåla spisar minskar trycket på veden."
+        body="Meghalaya bär också regionens levande rotbroar, formade av flera generationer, och heliga skogar som aldrig fällts — en kulturell botten som gör att skyddet av träden känns självklart."
+      />
+      <FactRow
+        eyebrow="Vardagsekonomin runt skogen"
+        body="Självhjälpsgrupper ger kvinnor inkomst via svampodling, grisuppfödning och plantskolor, och bränslesnåla spisar minskar vedbehovet — så att den nyväxta skogen får stå kvar."
       />
       <PhotoMosaic
         images={[
@@ -86,6 +95,12 @@ export const Route = createFileRoute("/projekt/khasi-hills")({
           "Schima khasiana",
         ]}
       />
+      <NarrativeSection
+        eyebrow="Byggt för att fasas ut"
+        title="Projektet är gjort för att lämnas över — och byarna har redan tagit över merparten."
+        body="Målet har hela tiden varit att skötseln ska stå på egna ben. Plantskolor, patrullering och beslut ligger i händerna på Hima och självhjälpsgrupper; WeForests roll krymper i takt med att kapaciteten växer."
+      />
+      <SourceRow />
       <DittTradHar />
     </>
   ),
