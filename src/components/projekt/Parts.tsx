@@ -215,6 +215,74 @@ export function DittTradHar() {
   );
 }
 
+// Berättande sektion — eyebrow, rubrik, brödtext. Enkelspaltig.
+export function NarrativeSection({
+  eyebrow,
+  title,
+  body,
+}: {
+  eyebrow: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <section className="px-6 py-14 md:py-20">
+      <div className="mx-auto w-full max-w-4xl">
+        <FadeUp>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">
+            {eyebrow}
+          </p>
+          <h3 className="mt-5 font-display text-2xl md:text-4xl font-bold leading-[1.1] tracking-tight text-skogsgron">
+            {title}
+          </h3>
+          <p className="mt-6 text-base md:text-lg text-skogsgron/80 leading-relaxed">
+            {body}
+          </p>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+// Kompakt faktarad — hairline ovan, mono-eyebrow, brödtext.
+export function FactRow({ eyebrow, body }: { eyebrow: string; body: string }) {
+  return (
+    <section className="px-6">
+      <div className="mx-auto w-full max-w-4xl border-t border-linje py-10 md:py-12">
+        <FadeUp>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">
+            {eyebrow}
+          </p>
+          <p className="mt-4 text-base md:text-lg text-skogsgron/80 leading-relaxed">
+            {body}
+          </p>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+// Källrad i sektionsfoten.
+export function SourceRow() {
+  return (
+    <section className="px-6 pb-16 md:pb-20">
+      <div className="mx-auto w-full max-w-4xl">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-skogsgron/60">
+          Fakta:{" "}
+          <a
+            href="https://www.weforest.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-linje underline-offset-4 hover:text-smaragd-dark"
+          >
+            WeForest och partnerorganisationer
+          </a>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 // Översiktens projektkort — foto vänster, innehåll höger.
 export function ProjectCard({
   to,

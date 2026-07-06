@@ -6,6 +6,9 @@ import {
   StoryCard,
   PhotoMosaic,
   ArtChips,
+  NarrativeSection,
+  FactRow,
+  SourceRow,
   DittTradHar,
 } from "@/components/projekt/Parts";
 
@@ -60,10 +63,20 @@ export const Route = createFileRoute("/projekt/pontal")({
           },
         ]}
       />
+      <NarrativeSection
+        eyebrow="Apan som kom tillbaka"
+        title="Den svarta lejontamarinen troddes utdöd i 65 år."
+        body="När den återupptäcktes 1970 var populationen nere på omkring 100 individer. Idag lever runt 1 800 svarta lejontamariner i Atlantskogen, och 2008 flyttades arten från akut hotad till hotad — ett av få rovdjursnära comeback-fall i regionen."
+      />
       <StoryCard
         eyebrow="Ur fältet"
         title="Den svarta lejontamarinen finns bara här — och den syns i kamerafällorna igen."
         body="Jaguar och jättemyrslok rör sig genom korridorerna, och varje inspelad gryning ger forskarna ett nytt kvitto på att skogen fungerar."
+      />
+      <NarrativeSection
+        eyebrow="Korridoren"
+        title="Brasiliens största restaurerade skogskorridor — två mil lång, över 2,7 miljoner träd."
+        body="Korridoren binder samman Morro do Diabo-parken med tamarinens ekologiska station: cirka 3 000 hektar totalt, med sju mindre korridorer och ett hundratal agroforestry-öar på gårdarna däremellan. Där kan djuren röra sig igen, och genpoolen andas ut."
       />
       <PhotoMosaic
         images={[
@@ -81,6 +94,11 @@ export const Route = createFileRoute("/projekt/pontal")({
           "Jacaranda cuspidifolia",
         ]}
       />
+      <FactRow
+        eyebrow="Det kamerorna ser"
+        body="Kamerafällorna fångar nu tamariner, jaguarer — färre än 300 i området — och jättemyrslokar i det restaurerade landskapet. Plantskolorna drivs av lokala familjer och ger inkomst medan skogen växer."
+      />
+      <SourceRow />
       <DittTradHar />
     </>
   ),

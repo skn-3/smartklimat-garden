@@ -6,6 +6,9 @@ import {
   StoryCard,
   PhotoMosaic,
   ArtChips,
+  NarrativeSection,
+  FactRow,
+  SourceRow,
   DittTradHar,
 } from "@/components/projekt/Parts";
 
@@ -60,10 +63,19 @@ export const Route = createFileRoute("/projekt/copperbelt")({
           },
         ]}
       />
+      <NarrativeSection
+        eyebrow="Honungen är bryggan"
+        title="Bönder avsätter minst en kvarts hektar för naturlig återväxt — och får bikupor medan fruktträden växer till sig."
+        body="Honungen kan i vissa fall dubbla en familjs årsinkomst, och projektet kopplar odlarna direkt till lokala uppköpare. Den stående dungen blir helt enkelt mer värd än den fällda."
+      />
       <StoryCard
         eyebrow="Ur fältrapporten"
         title="Alfred i Luanshya skördade 122 kilo honung förra säsongen —"
         body="en sjättedel av familjens kontantinkomst, från kupor som hänger i trädkronorna, skyddade från markbränder. Efter utbildningen har hundratals grannar följt efter, och den afrikanska kronörnen har återvänt till området."
+      />
+      <FactRow
+        eyebrow="Skörden 2023"
+        body="489 bönder skördade tillsammans nära 33 500 kg honung ur 1 665 kupor i Luanshya, Mpongwe och Ndola. Över tusen bönder bevarar nu tillsammans omkring 3 500 hektar miombo."
       />
       <PhotoMosaic
         images={[
@@ -80,6 +92,11 @@ export const Route = createFileRoute("/projekt/copperbelt")({
           "+ 67 arter till i återväxten",
         ]}
       />
+      <FactRow
+        eyebrow="Skogen som lever tillsammans"
+        body="Skogsvakter ur byarna patrullerar — 95 mil på fyra månader — och miombons träd lever i symbios med matsvampar som byborna plockar när regnen kommer."
+      />
+      <SourceRow />
       <DittTradHar />
     </>
   ),
