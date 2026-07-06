@@ -10,9 +10,11 @@ import { FadeUp } from "@/components/FadeUp";
 export const Route = createFileRoute("/plantera")({
   validateSearch: (search: Record<string, unknown>) => {
     const n = Number(search.antal);
+    const tema = typeof search.tema === "string" && isTemaId(search.tema) ? search.tema : undefined;
     return {
       antal: Number.isFinite(n) && n >= 1 ? Math.min(500, Math.round(n)) : undefined,
       tack: search.tack === "1" || search.tack === 1 ? (1 as const) : undefined,
+      tema,
     };
   },
   head: () => ({
