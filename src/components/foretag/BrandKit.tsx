@@ -1,25 +1,27 @@
 import { FadeUp } from "@/components/FadeUp";
 
-function Sigill({ size = 190 }: { size?: number }) {
+function Sigill({ size = 190, ring = true }: { size?: number; ring?: boolean }) {
   return (
-    <svg viewBox="0 0 200 200" width={size} height={size} aria-label="Klimatkompenserad via SmartKlimat">
-      <defs>
-        <path id="sigillring" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" />
-      </defs>
-      <circle cx="100" cy="100" r="96" fill="#0B3D2E" />
-      <circle cx="100" cy="100" r="88" fill="none" stroke="#DCBE6E" strokeWidth="1.5" />
-      <circle cx="100" cy="100" r="58" fill="none" stroke="#DCBE6E" strokeWidth="1" opacity="0.7" />
-      <g className="sigill-spin" style={{ transformOrigin: "100px 100px" }}>
-        <text fontFamily="JetBrains Mono, monospace" fontSize="11.5" letterSpacing="3.5" fill="#9FD9B6" fontWeight="600">
-          <textPath href="#sigillring">KLIMATKOMPENSERAD · VIA SMARTKLIMAT · VERIFIERBART ·&#160;</textPath>
-        </text>
-      </g>
-      <path d="M100 128 q5 -26 0 -44" stroke="#9FD9B6" strokeWidth="4" fill="none" />
-      <ellipse cx="88" cy="94" rx="13" ry="8" fill="#1E9E6A" transform="rotate(-26 88 94)" />
-      <ellipse cx="113" cy="85" rx="13" ry="8" fill="#9FD9B6" transform="rotate(24 113 85)" />
-      <ellipse cx="100" cy="72" rx="10" ry="7" fill="#1E9E6A" />
-      <text x="100" y="152" textAnchor="middle" fontFamily="Bricolage Grotesque, sans-serif" fontSize="13" fontWeight="700" fill="#F4FAF5">2026</text>
-    </svg>
+    <span className="relative inline-block" style={{ width: size, height: size }}>
+      <svg viewBox="0 0 200 200" width={size} height={size} className="absolute inset-0" aria-label="Klimatkompenserad via SmartKlimat">
+        <defs>
+          <path id="sigillring" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0" />
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="#0B3D2E" />
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#DCBE6E" strokeWidth="1.5" />
+        {ring && (
+          <g className="sigill-spin" style={{ transformOrigin: "100px 100px" }}>
+            <text fontFamily="JetBrains Mono, monospace" fontSize="11" letterSpacing="3.2" fill="#9FD9B6" fontWeight="600">
+              <textPath href="#sigillring">KLIMATKOMPENSERAD · VIA SMARTKLIMAT · VERIFIERBART ·&#160;</textPath>
+            </text>
+          </g>
+        )}
+        <rect x="74" y="158" width="52" height="22" rx="11" fill="#DCBE6E" />
+        <text x="100" y="173" textAnchor="middle" fontFamily="Bricolage Grotesque, sans-serif" fontSize="12" fontWeight="700" fill="#0B3D2E">2026</text>
+      </svg>
+      <img src="/brand/logo-stamp-vit.png" alt="" className="absolute"
+        style={{ width: size * 0.46, height: size * 0.46, left: "50%", top: "47%", transform: "translate(-50%,-50%)" }} />
+    </span>
   );
 }
 
@@ -57,7 +59,7 @@ export function BrandKit() {
                 <div className="h-2.5 w-3/4 rounded-full bg-linje" />
                 <div className="mt-2 h-2.5 w-1/2 rounded-full bg-linje" />
                 <div className="mt-4 flex items-center gap-2">
-                  <Sigill size={44} />
+                  <Sigill size={44} ring={false} />
                   <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-smaragd-dark">Klimatkompenserad</span>
                 </div>
               </div>
@@ -71,7 +73,7 @@ export function BrandKit() {
                 <p className="font-display text-sm font-bold text-skogsgron">Anna Lindqvist</p>
                 <p className="text-xs text-[#6E9483]">Säljchef</p>
                 <div className="mt-3 flex items-center gap-2 border-t border-linje pt-3">
-                  <Sigill size={30} />
+                  <Sigill size={30} ring={false} />
                   <span className="text-[11px] font-semibold text-smaragd-dark">Klimatkompenserat företag — verifiera vår skog</span>
                 </div>
               </div>
@@ -87,7 +89,7 @@ export function BrandKit() {
                     <div className="h-2.5 w-20 rounded-full bg-linje" />
                     <div className="mt-2 h-2.5 w-14 rounded-full bg-linje" />
                   </div>
-                  <Sigill size={52} />
+                  <Sigill size={52} ring={false} />
                 </div>
               </div>
               <p className="mt-4 text-sm leading-relaxed text-salvia">Footer-badge med klickbar verifiering — er hållbarhetssida får äntligen substans.</p>
