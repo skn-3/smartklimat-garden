@@ -42,7 +42,6 @@ export function HeroTemp() {
               <span className="absolute inset-0 rounded-full bg-smaragd opacity-60 animate-ping" />
               <span className="relative h-2 w-2 rounded-full bg-smaragd" />
             </span>
-            {/* TODO: siffran ska bli dynamisk från publik stats-endpoint. */}
             <span className="font-mono text-xs tracking-wider text-skogsgron">
               27 393 träd planterade · live
             </span>
