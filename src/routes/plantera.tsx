@@ -38,6 +38,8 @@ const PRICE = 35;
 const KG_PER_TREE = 20;
 const CHECKOUT_URL = "https://yakwdirpbwdtsdpxlbkp.supabase.co/functions/v1/create-checkout";
 const SWISH_URL = "https://yakwdirpbwdtsdpxlbkp.supabase.co/functions/v1/create-swish-payment";
+/** Swish-endpointen finns inte ännu — göm knappen tills den är på plats. */
+const SWISH_ENABLED = false;
 
 type Mode = "engang" | "manad" | "gava";
 
