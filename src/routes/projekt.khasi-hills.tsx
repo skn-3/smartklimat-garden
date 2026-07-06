@@ -6,6 +6,9 @@ import {
   StoryCard,
   PhotoMosaic,
   ArtChips,
+  NarrativeSection,
+  FactRow,
+  SourceRow,
   DittTradHar,
 } from "@/components/projekt/Parts";
 
