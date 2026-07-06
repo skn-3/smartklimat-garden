@@ -27,7 +27,6 @@ export const Route = createFileRoute("/kalkylator")({
       },
       { property: "og:url", content: "/kalkylator" },
     ],
-    links: [{ rel: "canonical", href: "/kalkylator" }],
   }),
   component: KalkylatorPage,
 });

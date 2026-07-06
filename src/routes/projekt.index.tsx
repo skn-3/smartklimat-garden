@@ -24,7 +24,6 @@ export const Route = createFileRoute("/projekt/")({
       },
       { property: "og:url", content: "/projekt" },
     ],
-    links: [{ rel: "canonical", href: "/projekt" }],
   }),
   component: ProjektOversikt,
 });

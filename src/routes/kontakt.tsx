@@ -15,7 +15,6 @@ export const Route = createFileRoute("/kontakt")({
       { property: "og:title", content: "Kontakt — SmartKlimat" },
       { property: "og:url", content: "/kontakt" },
     ],
-    links: [{ rel: "canonical", href: "/kontakt" }],
   }),
   component: KontaktPage,
 });

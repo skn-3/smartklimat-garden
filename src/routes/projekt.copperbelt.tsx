@@ -28,7 +28,6 @@ export const Route = createFileRoute("/projekt/copperbelt")({
       { property: "og:image", content: "/projekt/cb-2.jpg" },
       { property: "og:url", content: "/projekt/copperbelt" },
     ],
-    links: [{ rel: "canonical", href: "/projekt/copperbelt" }],
   }),
   component: () => (
     <>

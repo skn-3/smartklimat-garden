@@ -28,7 +28,6 @@ export const Route = createFileRoute("/projekt/khasi-hills")({
       { property: "og:image", content: "/projekt/kh-1.jpg" },
       { property: "og:url", content: "/projekt/khasi-hills" },
     ],
-    links: [{ rel: "canonical", href: "/projekt/khasi-hills" }],
   }),
   component: () => (
     <>

@@ -28,7 +28,6 @@ export const Route = createFileRoute("/plantera")({
       { property: "og:title", content: "Plantera träd — SmartKlimat" },
       { property: "og:url", content: "/plantera" },
     ],
-    links: [{ rel: "canonical", href: "/plantera" }],
   }),
   component: PlanteraPage,
 });

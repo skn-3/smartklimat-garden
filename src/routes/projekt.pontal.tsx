@@ -28,7 +28,6 @@ export const Route = createFileRoute("/projekt/pontal")({
       { property: "og:image", content: "/projekt/po-3.jpg" },
       { property: "og:url", content: "/projekt/pontal" },
     ],
-    links: [{ rel: "canonical", href: "/projekt/pontal" }],
   }),
   component: () => (
     <>
