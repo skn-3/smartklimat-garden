@@ -317,6 +317,14 @@ function PlanteraPage() {
                   <p className="mt-4 text-xs text-skogsgron/50">
                     {SWISH_ENABLED ? "Säker betalning via Stripe eller Swish" : "Säker betalning via Stripe"} · beviset skapas direkt efter köpet
                   </p>
+
+                  <p className="mt-3 text-xs text-skogsgron/55">
+                    Genom att betala godkänner du våra{" "}
+                    <a href="/villkor" className="font-medium text-smaragd-dark underline underline-offset-4">
+                      köpvillkor
+                    </a>{" "}
+                    och samtycker till att planteringen påbörjas direkt, varvid ångerrätten upphör.
+                  </p>
                 </div>
               </div>
             </div>

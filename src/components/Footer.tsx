@@ -21,6 +21,7 @@ export function Footer() {
               <Link to="/om-oss" className="hover:text-papper">Om oss</Link>
               <Link to="/kalkylator" className="hover:text-papper">Kalkylator</Link>
               <Link to="/kontakt" className="hover:text-papper">Kontakt</Link>
+              <Link to="/villkor" className="hover:text-papper">Köpvillkor</Link>
               <Link to="/integritet" className="hover:text-papper">Integritet</Link>
             </nav>
           </div>
@@ -42,9 +43,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-papper/15 pt-8">
+        <div className="mt-14 flex flex-col gap-3 border-t border-papper/15 pt-8 md:flex-row md:flex-wrap md:items-center md:justify-between">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-papper/60">
             © {new Date().getFullYear()} SmartKlimat
+          </p>
+          <p className="font-mono text-[11px] text-papper/50">
+            SmartKlimatKompensera på Tellus AB · 559370-9453
           </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-papper/40">
             Tech möter klimat

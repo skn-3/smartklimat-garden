@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VillkorRouteImport } from './routes/villkor'
 import { Route as SmaartyRouteImport } from './routes/smaarty'
 import { Route as PlanteraRouteImport } from './routes/plantera'
 import { Route as OmOssRouteImport } from './routes/om-oss'
@@ -24,6 +25,11 @@ import { Route as ProjektPontalRouteImport } from './routes/projekt.pontal'
 import { Route as ProjektKhasiHillsRouteImport } from './routes/projekt.khasi-hills'
 import { Route as ProjektCopperbeltRouteImport } from './routes/projekt.copperbelt'
 
+const VillkorRoute = VillkorRouteImport.update({
+  id: '/villkor',
+  path: '/villkor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SmaartyRoute = SmaartyRouteImport.update({
   id: '/smaarty',
   path: '/smaarty',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/om-oss': typeof OmOssRoute
   '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
+  '/villkor': typeof VillkorRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/om-oss': typeof OmOssRoute
   '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
+  '/villkor': typeof VillkorRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/om-oss': typeof OmOssRoute
   '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
+  '/villkor': typeof VillkorRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/om-oss'
     | '/plantera'
     | '/smaarty'
+    | '/villkor'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/om-oss'
     | '/plantera'
     | '/smaarty'
+    | '/villkor'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/om-oss'
     | '/plantera'
     | '/smaarty'
+    | '/villkor'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
@@ -205,6 +217,7 @@ export interface RootRouteChildren {
   OmOssRoute: typeof OmOssRoute
   PlanteraRoute: typeof PlanteraRoute
   SmaartyRoute: typeof SmaartyRoute
+  VillkorRoute: typeof VillkorRoute
   ProjektCopperbeltRoute: typeof ProjektCopperbeltRoute
   ProjektKhasiHillsRoute: typeof ProjektKhasiHillsRoute
   ProjektPontalRoute: typeof ProjektPontalRoute
@@ -214,6 +227,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/villkor': {
+      id: '/villkor'
+      path: '/villkor'
+      fullPath: '/villkor'
+      preLoaderRoute: typeof VillkorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/smaarty': {
       id: '/smaarty'
       path: '/smaarty'
@@ -325,6 +345,7 @@ const rootRouteChildren: RootRouteChildren = {
   OmOssRoute: OmOssRoute,
   PlanteraRoute: PlanteraRoute,
   SmaartyRoute: SmaartyRoute,
+  VillkorRoute: VillkorRoute,
   ProjektCopperbeltRoute: ProjektCopperbeltRoute,
   ProjektKhasiHillsRoute: ProjektKhasiHillsRoute,
   ProjektPontalRoute: ProjektPontalRoute,
@@ -334,3 +355,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
