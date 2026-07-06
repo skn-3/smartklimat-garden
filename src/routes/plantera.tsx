@@ -3,16 +3,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Gift, Repeat, TreePine } from "lucide-react";
 import { PageIntro } from "@/components/PageIntro";
 import { CtaButton } from "@/components/CtaButton";
-import { TemaVal, type TemaId } from "@/components/plantera/TemaVal";
+import { TemaVal, type TemaId, isTemaId } from "@/components/plantera/TemaVal";
 import { BevisReveal } from "@/components/plantera/BevisReveal";
 import { FadeUp } from "@/components/FadeUp";
 
 export const Route = createFileRoute("/plantera")({
   validateSearch: (search: Record<string, unknown>) => {
     const n = Number(search.antal);
+    const tema = typeof search.tema === "string" && isTemaId(search.tema) ? search.tema : undefined;
     return {
       antal: Number.isFinite(n) && n >= 1 ? Math.min(500, Math.round(n)) : undefined,
       tack: search.tack === "1" || search.tack === 1 ? (1 as const) : undefined,
+      tema,
     };
   },
   head: () => ({
@@ -98,11 +100,11 @@ function TackVy() {
 }
 
 function PlanteraPage() {
-  const { antal, tack } = Route.useSearch();
+  const { antal, tack, tema } = Route.useSearch();
   const [mode, setMode] = useState<Mode>("engang");
   const [qty, setQty] = useState(antal ?? 3);
   const [busy, setBusy] = useState<"stripe" | "swish" | null>(null);
-  const [theme, setTheme] = useState<TemaId>("standard");
+  const [theme, setTheme] = useState<TemaId>(tema ?? "klassisk");
   const [halsning, setHalsning] = useState("");
   const [fallback, setFallback] = useState<"stripe" | "swish" | null>(null);
 
