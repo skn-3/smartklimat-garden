@@ -73,7 +73,7 @@ const SLIDES: Slide[] = [
   {
     chip: "Tech",
     head: "Varje träd är en rad.",
-    body: "Planterat, tidsstämplat, spårbart — räknaren på förstasidan är inte marknadsföring, den är databasen.",
+    body: "Varje planterat träd får en rad i databasen — tidsstämplad, spårbar och länkad till projektet i fält.",
     tone: "#F4FAF5",
     icon: (
       <svg viewBox="0 0 28 28" className="h-7 w-7" aria-hidden="true">
