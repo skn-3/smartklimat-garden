@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Eyebrow } from "./Eyebrow";
 import { CtaButton } from "./CtaButton";
+import { usePlantedTotal } from "@/lib/planted";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
