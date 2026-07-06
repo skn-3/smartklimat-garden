@@ -281,17 +281,19 @@ function PlanteraPage() {
                         <ArrowRight className="h-4 w-4" strokeWidth={2} />
                       </span>
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => pay("swish")}
-                      disabled={busy !== null || mode === "manad"}
-                      className="rounded-full border border-linje px-7 py-3 text-[15px] font-medium text-skogsgron transition-all duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5 hover:border-smaragd disabled:opacity-45 disabled:hover:translate-y-0 disabled:hover:border-linje"
-                    >
-                      {busy === "swish" ? "Öppnar Swish…" : "Betala med Swish"}
-                    </button>
+                    {SWISH_ENABLED ? (
+                      <button
+                        type="button"
+                        onClick={() => pay("swish")}
+                        disabled={busy !== null || mode === "manad"}
+                        className="rounded-full border border-linje px-7 py-3 text-[15px] font-medium text-skogsgron transition-all duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5 hover:border-smaragd disabled:opacity-45 disabled:hover:translate-y-0 disabled:hover:border-linje"
+                      >
+                        {busy === "swish" ? "Öppnar Swish…" : "Betala med Swish"}
+                      </button>
+                    ) : null}
                   </div>
 
-                  {mode === "manad" ? (
+                  {SWISH_ENABLED && mode === "manad" ? (
                     <p className="mt-3 text-xs text-skogsgron/50">
                       Månadsplantering dras via kort — Swish stödjer inte återkommande betalningar.
                     </p>
