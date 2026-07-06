@@ -54,6 +54,7 @@ export function OpeningSequence() {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const plantedTotal = usePlantedTotal();
 
   useEffect(() => {
     const root = rootRef.current;
