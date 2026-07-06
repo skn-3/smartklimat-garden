@@ -155,7 +155,7 @@ function OmOssPage() {
                     Hör av dig.
                   </h2>
                   <p className="mt-6 max-w-xl text-base md:text-lg text-skogsgron/75">
-                    Företag, skola eller nyfiken — vi svarar inom kort.
+                    Skriv några rader så återkommer vi inom kort.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3 md:justify-end">
