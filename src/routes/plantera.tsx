@@ -315,7 +315,7 @@ function PlanteraPage() {
                   ) : null}
 
                   <p className="mt-4 text-xs text-skogsgron/50">
-                    Säker betalning via Stripe eller Swish · beviset skapas direkt efter köpet
+                    {SWISH_ENABLED ? "Säker betalning via Stripe eller Swish" : "Säker betalning via Stripe"} · beviset skapas direkt efter köpet
                   </p>
                 </div>
               </div>
