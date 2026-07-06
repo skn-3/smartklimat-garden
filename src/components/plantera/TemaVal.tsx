@@ -72,7 +72,7 @@ export function TemaVal({ theme, setTheme, halsning, setHalsning }: {
           <label htmlFor="halsning" className="text-sm font-medium text-skogsgron">Personlig hälsning <span className="text-skogsgron/50">(valfritt)</span></label>
           <textarea id="halsning" value={halsning} maxLength={120} rows={2}
             onChange={(e) => setHalsning(e.target.value)}
-            placeholder="Grattis på födelsedagen — här är träd som växer så länge du finns!"
+            placeholder="Grattis på födelsedagen — här är träd som växer i decennier!"
             className="mt-1.5 w-full rounded-2xl border border-linje bg-white p-3.5 text-[15px] text-skogsgron outline-none transition-colors placeholder:text-skogsgron/35 focus:border-smaragd" />
           <p className="mt-1 text-right font-mono text-[11px] text-skogsgron/45">{halsning.length}/120 · visas i mailet och som rad på beviset</p>
         </div>
