@@ -3,6 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Gift, Repeat, TreePine } from "lucide-react";
 import { PageIntro } from "@/components/PageIntro";
 import { CtaButton } from "@/components/CtaButton";
+import { TemaVal, type TemaId } from "@/components/plantera/TemaVal";
+import { BevisReveal } from "@/components/plantera/BevisReveal";
 import { FadeUp } from "@/components/FadeUp";
 
 export const Route = createFileRoute("/plantera")({
@@ -67,7 +69,7 @@ function TackVy() {
     <section className="flex min-h-[70dvh] items-center px-6 pb-28 pt-36">
       <div className="mx-auto max-w-xl text-center">
         <FadeUp>
-          <img src="/brand/logo-stamp-guld.png" alt="" className="mx-auto h-24 w-24" />
+          <BevisReveal />
         </FadeUp>
         <FadeUp delay={80}>
           <h1 className="mt-8 font-display text-4xl font-bold tracking-tight text-skogsgron md:text-5xl">
@@ -101,6 +103,8 @@ function PlanteraPage() {
   const [mode, setMode] = useState<Mode>("engang");
   const [qty, setQty] = useState(antal ?? 3);
   const [busy, setBusy] = useState<"stripe" | "swish" | null>(null);
+  const [theme, setTheme] = useState<TemaId>("standard");
+  const [halsning, setHalsning] = useState("");
   const [fallback, setFallback] = useState<"stripe" | "swish" | null>(null);
 
   if (tack) return <TackVy />;
@@ -122,7 +126,7 @@ function PlanteraPage() {
       const res = await fetch(method === "swish" ? SWISH_URL : CHECKOUT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: mode, quantity: qty }),
+        body: JSON.stringify({ type: mode, quantity: qty, theme_id: theme, halsning: halsning.trim() || undefined }),
       });
       if (!res.ok) throw new Error(String(res.status));
       const data = (await res.json()) as { url?: string };
@@ -244,6 +248,10 @@ function PlanteraPage() {
                     ) : null}
                   </div>
                 </div>
+
+                {mode !== "manad" ? (
+                  <TemaVal theme={theme} setTheme={setTheme} halsning={halsning} setHalsning={setHalsning} />
+                ) : null}
 
                 <div className="mt-8 border-t border-linje pt-8">
                   <div className="flex flex-wrap items-center gap-3">
