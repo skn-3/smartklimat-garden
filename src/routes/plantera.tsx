@@ -122,7 +122,7 @@ function PlanteraPage() {
   const [halsning, setHalsning] = useState("");
   const [fallback, setFallback] = useState<"stripe" | "swish" | null>(null);
 
-  if (tack) return <TackVy />;
+  if (tack) return <TackVy tema={tema} />;
 
   const kr = qty * PRICE;
   const kg = qty * KG_PER_TREE;
