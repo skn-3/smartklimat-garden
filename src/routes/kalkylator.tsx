@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ArrowRight } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -219,9 +219,9 @@ function KalkylatorPage() {
           </FadeUp>
 
           <FadeUp delay={180}>
-            <p className="mt-3 px-2 font-mono text-xs text-skogsgron/50">
-              Fler kalkyler är på väg — bil, boende och vardag.
-            </p>
+            <Link to="/avtryck" className="mt-3 inline-flex items-center gap-2 px-2 font-mono text-xs font-semibold uppercase tracking-[0.15em] text-smaragd-dark underline decoration-guld decoration-2 underline-offset-4 hover:text-skogsgron">
+              Nytt: räkna ut hela ditt klimatavtryck →
+            </Link>
           </FadeUp>
         </div>
       </section>
