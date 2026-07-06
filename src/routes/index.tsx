@@ -62,6 +62,19 @@ const TRUST = [
   "Live-data, direkt ur systemet",
 ];
 
+const TEMANKORT = [
+  { slug: "fodelsedag", label: "Födelsedag" },
+  { slug: "morsdag", label: "Mors dag" },
+  { slug: "farsdag", label: "Fars dag" },
+  { slug: "pask", label: "Påsk" },
+  { slug: "jul", label: "Jul" },
+  { slug: "sommar", label: "Sommar" },
+  { slug: "semester", label: "Semester" },
+  { slug: "resa", label: "Resa" },
+  { slug: "hjartans", label: "Hjärtans" },
+  { slug: "environment", label: "Environment" },
+];
+
 function Home() {
   return (
     <>
