@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { OpeningSequence } from "@/components/OpeningSequence";
+import { AvtryckTeaser } from "@/components/AvtryckTeaser";
 import { PlantedCounter } from "@/components/PlantedCounter";
 import { FadeUp } from "@/components/FadeUp";
 import { Eyebrow } from "@/components/Eyebrow";
@@ -143,6 +144,8 @@ function Home() {
       </section>
 
       {/* SÅ FUNKAR DET */}
+      <AvtryckTeaser />
+
       <section className="bg-mintpapper/60 px-6 py-24 md:py-32">
         <div className="mx-auto w-full max-w-6xl">
           <FadeUp>
