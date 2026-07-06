@@ -67,13 +67,25 @@ const MODES: Array<{ id: Mode; icon: React.ReactNode; title: string; body: strin
 
 const QUICK = [1, 3, 5, 10];
 
-function TackVy() {
+function TackVy({ tema }: { tema?: TemaId }) {
   return (
     <section className="flex min-h-[70dvh] items-center px-6 pb-28 pt-36">
       <div className="mx-auto max-w-xl text-center">
-        <FadeUp>
-          <BevisReveal />
-        </FadeUp>
+        {tema ? (
+          <FadeUp>
+            <div className="mx-auto w-48 overflow-hidden rounded-2xl bg-white shadow-md shadow-linje/60">
+              <img
+                src={`/kort/kort-${tema}.jpg`}
+                alt=""
+                className="aspect-[4/5] w-full object-cover"
+              />
+            </div>
+          </FadeUp>
+        ) : (
+          <FadeUp>
+            <BevisReveal />
+          </FadeUp>
+        )}
         <FadeUp delay={80}>
           <h1 className="mt-8 font-display text-4xl font-bold tracking-tight text-skogsgron md:text-5xl">
             Tack. Nu växer det.
@@ -81,7 +93,7 @@ function TackVy() {
         </FadeUp>
         <FadeUp delay={140}>
           <p className="mx-auto mt-5 max-w-md text-lg text-skogsgron/75">
-            Ditt värdebevis är på väg till din mail — med en egen verifieringslänk att spara och dela.
+            {tema ? "Ditt värdebevis är på väg till mailen." : "Ditt värdebevis är på väg till din mail — med en egen verifieringslänk att spara och dela."}
           </p>
         </FadeUp>
         <FadeUp delay={180}>
