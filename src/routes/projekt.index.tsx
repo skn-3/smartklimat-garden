@@ -14,13 +14,13 @@ export const Route = createFileRoute("/projekt/")({
       {
         name: "description",
         content:
-          "Tre platser, tre lokalsamhällen, en partner i fält. Khasi Hills, Copperbelt och Pontal — planterat, mätt och skyddat.",
+          "Tre WeForest-projekt där lokalsamhällena driver arbetet — Khasi Hills i Meghalaya, Copperbelt i Zambia och Pontal i Brasilien.",
       },
       { property: "og:title", content: "Våra projekt — SmartKlimat" },
       {
         property: "og:description",
         content:
-          "Tre platser, tre lokalsamhällen, en partner i fält. Khasi Hills, Copperbelt och Pontal.",
+          "Khasi Hills, Copperbelt och Pontal — WeForest-projekt där lokalsamhällena driver arbetet.",
       },
       { property: "og:url", content: "/projekt" },
     ],
