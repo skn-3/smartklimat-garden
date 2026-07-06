@@ -1,45 +1,52 @@
 import { useEffect, useRef, useState } from "react";
 import { Eyebrow } from "./Eyebrow";
+import { usePlantedTotal } from "@/lib/planted";
 
-/**
- * Beat 7: räknaren. Talet är hårdkodat tills den publika stats-endpointen finns.
- * TODO (integration): hämta från SmartKlimat-backendens public-stats-funktion
- * (SUM(tree_count) över betalda köp) och räkna upp till det talet istället.
- */
-const PLANTED = 27393;
-const CO2_TON = Math.round((PLANTED * 20) / 1000); // 20 kg per träd och år
+const KG_PER_TREE_YEAR = 20;
 
 export function PlantedCounter() {
+  const planted = usePlantedTotal();
   const ref = useRef<HTMLDivElement | null>(null);
   const [value, setValue] = useState(0);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setValue(PLANTED);
-      return;
-    }
-    let raf = 0;
     const io = new IntersectionObserver(
       (entries) => {
-        if (!entries[0].isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const dur = 1200;
-        const tick = (now: number) => {
-          const t = Math.min(1, (now - start) / dur);
-          const eased = 1 - Math.pow(1 - t, 3);
-          setValue(Math.round(eased * PLANTED));
-          if (t < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
+        if (entries[0].isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
       },
       { threshold: 0.4 },
     );
     io.observe(el);
-    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+    return () => io.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!inView) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setValue(planted);
+      return;
+    }
+    let raf = 0;
+    const start = performance.now();
+    const from = 0;
+    const dur = 1200;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(Math.round(from + eased * (planted - from)));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, planted]);
+
+  const co2Ton = Math.round((planted * KG_PER_TREE_YEAR) / 1000);
 
   return (
     <section className="px-6 py-24 md:py-32">
@@ -52,7 +59,7 @@ export function PlantedCounter() {
           träd planterade — live från systemet
         </p>
         <p className="mt-6 border-t border-linje pt-6 font-mono text-sm text-skogsgron/60">
-          ≈ {CO2_TON} ton koldioxid bundet — varje år
+          ≈ {co2Ton.toLocaleString("sv-SE").replace(/\u00a0/g, " ")} ton koldioxid bundet — varje år
         </p>
       </div>
     </section>
