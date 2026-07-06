@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Gift, Repeat, TreePine } from "lucide-react";
 import { PageIntro } from "@/components/PageIntro";
 import { CtaButton } from "@/components/CtaButton";
-import { TemaVal, type TemaId } from "@/components/plantera/TemaVal";
+import { TemaVal, type TemaId, isTemaId } from "@/components/plantera/TemaVal";
 import { BevisReveal } from "@/components/plantera/BevisReveal";
 import { FadeUp } from "@/components/FadeUp";
 
