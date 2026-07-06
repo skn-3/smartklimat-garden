@@ -40,7 +40,7 @@ function ProjektOversikt() {
       <PageIntro
         eyebrow="Våra projekt"
         title="Skogen vi bygger"
-        lead="Tre platser, tre lokalsamhällen, en partner i fält. Varje träd går in i ett av projekten nedan — planterat, mätt och skyddat tillsammans med människorna som bor där."
+        lead="Tre platser, en partner i fält. Khasi Hills, Copperbelt och Pontal — där lokalsamhällena driver arbetet. Varje träd går in i ett av projekten nedan."
       />
 
       {/* WeForest-band */}
