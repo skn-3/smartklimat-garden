@@ -15,13 +15,13 @@ export const Route = createFileRoute("/om-oss")({
       {
         name: "description",
         content:
-          "Ett gemensamt klimat. Vi återställer, engagerar och mäter — klimatkompensation byggd som teknik.",
+          "Ett gemensamt klimat. Vi planterar, mäter och visar varje träd — klimatkompensation byggd som teknik.",
       },
       { property: "og:title", content: "Om oss — SmartKlimat" },
       {
         property: "og:description",
         content:
-          "Ett gemensamt klimat. Vi återställer, engagerar och mäter — klimatkompensation byggd som teknik.",
+          "Ett gemensamt klimat. Vi planterar, mäter och visar varje träd.",
       },
       { property: "og:url", content: "/om-oss" },
     ],
@@ -155,7 +155,7 @@ function OmOssPage() {
                     Hör av dig.
                   </h2>
                   <p className="mt-6 max-w-xl text-base md:text-lg text-skogsgron/75">
-                    Företag, skola eller nyfiken — vi svarar inom kort.
+                    Skriv några rader så återkommer vi inom kort.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3 md:justify-end">

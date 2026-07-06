@@ -223,10 +223,10 @@ function FaqSection() {
 }
 
 const FEATURES = [
-  { eb: "Nivåer", title: "Från Skott till Fullvuxet träd", body: "Varje sålt träd växer säljarens eget nivåträd — fem stadier, från första skottet till fullvuxen krona." },
+  { eb: "Nivåer", title: "Från skott till fullvuxet träd", body: "Varje sålt träd växer säljarens eget nivåträd — fem stadier, från första skottet till fullvuxen krona." },
   { eb: "Märken", title: "Grön tumme, Skogshjälte, Eldsjäl", body: "Riktiga milstolpar med riktiga namn — och Veckans hjälte koras i varje lag, varje vecka." },
   { eb: "Laget", title: "Veckomål som ger alla bonus", body: "När laget når målet tillsammans får varenda säljare poäng. Helg-sprintar håller tempot uppe." },
-  { eb: "Belöningar", title: "Poängen blir priser", body: "Säljarna löser in sina poäng mot belöningar direkt i appen. Motivationen sköter sig själv." },
+  { eb: "Belöningar", title: "Poängen blir priser", body: "Säljarna löser in sina poäng mot belöningar direkt i appen — fotbollar, biobiljetter, sånt som känns på riktigt." },
 ];
 
 const LEADER_POINTS = [
@@ -251,7 +251,7 @@ const STARTPAKET = [
   {
     eb: "Vi finns bakom",
     title: "Stöd när ni behöver",
-    body: "Fastnar något är vi ett mail bort — och vi hjälper gärna till att sätta ett rimligt mål för er insamling.",
+    body: "Fastnar något är vi ett mail bort. Vi hjälper gärna till att sätta ett rimligt mål för er insamling.",
   },
 ];
 

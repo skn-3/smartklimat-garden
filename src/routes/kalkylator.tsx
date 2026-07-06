@@ -17,13 +17,13 @@ export const Route = createFileRoute("/kalkylator")({
       {
         name: "description",
         content:
-          "Räkna på flygresans koldioxid och plantera träden som binder den. Myclimate-metodik, svensk precision.",
+          "Räkna på flygresans koldioxid och plantera träden som binder den. Myclimate-metodik, öppna siffror.",
       },
       { property: "og:title", content: "Kalkylatorn — SmartKlimat" },
       {
         property: "og:description",
         content:
-          "Räkna på flygresans koldioxid och plantera träden som binder den. Myclimate-metodik, svensk precision.",
+          "Räkna på flygresans koldioxid och plantera träden som binder den. Myclimate-metodik, öppna siffror.",
       },
       { property: "og:url", content: "/kalkylator" },
     ],

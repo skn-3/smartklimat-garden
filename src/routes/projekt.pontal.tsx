@@ -26,7 +26,7 @@ export const Route = createFileRoute("/projekt/pontal")({
       { property: "og:title", content: "Pontal — Våra projekt — SmartKlimat" },
       {
         property: "og:description",
-        content: "Korridorer genom Atlantskogen — för tamarin, jaguar och myrslok.",
+        content: "Korridorer genom Atlantskogen som återkopplar reservaten — för tamarin, jaguar och myrslok.",
       },
       { property: "og:image", content: "/projekt/po-3.jpg" },
       { property: "og:url", content: "/projekt/pontal" },

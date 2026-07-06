@@ -53,7 +53,7 @@ const TRUST = [
 ];
 
 const FAQ_ITEMS: Array<[string, string]> = [
-  ["Hur lång är uppstarten?", "Dagar, inte månader. Starter kräver ingen integration alls — vi lägger upp er samma vecka och första rapporteringen kan ske direkt."],
+  ["Hur lång är uppstarten?", "Uppstarten tar dagar, inte månader. Starter kräver ingen integration alls. Vi lägger upp er samma vecka, och första rapporteringen kan ske direkt."],
   ["Måste vi integrera tekniskt?", "Nej. Starter bygger på enkel månadsrapportering av era affärer. När ni vill växla upp kopplar vi vår gateway till ert flöde — då sker allt automatiskt."],
   ["Vad får våra kunder?", "Ett personligt värdebevis med sitt namn, ert varumärke och en egen verifieringslänk som de kan kontrollera och dela när som helst."],
   ["Hur vet vi att träden faktiskt finns?", "Varje träd planteras i WeForests program och granskas externt av Preferred by Nature. Ert flöde syns i vår live-data, och varje kunds värdebevis har en öppen verifieringslänk — ni behöver inte lita på oss, ni kan kontrollera själva."],
@@ -246,7 +246,7 @@ function ForetagPage() {
               },
               {
                 eb: "I marknadsföringen",
-                title: "Innehåll som gör jobbet självt",
+                title: "Färdigt innehåll att posta",
                 body: "Live-statistik att visa upp, bevis kunderna delar vidare, och en berättelse som växer med varje order.",
               },
               {
