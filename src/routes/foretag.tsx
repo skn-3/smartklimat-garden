@@ -246,7 +246,7 @@ function ForetagPage() {
               },
               {
                 eb: "I marknadsföringen",
-                title: "Innehåll som gör jobbet självt",
+                title: "Färdigt innehåll att posta",
                 body: "Live-statistik att visa upp, bevis kunderna delar vidare, och en berättelse som växer med varje order.",
               },
               {
