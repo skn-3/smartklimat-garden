@@ -100,11 +100,11 @@ function TackVy() {
 }
 
 function PlanteraPage() {
-  const { antal, tack } = Route.useSearch();
+  const { antal, tack, tema } = Route.useSearch();
   const [mode, setMode] = useState<Mode>("engang");
   const [qty, setQty] = useState(antal ?? 3);
   const [busy, setBusy] = useState<"stripe" | "swish" | null>(null);
-  const [theme, setTheme] = useState<TemaId>("standard");
+  const [theme, setTheme] = useState<TemaId>(tema ?? "klassisk");
   const [halsning, setHalsning] = useState("");
   const [fallback, setFallback] = useState<"stripe" | "swish" | null>(null);
 
