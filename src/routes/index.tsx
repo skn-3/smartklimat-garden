@@ -62,6 +62,19 @@ const TRUST = [
   "Live-data, direkt ur systemet",
 ];
 
+const TEMANKORT = [
+  { slug: "fodelsedag", label: "Födelsedag" },
+  { slug: "morsdag", label: "Mors dag" },
+  { slug: "farsdag", label: "Fars dag" },
+  { slug: "pask", label: "Påsk" },
+  { slug: "jul", label: "Jul" },
+  { slug: "sommar", label: "Sommar" },
+  { slug: "semester", label: "Semester" },
+  { slug: "resa", label: "Resa" },
+  { slug: "hjartans", label: "Hjärtans" },
+  { slug: "environment", label: "Environment" },
+];
+
 function Home() {
   return (
     <>
@@ -140,6 +153,61 @@ function Home() {
               </Link>
             </FadeUp>
           </div>
+        </div>
+      </section>
+
+      {/* GE BORT ETT TRÄD — TEMANKORT */}
+      <section className="bg-papper px-6 py-24 md:py-32">
+        <div className="mx-auto w-full max-w-6xl">
+          <FadeUp>
+            <h2 className="font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
+              Ge bort ett träd — välj ditt kort
+            </h2>
+          </FadeUp>
+          <FadeUp delay={60}>
+            <p className="mt-4 max-w-2xl font-sans text-lg text-skogsgron/80">
+              Femton kort, femton tillfällen — alla planterar riktiga träd i Zambia
+            </p>
+          </FadeUp>
+
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-6">
+            {TEMANKORT.map((kort, i) => (
+              <FadeUp key={kort.slug} delay={i * 60}>
+                <a
+                  href={`https://app.smartklimat.org?tema=${kort.slug}`}
+                  className="group block"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm shadow-linje/50 transition-all duration-500 [transition-timing-function:var(--ease-smart)] group-hover:-translate-y-1 group-hover:scale-[1.02] group-hover:shadow-md">
+                    <img
+                      src={`/kort/kort-${kort.slug}.jpg`}
+                      alt={kort.label}
+                      loading="lazy"
+                      className="aspect-[4/5] w-full object-cover"
+                    />
+                  </div>
+                  <p className="mt-3 text-center text-sm font-medium text-skogsgron/90">
+                    {kort.label}
+                  </p>
+                </a>
+              </FadeUp>
+            ))}
+          </div>
+
+          <FadeUp delay={200}>
+            <div className="mt-12 flex justify-center">
+              <a
+                href="https://app.smartklimat.org"
+                className="inline-flex items-center gap-2 rounded-full bg-smaragd px-7 py-3.5 text-sm font-medium text-white transition-all duration-500 [transition-timing-function:var(--ease-smart)] hover:bg-smaragd-dark hover:-translate-y-0.5"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Se alla teman i appen
+                <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </section>
 

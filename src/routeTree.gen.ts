@@ -14,15 +14,15 @@ import { Route as PlanteraRouteImport } from './routes/plantera'
 import { Route as OmOssRouteImport } from './routes/om-oss'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KalkylatorRouteImport } from './routes/kalkylator'
+import { Route as IntegritetRouteImport } from './routes/integritet'
 import { Route as ForetagRouteImport } from './routes/foretag'
+import { Route as AvtryckRouteImport } from './routes/avtryck'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjektIndexRouteImport } from './routes/projekt.index'
 import { Route as VIdRouteImport } from './routes/v.$id'
 import { Route as ProjektPontalRouteImport } from './routes/projekt.pontal'
 import { Route as ProjektKhasiHillsRouteImport } from './routes/projekt.khasi-hills'
 import { Route as ProjektCopperbeltRouteImport } from './routes/projekt.copperbelt'
-import { Route as ApiPublicStripeWebhookRouteImport } from './routes/api/public/stripe-webhook'
-import { Route as ApiPublicCreateCheckoutRouteImport } from './routes/api/public/create-checkout'
 
 const SmaartyRoute = SmaartyRouteImport.update({
   id: '/smaarty',
@@ -49,9 +49,19 @@ const KalkylatorRoute = KalkylatorRouteImport.update({
   path: '/kalkylator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IntegritetRoute = IntegritetRouteImport.update({
+  id: '/integritet',
+  path: '/integritet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForetagRoute = ForetagRouteImport.update({
   id: '/foretag',
   path: '/foretag',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AvtryckRoute = AvtryckRouteImport.update({
+  id: '/avtryck',
+  path: '/avtryck',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -84,20 +94,12 @@ const ProjektCopperbeltRoute = ProjektCopperbeltRouteImport.update({
   path: '/projekt/copperbelt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicStripeWebhookRoute = ApiPublicStripeWebhookRouteImport.update({
-  id: '/api/public/stripe-webhook',
-  path: '/api/public/stripe-webhook',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiPublicCreateCheckoutRoute = ApiPublicCreateCheckoutRouteImport.update({
-  id: '/api/public/create-checkout',
-  path: '/api/public/create-checkout',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/avtryck': typeof AvtryckRoute
   '/foretag': typeof ForetagRoute
+  '/integritet': typeof IntegritetRoute
   '/kalkylator': typeof KalkylatorRoute
   '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
@@ -108,12 +110,12 @@ export interface FileRoutesByFullPath {
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
   '/projekt/': typeof ProjektIndexRoute
-  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
-  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/avtryck': typeof AvtryckRoute
   '/foretag': typeof ForetagRoute
+  '/integritet': typeof IntegritetRoute
   '/kalkylator': typeof KalkylatorRoute
   '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
@@ -124,13 +126,13 @@ export interface FileRoutesByTo {
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
   '/projekt': typeof ProjektIndexRoute
-  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
-  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/avtryck': typeof AvtryckRoute
   '/foretag': typeof ForetagRoute
+  '/integritet': typeof IntegritetRoute
   '/kalkylator': typeof KalkylatorRoute
   '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
@@ -141,14 +143,14 @@ export interface FileRoutesById {
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
   '/projekt/': typeof ProjektIndexRoute
-  '/api/public/create-checkout': typeof ApiPublicCreateCheckoutRoute
-  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/avtryck'
     | '/foretag'
+    | '/integritet'
     | '/kalkylator'
     | '/kontakt'
     | '/om-oss'
@@ -159,12 +161,12 @@ export interface FileRouteTypes {
     | '/projekt/pontal'
     | '/v/$id'
     | '/projekt/'
-    | '/api/public/create-checkout'
-    | '/api/public/stripe-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/avtryck'
     | '/foretag'
+    | '/integritet'
     | '/kalkylator'
     | '/kontakt'
     | '/om-oss'
@@ -175,12 +177,12 @@ export interface FileRouteTypes {
     | '/projekt/pontal'
     | '/v/$id'
     | '/projekt'
-    | '/api/public/create-checkout'
-    | '/api/public/stripe-webhook'
   id:
     | '__root__'
     | '/'
+    | '/avtryck'
     | '/foretag'
+    | '/integritet'
     | '/kalkylator'
     | '/kontakt'
     | '/om-oss'
@@ -191,13 +193,13 @@ export interface FileRouteTypes {
     | '/projekt/pontal'
     | '/v/$id'
     | '/projekt/'
-    | '/api/public/create-checkout'
-    | '/api/public/stripe-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvtryckRoute: typeof AvtryckRoute
   ForetagRoute: typeof ForetagRoute
+  IntegritetRoute: typeof IntegritetRoute
   KalkylatorRoute: typeof KalkylatorRoute
   KontaktRoute: typeof KontaktRoute
   OmOssRoute: typeof OmOssRoute
@@ -208,8 +210,6 @@ export interface RootRouteChildren {
   ProjektPontalRoute: typeof ProjektPontalRoute
   VIdRoute: typeof VIdRoute
   ProjektIndexRoute: typeof ProjektIndexRoute
-  ApiPublicCreateCheckoutRoute: typeof ApiPublicCreateCheckoutRoute
-  ApiPublicStripeWebhookRoute: typeof ApiPublicStripeWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -249,11 +249,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KalkylatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/integritet': {
+      id: '/integritet'
+      path: '/integritet'
+      fullPath: '/integritet'
+      preLoaderRoute: typeof IntegritetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foretag': {
       id: '/foretag'
       path: '/foretag'
       fullPath: '/foretag'
       preLoaderRoute: typeof ForetagRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/avtryck': {
+      id: '/avtryck'
+      path: '/avtryck'
+      fullPath: '/avtryck'
+      preLoaderRoute: typeof AvtryckRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -298,26 +312,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjektCopperbeltRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/stripe-webhook': {
-      id: '/api/public/stripe-webhook'
-      path: '/api/public/stripe-webhook'
-      fullPath: '/api/public/stripe-webhook'
-      preLoaderRoute: typeof ApiPublicStripeWebhookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/public/create-checkout': {
-      id: '/api/public/create-checkout'
-      path: '/api/public/create-checkout'
-      fullPath: '/api/public/create-checkout'
-      preLoaderRoute: typeof ApiPublicCreateCheckoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvtryckRoute: AvtryckRoute,
   ForetagRoute: ForetagRoute,
+  IntegritetRoute: IntegritetRoute,
   KalkylatorRoute: KalkylatorRoute,
   KontaktRoute: KontaktRoute,
   OmOssRoute: OmOssRoute,
@@ -328,9 +330,17 @@ const rootRouteChildren: RootRouteChildren = {
   ProjektPontalRoute: ProjektPontalRoute,
   VIdRoute: VIdRoute,
   ProjektIndexRoute: ProjektIndexRoute,
-  ApiPublicCreateCheckoutRoute: ApiPublicCreateCheckoutRoute,
-  ApiPublicStripeWebhookRoute: ApiPublicStripeWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

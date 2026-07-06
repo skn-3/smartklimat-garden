@@ -25,7 +25,6 @@ export const Route = createFileRoute("/om-oss")({
       },
       { property: "og:url", content: "/om-oss" },
     ],
-    links: [{ rel: "canonical", href: "/om-oss" }],
   }),
   component: OmOssPage,
 });
