@@ -251,7 +251,7 @@ const STARTPAKET = [
   {
     eb: "Vi finns bakom",
     title: "Stöd när ni behöver",
-    body: "Fastnar något är vi ett mail bort — och vi hjälper gärna till att sätta ett rimligt mål för er insamling.",
+    body: "Fastnar något är vi ett mail bort. Vi hjälper gärna till att sätta ett rimligt mål för er insamling.",
   },
 ];
 
