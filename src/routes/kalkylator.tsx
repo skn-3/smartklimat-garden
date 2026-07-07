@@ -1,13 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ArrowRight } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { PageIntro } from "@/components/PageIntro";
 import { DoubleFrame } from "@/components/DoubleFrame";
 import { FadeUp } from "@/components/FadeUp";
 import { CtaButton } from "@/components/CtaButton";
 import { cn } from "@/lib/utils";
 import { calcFlight, type Klass } from "@/lib/flight";
+import { trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/kalkylator")({
   head: () => ({
