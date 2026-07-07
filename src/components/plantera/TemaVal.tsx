@@ -49,7 +49,7 @@ export function TemaVal({ theme, setTheme, halsning, setHalsning }: {
           const active = theme === t.id;
           const hasImage = "bild" in t;
           return (
-            <button key={t.id} type="button" onClick={() => setTheme(t.id)}
+            <button key={t.id} type="button" onClick={() => { setTheme(t.id); trackEvent("tema_val", { tema: t.id }); }}
               className={`rounded-2xl border p-2 text-left transition-all ${
                 active ? "border-smaragd bg-mintpapper ring-1 ring-smaragd" : "border-linje bg-white hover:border-smaragd/50"}`}>
               {hasImage ? (
