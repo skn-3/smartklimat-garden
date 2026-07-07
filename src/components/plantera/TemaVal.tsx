@@ -1,3 +1,5 @@
+import { trackEvent } from "@/lib/analytics";
+
 const TEMAN = [
   { id: "klassisk", namn: "Klassiskt", prick: "#0B3D2E", sub: "Det gröna originalet" },
   { id: "kalaset", namn: "Kalaset", prick: "#F6B27A", sub: "Konfetti och grattis" },
