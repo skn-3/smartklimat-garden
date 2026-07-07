@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { CookieBanner } from "@/components/CookieBanner";
+import { GTM_ID, captureAttribution, initConsentDefaults } from "@/lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -95,7 +97,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://smartklimat.org/og.png" },
       { name: "theme-color", content: "#0B3D2E" },
     ],
-    scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "SmartKlimat", "legalName": "SmartKlimatKompensera på Tellus AB", "url": "https://smartklimat.org", "logo": "https://smartklimat.org/brand/logo-stamp-guld.png", "email": "hej@smartklimat.org", "address": {"@type": "PostalAddress", "streetAddress": "Morsstigen 3", "postalCode": "141 71", "addressLocality": "Segeltorp", "addressCountry": "SE"}}, {"@type": "WebSite", "name": "SmartKlimat", "url": "https://smartklimat.org"}]}` }],
+    scripts: [
+      // 1) Consent Mode v2 defaults — MÅSTE laddas före GTM.
+      {
+        children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});try{var s=localStorage.getItem('sk_consent_v1');if(s){var p=JSON.parse(s);gtag('consent','update',{analytics_storage:p.analytics?'granted':'denied',ad_storage:p.ads?'granted':'denied',ad_user_data:p.ads?'granted':'denied',ad_personalization:p.ads?'granted':'denied'});}}catch(e){}`,
+      },
+      // 2) GTM loader.
+      {
+        children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
+      },
+      { type: "application/ld+json", children: `{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "SmartKlimat", "legalName": "SmartKlimatKompensera på Tellus AB", "url": "https://smartklimat.org", "logo": "https://smartklimat.org/brand/logo-stamp-guld.png", "email": "hej@smartklimat.org", "address": {"@type": "PostalAddress", "streetAddress": "Morsstigen 3", "postalCode": "141 71", "addressLocality": "Segeltorp", "addressCountry": "SE"}}, {"@type": "WebSite", "name": "SmartKlimat", "url": "https://smartklimat.org"}]}` }],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
@@ -132,8 +143,22 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => {
+    initConsentDefaults();
+    captureAttribution();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
+      {/* GTM noscript-fallback */}
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        />
+      </noscript>
       {/* overflow-x: clip (INTE hidden) — sticky/pin-sektioner kräver clip. */}
       <div className="min-h-[100dvh] flex flex-col bg-papper text-skogsgron [overflow-x:clip]">
         <Nav />
@@ -142,6 +167,7 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
+      <CookieBanner />
     </QueryClientProvider>
   );
 }
