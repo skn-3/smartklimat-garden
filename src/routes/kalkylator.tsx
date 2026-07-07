@@ -90,6 +90,10 @@ function KalkylatorPage() {
     return calcFlight(km, klass, turRetur);
   }, [km, klass, turRetur]);
 
+  useEffect(() => {
+    if (result) trackEvent("kalkylator_resultat", { antal_trad: result.trees });
+  }, [result]);
+
   const planteraHref = result ? `/plantera?antal=${result.trees}` : "/plantera";
 
   return (
