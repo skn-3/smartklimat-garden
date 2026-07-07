@@ -6,6 +6,7 @@ import { CtaButton } from "@/components/CtaButton";
 import { TemaVal, type TemaId, isTemaId } from "@/components/plantera/TemaVal";
 import { BevisReveal } from "@/components/plantera/BevisReveal";
 import { FadeUp } from "@/components/FadeUp";
+import { getAttribution, trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/plantera")({
   validateSearch: (search: Record<string, unknown>) => {
