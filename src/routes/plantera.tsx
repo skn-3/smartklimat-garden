@@ -138,11 +138,25 @@ function PlanteraPage() {
 
   async function pay(method: "stripe" | "swish") {
     setBusy(method);
+    const attribution = getAttribution();
+    trackEvent("begin_checkout", {
+      mode,
+      quantity: qty,
+      value: qty * PRICE,
+      currency: "SEK",
+      tema: theme,
+    });
     try {
       const res = await fetch(method === "swish" ? SWISH_URL : CHECKOUT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: mode, quantity: qty, theme_id: theme, halsning: halsning.trim() || undefined }),
+        body: JSON.stringify({
+          type: mode,
+          quantity: qty,
+          theme_id: theme,
+          halsning: halsning.trim() || undefined,
+          attribution,
+        }),
       });
       if (!res.ok) throw new Error(String(res.status));
       const data = (await res.json()) as { url?: string };
