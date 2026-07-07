@@ -143,8 +143,22 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => {
+    initConsentDefaults();
+    captureAttribution();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
+      {/* GTM noscript-fallback */}
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        />
+      </noscript>
       {/* overflow-x: clip (INTE hidden) — sticky/pin-sektioner kräver clip. */}
       <div className="min-h-[100dvh] flex flex-col bg-papper text-skogsgron [overflow-x:clip]">
         <Nav />
@@ -153,6 +167,7 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
+      <CookieBanner />
     </QueryClientProvider>
   );
 }
