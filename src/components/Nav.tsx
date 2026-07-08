@@ -88,7 +88,7 @@ export function Nav() {
       {/* Helskärms-overlay på mobil */}
       <div
         className={cn(
-          "fixed inset-0 z-40 md:hidden bg-papper transition-opacity duration-500 [transition-timing-function:var(--ease-smart)]",
+          "fixed inset-0 z-40 min-[1120px]:hidden bg-papper transition-opacity duration-500 [transition-timing-function:var(--ease-smart)]",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         )}
       >
