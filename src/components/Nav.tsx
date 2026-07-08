@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { to: "/projekt", label: "Projekt" },
-  { to: "/foretag", label: "För företag" },
+  { to: "/foretag", label: "Företag" },
   { to: "/smaarty", label: "Smaarty" },
   { to: "/om-oss", label: "Om oss" },
   { to: "/kalkylator", label: "Kalkylator" },
@@ -32,17 +32,21 @@ export function Nav() {
             "pl-5 pr-2 py-2 shadow-[0_1px_0_rgba(11,61,46,0.04)]",
           )}
         >
-          <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-skogsgron">
+          <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-skogsgron whitespace-nowrap">
             <img src="/brand/logo-stamp-ink.png" alt="" className="h-9 w-9" />
             <span>SmartKlimat</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div
+            className="hidden min-[1120px]:flex items-center"
+            style={{ gap: "clamp(14px, 2vw, 32px)" }}
+          >
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
-                className="rounded-full px-3.5 py-2 text-sm text-skogsgron/80 transition-colors hover:text-skogsgron hover:bg-mintpapper"
+                className="whitespace-nowrap rounded-full px-3.5 py-2 text-skogsgron/80 transition-colors hover:text-skogsgron hover:bg-mintpapper"
+                style={{ fontSize: "clamp(15px, 1.1vw, 17px)" }}
                 activeProps={{ className: "bg-mintpapper text-skogsgron" }}
               >
                 {l.label}
@@ -50,9 +54,9 @@ export function Nav() {
             ))}
             <Link
               to="/plantera"
-              className="group ml-2 inline-flex items-center gap-2.5 rounded-full bg-skogsgron py-1 pl-4 pr-1 text-sm font-medium text-papper transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
+              className="group ml-2 inline-flex items-center gap-2.5 rounded-full bg-skogsgron py-1 pl-4 pr-1 text-sm font-medium text-papper whitespace-nowrap transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
             >
-              <span className="py-1.5">Plantera träd</span>
+              <span className="py-1.5 whitespace-nowrap">Plantera träd</span>
               <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:translate-x-0.5">
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
               </span>
@@ -63,7 +67,7 @@ export function Nav() {
             aria-label={open ? "Stäng meny" : "Öppna meny"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden relative grid h-10 w-10 place-items-center rounded-full bg-skogsgron text-papper"
+            className="min-[1120px]:hidden relative grid h-10 w-10 place-items-center rounded-full bg-skogsgron text-papper"
           >
             <span
               className={cn(
@@ -84,7 +88,7 @@ export function Nav() {
       {/* Helskärms-overlay på mobil */}
       <div
         className={cn(
-          "fixed inset-0 z-40 md:hidden bg-papper transition-opacity duration-500 [transition-timing-function:var(--ease-smart)]",
+          "fixed inset-0 z-40 min-[1120px]:hidden bg-papper transition-opacity duration-500 [transition-timing-function:var(--ease-smart)]",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         )}
       >
