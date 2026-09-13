@@ -15,6 +15,7 @@ import { GrowingTrees } from "@/components/smaarty/GrowingTrees";
 import { KomIgangLoop } from "@/components/smaarty/KomIgangLoop";
 import { RewardShowcase } from "@/components/smaarty/RewardShowcase";
 import { usePlantedTotal } from "@/lib/planted";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -265,7 +266,8 @@ function SmaartyPage() {
   return (
     <>
       {/* HERO */}
-      <section className="overflow-hidden px-6 pb-16 pt-28 md:pb-24 md:pt-36">
+      <section className="relative isolate overflow-hidden px-6 pb-16 pt-28 md:pb-24 md:pt-36">
+        <Bakgrundsliv preset="smaarty-hero" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <div className="text-center md:text-left">
             <FadeUp>
@@ -331,7 +333,8 @@ function SmaartyPage() {
       <KomIgangLoop />
 
       {/* FUNKTIONER */}
-      <section className="px-6 py-24 md:py-32">
+      <section className="relative isolate overflow-hidden px-6 py-24 md:py-32">
+        <Bakgrundsliv preset="single-salvia" />
         <div className="mx-auto max-w-6xl">
           <FadeUp>
             <h2 className="font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
@@ -387,7 +390,8 @@ function SmaartyPage() {
       </section>
 
       {/* FÖR LEDAREN */}
-      <section className="bg-sand px-6 py-24 md:py-32">
+      <section className="relative isolate overflow-hidden bg-sand px-6 py-24 md:py-32">
+        <Bakgrundsliv preset="warm-case" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <div>
             <FadeUp>
@@ -481,7 +485,8 @@ function SmaartyPage() {
       {/* CTA */}
       <section className="px-6 pb-28">
         <FadeUp>
-          <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-skogsgron px-8 py-16 text-center md:py-20">
+          <div className="relative isolate mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-skogsgron px-8 py-16 text-center md:py-20">
+            <Bakgrundsliv preset="dark-glow" />
             <h2 className="font-display text-3xl font-bold tracking-tight text-papper md:text-5xl">
               Starta ert lag.
             </h2>

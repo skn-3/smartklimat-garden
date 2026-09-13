@@ -42,6 +42,7 @@ export const Route = createFileRoute("/projekt/copperbelt")({
       />
       <div className="pt-16 md:pt-24" />
       <StatBand
+        liv
         items={[
           { value: "800+", label: "familjer i projektet" },
           { value: "70", label: "trädarter i återväxten" },

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Eyebrow } from "./Eyebrow";
 import { usePlantedTotal } from "@/lib/planted";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 const KG_PER_TREE_YEAR = 20;
 
-export function PlantedCounter() {
+export function PlantedCounter({ liv = false }: { liv?: boolean }) {
   const planted = usePlantedTotal();
   const ref = useRef<HTMLDivElement | null>(null);
   const [value, setValue] = useState(0);
@@ -49,7 +50,8 @@ export function PlantedCounter() {
   const co2Ton = Math.round((planted * KG_PER_TREE_YEAR) / 1000);
 
   return (
-    <section className="px-6 py-24 md:py-32">
+    <section className={liv ? "relative isolate overflow-hidden px-6 py-24 md:py-32" : "px-6 py-24 md:py-32"}>
+      {liv ? <Bakgrundsliv preset="home-counter" /> : null}
       <div ref={ref} className="mx-auto w-full max-w-6xl">
         <Eyebrow>Planterat, hittills</Eyebrow>
         <p className="mt-6 font-mono text-[clamp(3.2rem,10vw,6.5rem)] font-semibold leading-none tracking-tight text-skogsgron tabular-nums">

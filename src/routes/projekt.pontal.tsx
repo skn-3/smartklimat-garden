@@ -42,6 +42,7 @@ export const Route = createFileRoute("/projekt/pontal")({
       />
       <div className="pt-16 md:pt-24" />
       <StatBand
+        liv
         items={[
           { value: ">80 %", label: "av Atlantskogen borta" },
           { value: "25+", label: "däggdjursarter i kamerafällorna" },

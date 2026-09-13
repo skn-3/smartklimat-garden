@@ -1,17 +1,21 @@
 import { Eyebrow } from "./Eyebrow";
 import { FadeUp } from "./FadeUp";
+import { Bakgrundsliv, type LivPreset } from "./liv/Bakgrundsliv";
 
 export function PageIntro({
   eyebrow,
   title,
   lead,
+  liv,
 }: {
   eyebrow: string;
   title: string;
   lead: string;
+  liv?: LivPreset;
 }) {
   return (
-    <section className="pt-40 pb-24 md:pt-48 md:pb-32 px-6">
+    <section className={liv ? "relative isolate overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32 px-6" : "pt-40 pb-24 md:pt-48 md:pb-32 px-6"}>
+      {liv ? <Bakgrundsliv preset={liv} /> : null}
       <div className="mx-auto w-full max-w-4xl">
         <FadeUp>
           <Eyebrow>{eyebrow}</Eyebrow>

@@ -7,6 +7,7 @@ import { DoubleFrame } from "@/components/DoubleFrame";
 import { CtaButton } from "@/components/CtaButton";
 import { StatBand } from "@/components/projekt/Parts";
 import { usePlantedTotal } from "@/lib/planted";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 export const Route = createFileRoute("/om-oss")({
   head: () => ({
@@ -77,7 +78,8 @@ function OmOssPage() {
       />
 
       {/* MANIFEST */}
-      <section className="px-6 pb-20 pt-4 md:pb-28">
+      <section className="relative isolate overflow-hidden px-6 pb-20 pt-4 md:pb-28">
+        <Bakgrundsliv preset="manifest" />
         <div className="mx-auto w-full max-w-4xl">
           {MANIFEST.map((m, i) => (
             <FadeUp key={m.text} delay={i * 120}>
@@ -123,7 +125,8 @@ function OmOssPage() {
       </section>
 
       {/* TREKLANGEN */}
-      <section className="px-6 pb-16 md:pb-24">
+      <section className="relative isolate overflow-hidden px-6 pb-16 md:pb-24">
+        <Bakgrundsliv preset="triad" />
         <div className="mx-auto grid w-full max-w-6xl gap-6 md:grid-cols-3">
           {TREKLANG.map((t, i) => (
             <FadeUp key={t.eyebrow} delay={i * 80}>
@@ -151,7 +154,8 @@ function OmOssPage() {
       />
 
       {/* KONTAKT */}
-      <section className="px-6 py-24 md:py-32">
+      <section className="relative isolate overflow-hidden px-6 py-24 md:py-32">
+        <Bakgrundsliv preset="contact-card" />
         <div className="mx-auto w-full max-w-6xl">
           <FadeUp>
             <DoubleFrame innerClassName="px-6 py-12 md:px-14 md:py-20">

@@ -42,6 +42,7 @@ export const Route = createFileRoute("/projekt/khasi-hills")({
       />
       <div className="pt-16 md:pt-24" />
       <StatBand
+        liv
         items={[
           { value: "3 150 ha", label: "återställs" },
           { value: "59", label: "byar" },

@@ -40,6 +40,7 @@ function KontaktPage() {
   return (
     <>
       <PageIntro
+        liv="intro-branch"
         eyebrow="Kontakt"
         title="Hör av dig."
         lead="Företag, skola eller bara nyfiken — ett mail räcker. Vi svarar inom kort, och du behöver inte ha alla svar färdiga."

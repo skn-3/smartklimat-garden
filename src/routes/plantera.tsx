@@ -7,6 +7,7 @@ import { TemaVal, type TemaId, isTemaId } from "@/components/plantera/TemaVal";
 import { BevisReveal } from "@/components/plantera/BevisReveal";
 import { FadeUp } from "@/components/FadeUp";
 import { getAttribution, trackEvent } from "@/lib/analytics";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 export const Route = createFileRoute("/plantera")({
   validateSearch: (search: Record<string, unknown>) => {
@@ -70,7 +71,8 @@ const QUICK = [1, 3, 5, 10];
 
 function TackVy({ tema }: { tema?: TemaId }) {
   return (
-    <section className="flex min-h-[70dvh] items-center px-6 pb-28 pt-36">
+    <section className="relative isolate flex min-h-[70dvh] items-center overflow-hidden px-6 pb-28 pt-36">
+      <Bakgrundsliv preset="soft-apricot" />
       <div className="mx-auto max-w-xl text-center">
         {tema ? (
           <FadeUp>
@@ -173,6 +175,7 @@ function PlanteraPage() {
   return (
     <>
       <PageIntro
+        liv="intro-branch"
         eyebrow="Plantera träd"
         title="Plantera skog. På ditt sätt."
         lead="35 kronor per träd, planterat i granskade WeForest-projekt — med ett personligt värdebevis som går att verifiera. Välj hur du vill plantera."

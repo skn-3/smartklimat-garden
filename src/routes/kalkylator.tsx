@@ -99,6 +99,7 @@ function KalkylatorPage() {
   return (
     <>
       <PageIntro
+        liv="intro-leaf"
         eyebrow="Kalkylatorn"
         title="Räkna på ditt avtryck"
         lead="Flyget först — det är oftast den största enskilda posten. Skriv in sträckan, välj klass, och se vad resan väger."

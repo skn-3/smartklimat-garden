@@ -4,15 +4,19 @@ import { DoubleFrame } from "@/components/DoubleFrame";
 import { FadeUp } from "@/components/FadeUp";
 import { Eyebrow } from "@/components/Eyebrow";
 import { CtaButton } from "@/components/CtaButton";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 // Statband — hairline ovan/under, 3–4 stora mono-tal med etiketter.
 export function StatBand({
   items,
+  liv = false,
 }: {
   items: { value: string; label: string }[];
+  liv?: boolean;
 }) {
   return (
-    <section className="px-6">
+    <section className={liv ? "relative isolate overflow-hidden px-6" : "px-6"}>
+      {liv ? <Bakgrundsliv preset="stat-subtle" /> : null}
       <div className="mx-auto w-full max-w-6xl border-y border-linje py-10 md:py-14">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           {items.map((it, i) => (
