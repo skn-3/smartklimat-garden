@@ -96,14 +96,16 @@ export function Nav() {
         )}
       >
         <div className="flex min-h-[100dvh] flex-col items-start justify-center gap-2 px-8 pt-24">
-          <img
-            src="/brand/logo-stamp-ink.png"
-            alt=""
-            className={cn(
-              "mb-6 h-[72px] w-[72px] transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
-              open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
-            )}
-          />
+          <span className="mb-6 h-[72px] w-[72px] overflow-hidden rounded-full transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]">
+            <img
+              src="/brand/logo-stamp-ink.png"
+              alt=""
+              className={cn(
+                "h-full w-full scale-110 object-cover",
+                open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
+              )}
+            />
+          </span>
           {links.map((l, i) => (
             <Link
               key={l.to}
