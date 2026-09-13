@@ -150,7 +150,7 @@ export function ForetagHero() {
         src="/foretag/stam-hero.jpg"
         alt="Mosstäckt stam som svävar mot en mörk studiobakgrund"
         loading="lazy"
-        className="absolute inset-0 h-full w-full scale-110 object-cover object-[center_62%] will-change-transform motion-reduce:transform-none"
+        className="absolute inset-0 h-full w-full scale-110 object-cover object-[center_62%] will-change-transform"
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,20,16,0.88)_0%,rgba(12,20,16,0.72)_42%,rgba(12,20,16,0)_72%)] md:bg-[linear-gradient(90deg,rgba(12,20,16,0.62)_0%,rgba(12,20,16,0.62)_28%,rgba(12,20,16,0)_55%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#0a0f0c_0%,rgba(10,15,12,0)_12%,rgba(10,15,12,0)_90%,#0a0f0c_100%)]" />

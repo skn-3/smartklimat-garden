@@ -23,6 +23,18 @@ export const Route = createFileRoute("/foretag")({
         content:
           "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
       },
+      { property: "og:title", content: "För företag — SmartKlimat" },
+      {
+        property: "og:description",
+        content: "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "För företag — SmartKlimat" },
+      {
+        name: "twitter:description",
+        content: "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+      },
     ],
   }),
   component: ForetagPage,
