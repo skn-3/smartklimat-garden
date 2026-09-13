@@ -104,7 +104,7 @@ function InstagramCard() {
         </span>
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current"><circle cx="5" cy="12" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /></svg>
       </div>
-      <div className="relative aspect-[4/3] overflow-hidden bg-skogsgron">
+      <div className="relative aspect-[4/5] overflow-hidden bg-skogsgron">
         <img src={INSTAGRAM_CARD.image} alt="Babas Burgers samarbete med SmartKlimat" loading="lazy" className="h-full w-full object-cover object-center" />
         <span className="absolute right-3 top-3 text-white"><ReelIcon /></span>
       </div>
