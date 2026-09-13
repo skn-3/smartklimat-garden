@@ -57,9 +57,9 @@ const TREKLANG = [
 ];
 
 const FOTON = [
-  { src: "/projekt/kh-2.jpg", alt: "Plantering i Khasi Hills", rot: "-rotate-2" },
-  { src: "/projekt/cb-4.jpg", alt: "Miomboskog i Copperbelt", rot: "rotate-1" },
-  { src: "/projekt/po-4.jpg", alt: "Fältarbete i Pontal", rot: "rotate-2" },
+  { src: "/projekt/kh-2.jpg", alt: "Plantskola i Khasi Hills, Indien — nya trädplantor inför utplantering", rot: "-rotate-2" },
+  { src: "/projekt/cb-4.jpg", alt: "Miomboskog i Copperbelt, Zambia — återställd skogsmark", rot: "rotate-1" },
+  { src: "/projekt/po-4.jpg", alt: "Fältarbete i Pontal, Brasilien — plantering längs en skogskorridor", rot: "rotate-2" },
 ];
 
 function OmOssPage() {
@@ -107,6 +107,8 @@ function OmOssPage() {
                   src={f.src}
                   alt={f.alt}
                   loading="lazy"
+                  width={640}
+                  height={800}
                   className="aspect-[4/5] w-full object-cover md:aspect-[4/3]"
                 />
               </div>

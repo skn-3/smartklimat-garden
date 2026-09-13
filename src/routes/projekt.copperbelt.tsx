@@ -79,9 +79,9 @@ export const Route = createFileRoute("/projekt/copperbelt")({
       />
       <PhotoMosaic
         images={[
-          { src: "/projekt/cb-3.jpg", alt: "Copperbelt — familjejordbruk" },
-          { src: "/projekt/cb-4.jpg", alt: "Copperbelt — miombo" },
-          { src: "/projekt/cb-5.jpg", alt: "Copperbelt — biodling" },
+          { src: "/projekt/cb-3.jpg", alt: "Familjejordbruk i Copperbelt, Zambia — odling intill återställd skog" },
+          { src: "/projekt/cb-4.jpg", alt: "Miomboskog i Copperbelt, Zambia — träd i återväxt" },
+          { src: "/projekt/cb-5.jpg", alt: "Biodling i Copperbelt, Zambia — bikupor i skogsdungarna" },
         ]}
       />
       <ArtChips

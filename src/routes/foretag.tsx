@@ -308,7 +308,7 @@ function ForetagPage() {
           <div>
             <FadeUp>
               <div className="flex items-center gap-4">
-                <img src="/brand/mockfjards-badge.png" alt="Mockfjärds" className="h-14 w-14 rounded-full" />
+                <img src="/brand/mockfjards-badge.png" alt="Mockfjärds logotyp" width={56} height={56} className="h-14 w-14 rounded-full" />
                 <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8A7A52]">
                   Kundcase · Mockfjärds Fönster
                 </p>

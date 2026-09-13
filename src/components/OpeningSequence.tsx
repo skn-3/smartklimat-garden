@@ -208,6 +208,9 @@ export function OpeningSequence() {
           <img
             src="/opening/film-poster.jpg"
             alt=""
+            fetchPriority="high"
+            width={1920}
+            height={1080}
             className="absolute inset-0 hidden h-full w-full object-cover md:block"
           />
         )}

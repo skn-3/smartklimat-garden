@@ -101,6 +101,8 @@ export function PhotoMosaic({ images }: { images: { src: string; alt: string }[]
                 src={img.src}
                 alt={img.alt}
                 loading="lazy"
+                width={800}
+                height={640}
                 className="h-64 md:h-80 w-full object-cover"
               />
             </div>
@@ -157,6 +159,8 @@ export function ProjectHero({
             <img
               src={image}
               alt=""
+              width={1600}
+              height={1100}
               className="h-[70vh] min-h-[440px] w-full object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-skogsgron/85 via-skogsgron/40 to-transparent" />
@@ -314,6 +318,8 @@ export function ProjectCard({
               src={image}
               alt=""
               loading="lazy"
+              width={800}
+              height={840}
               className="h-64 md:h-full w-full object-cover transition-transform duration-700 [transition-timing-function:var(--ease-smart)] group-hover:scale-[1.03]"
             />
           </div>

@@ -79,9 +79,9 @@ export const Route = createFileRoute("/projekt/khasi-hills")({
       />
       <PhotoMosaic
         images={[
-          { src: "/projekt/kh-2.jpg", alt: "Khasi Hills — plantskola" },
-          { src: "/projekt/kh-3.jpg", alt: "Khasi Hills — landskap" },
-          { src: "/projekt/kh-4.jpg", alt: "Khasi Hills — arbete i fält" },
+          { src: "/projekt/kh-2.jpg", alt: "Plantskola i Khasi Hills, Indien — plantor redo att sättas ut" },
+          { src: "/projekt/kh-3.jpg", alt: "Molnskogslandskap i Khasi Hills, Meghalaya i Indien" },
+          { src: "/projekt/kh-4.jpg", alt: "Bybor planterar träd i fält i Khasi Hills, Indien" },
         ]}
       />
       <ArtChips

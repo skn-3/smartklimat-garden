@@ -78,6 +78,8 @@ function TackVy({ tema }: { tema?: TemaId }) {
               <img
                 src={`/kort/kort-${tema}.jpg`}
                 alt=""
+                width={480}
+                height={600}
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>

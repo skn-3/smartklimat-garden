@@ -80,9 +80,9 @@ export const Route = createFileRoute("/projekt/pontal")({
       />
       <PhotoMosaic
         images={[
-          { src: "/projekt/po-4.jpg", alt: "Pontal — korridor" },
-          { src: "/projekt/po-5.jpg", alt: "Pontal — plantskola" },
-          { src: "/projekt/po-2.jpg", alt: "Pontal — Atlantskog" },
+          { src: "/projekt/po-4.jpg", alt: "Skogskorridor i Pontal, Brasilien — nyplanterad länk mellan reservat" },
+          { src: "/projekt/po-5.jpg", alt: "Plantskola i Pontal, Brasilien — plantor av inhemska trädarter" },
+          { src: "/projekt/po-2.jpg", alt: "Atlantskog i Pontal, Brasilien — tät ursprunglig regnskog" },
         ]}
       />
       <ArtChips
