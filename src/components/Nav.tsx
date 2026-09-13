@@ -33,7 +33,7 @@ export function Nav() {
           )}
         >
           <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-skogsgron whitespace-nowrap">
-            <img src="/brand/logo-stamp-ink.png" alt="" className="h-9 w-9" />
+            <img src="/brand/logo-stamp-ink.png" alt="" className="h-10 w-10" />
             <span>SmartKlimat</span>
           </Link>
 
