@@ -40,7 +40,7 @@ export function AvtryckTeaser() {
           </h2>
           <p className="mt-4 max-w-md text-lg leading-relaxed text-salvia">
             Fem frågor om vardagen — mat, bil, flyg, boende, shopping — och du ser
-            din storleksordning mot Sverigesnittet. Inga konton, inga pekpinnar.
+            din storleksordning mot Sverigesnittet. Inget konto behövs, och ingen pekar finger.
           </p>
           <Link to="/avtryck"
             className="mt-7 inline-flex items-center gap-2 rounded-full bg-guld px-8 py-4 font-display font-bold text-skogsgron transition-transform hover:scale-[1.03]">

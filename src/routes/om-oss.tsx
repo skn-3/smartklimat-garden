@@ -6,6 +6,7 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { DoubleFrame } from "@/components/DoubleFrame";
 import { CtaButton } from "@/components/CtaButton";
 import { StatBand } from "@/components/projekt/Parts";
+import { usePlantedTotal } from "@/lib/planted";
 
 export const Route = createFileRoute("/om-oss")({
   head: () => ({
@@ -63,12 +64,16 @@ const FOTON = [
 ];
 
 function OmOssPage() {
+  const planted = usePlantedTotal();
+  const plantedLabel = planted.toLocaleString("sv-SE").replace(/\u00a0/g, " ");
+  const co2TonsLabel = Math.round((planted * 20) / 1000).toLocaleString("sv-SE").replace(/\u00a0/g, " ");
+
   return (
     <>
       <PageIntro
         eyebrow="Om oss"
         title="Ett gemensamt klimat"
-        lead="Alla har ett ekologiskt avtryck. Frågan är vilket avtryck du vill sätta. Vi byggde SmartKlimat för att svaret ska kunna vara inbyggt i vardagen — inte tillagt efteråt."
+        lead="Alla har ett ekologiskt avtryck. Frågan är vilket avtryck du vill sätta. Vi byggde SmartKlimat för att svaret ska sitta i vardagen från början."
       />
 
       {/* MANIFEST */}
@@ -138,8 +143,8 @@ function OmOssPage() {
 
       <StatBand
         items={[
-          { value: "27 393", label: "Träd planterade" },
-          { value: "548 ton", label: "Koldioxid bundet, varje år" },
+          { value: plantedLabel, label: "Träd planterade" },
+          { value: `${co2TonsLabel} ton`, label: "Koldioxid bundet, varje år" },
           { value: "3", label: "Projekt på tre kontinenter" },
           { value: "1", label: "Gemensamt klimat" },
         ]}
@@ -162,10 +167,10 @@ function OmOssPage() {
                 </div>
                 <div className="flex flex-wrap gap-3 md:justify-end">
                   <a
-                    href="mailto:kontakt@smartklimat.org"
+                    href="mailto:hej@smartklimat.org"
                     className="group inline-flex items-center gap-3 rounded-full pl-6 pr-1.5 py-1.5 text-sm font-medium transition-transform duration-500 [transition-timing-function:var(--ease-smart)] bg-skogsgron text-papper hover:-translate-y-0.5"
                   >
-                    <span className="py-2 font-mono text-xs">kontakt@smartklimat.org</span>
+                    <span className="py-2 font-mono text-xs">hej@smartklimat.org</span>
                     <span className="grid h-9 w-9 place-items-center rounded-full bg-smaragd text-white transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:translate-x-0.5">
                       <ArrowRight className="h-4 w-4" strokeWidth={2} />
                     </span>
