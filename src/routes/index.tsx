@@ -166,7 +166,7 @@ function Home() {
           </FadeUp>
           <FadeUp delay={60}>
             <p className="mt-4 max-w-2xl font-sans text-lg text-skogsgron/80">
-              Femton kort, femton tillfällen — alla planterar riktiga träd i Zambia
+              Tio kort, tio tillfällen — alla planterar riktiga träd i Zambia
             </p>
           </FadeUp>
 

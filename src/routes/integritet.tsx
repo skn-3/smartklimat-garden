@@ -5,8 +5,8 @@ export const Route = createFileRoute("/integritet")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/integritet" }],
     meta: [
-      { title: "Integritetspolicy — SmartKlimat" },
-      { name: "description", content: "Så hanterar SmartKlimat dina personuppgifter — i klarspråk. Vad vi sparar, varför, vem som ser vad och hur du raderar." },
+      { title: "Integritetspolicy — så hanterar vi dina uppgifter | SmartKlimat" },
+      { name: "description", content: "Så hanterar SmartKlimat dina personuppgifter i klarspråk: vad vi sparar, varför, hur länge, vem som ser vad och hur du får uppgifterna raderade." },
     ],
   }),
   component: IntegritetPage,

@@ -4,15 +4,15 @@ import { FadeUp } from "@/components/FadeUp";
 
 export const Route = createFileRoute("/villkor")({
   head: () => ({
-    links: [{ rel: "canonical", href: "/villkor" }],
+    links: [{ rel: "canonical", href: "https://smartklimat.org/villkor" }],
     meta: [
-      { title: "Köpvillkor — SmartKlimat" },
+      { title: "Köpvillkor — träd, betalning och ångerrätt | SmartKlimat" },
       {
         name: "description",
         content:
-          "Köpvillkor för SmartKlimat: priser, betalning, leverans av digitalt värdebevis, ångerrätt och månadsplantering.",
+          "SmartKlimats köpvillkor: pris per träd, betalning, leverans av digitalt värdebevis, ångerrätt, månadsplantering och reklamation. I klarspråk.",
       },
-      { property: "og:title", content: "Köpvillkor — SmartKlimat" },
+      { property: "og:title", content: "Köpvillkor — träd, betalning och ångerrätt | SmartKlimat" },
       { property: "og:url", content: "/villkor" },
       { property: "og:description", content: "Köpvillkor för SmartKlimat." },
     ],

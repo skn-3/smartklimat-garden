@@ -11,13 +11,13 @@ export const Route = createFileRoute("/om-oss")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/om-oss" }],
     meta: [
-      { title: "Om oss — SmartKlimat" },
+      { title: "Om SmartKlimat — klimatkompensation byggd som teknik" },
       {
         name: "description",
         content:
-          "Ett gemensamt klimat. Vi planterar, mäter och visar varje träd — klimatkompensation byggd som teknik.",
+          "Vi planterar, mäter och visar varje träd. Läs om varför SmartKlimat bygger klimatkompensation som teknik, med spårbara värdebevis i stället för löften.",
       },
-      { property: "og:title", content: "Om oss — SmartKlimat" },
+      { property: "og:title", content: "Om SmartKlimat — klimatkompensation byggd som teknik" },
       {
         property: "og:description",
         content:

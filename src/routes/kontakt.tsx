@@ -7,12 +7,12 @@ export const Route = createFileRoute("/kontakt")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/kontakt" }],
     meta: [
-      { title: "Kontakt — SmartKlimat" },
+      { title: "Kontakta SmartKlimat — företag, skola eller nyfiken" },
       {
         name: "description",
-        content: "Företag, skola eller nyfiken — ett mail räcker. Vi svarar inom kort.",
+        content: "Hör av dig till SmartKlimat om partnerskap, klimatkompensation för företag eller Smaarty för skolor och lag. Ett mail räcker, vi svarar inom kort.",
       },
-      { property: "og:title", content: "Kontakt — SmartKlimat" },
+      { property: "og:title", content: "Kontakta SmartKlimat — företag, skola eller nyfiken" },
       { property: "og:url", content: "/kontakt" },
     ],
   }),

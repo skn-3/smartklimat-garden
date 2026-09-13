@@ -8,9 +8,9 @@ export const Route = createFileRoute("/avtryck")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/avtryck" }],
     meta: [
-      { title: "Ditt klimatavtryck — SmartKlimat" },
-      { name: "description", content: "Fem frågor om din vardag — mat, bil, flyg, boende och shopping — och du ser ditt ungefärliga klimatavtryck, jämfört med Sverigesnittet. Sen planterar du för resten." },
-      { property: "og:title", content: "Ditt klimatavtryck — SmartKlimat" },
+      { title: "Klimatavtryck — testa ditt på fem frågor | SmartKlimat" },
+      { name: "description", content: "Fem frågor om mat, bil, flyg, boende och shopping, sedan ser du ditt ungefärliga klimatavtryck jämfört med Sverigesnittet — och vad träden väger upp." },
+      { property: "og:title", content: "Klimatavtryck — testa ditt på fem frågor | SmartKlimat" },
       { property: "og:description", content: "Fem frågor. Ett ärligt svar. Räkna ut ditt klimatavtryck och se vad träden kan väga upp." },
       { property: "og:url", content: "/avtryck" },
     ],

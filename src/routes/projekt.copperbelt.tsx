@@ -17,13 +17,13 @@ export const Route = createFileRoute("/projekt/copperbelt")({
     links: [{ rel: "canonical", href: "https://smartklimat.org/projekt/copperbelt" }],
     scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hem", "item": "https://smartklimat.org/"}, {"@type": "ListItem", "position": 2, "name": "Projekt", "item": "https://smartklimat.org/projekt"}, {"@type": "ListItem", "position": 3, "name": "Copperbelt", "item": "https://smartklimat.org/projekt/copperbelt"}]}` }],
     meta: [
-      { title: "Copperbelt — Våra projekt — SmartKlimat" },
+      { title: "Copperbelt, Zambia — trädplantering med WeForest | SmartKlimat" },
       {
         name: "description",
         content:
-          "Bondens skog: familjer återställer miombo, och bikupor i dungarna gör skogen till inkomst.",
+          "Familjer i Zambia återställer miombo-skogen, och bikupor i dungarna gör skogen till inkomst. Se WeForest-projektet och plantera träd i Copperbelt.",
       },
-      { property: "og:title", content: "Copperbelt — Våra projekt — SmartKlimat" },
+      { property: "og:title", content: "Copperbelt, Zambia — trädplantering med WeForest | SmartKlimat" },
       {
         property: "og:description",
         content: "Familjer i Zambia återställer miombo — bikupor gör skogen till inkomst.",

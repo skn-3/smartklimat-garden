@@ -17,23 +17,23 @@ export const Route = createFileRoute("/foretag")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/foretag" }],
     meta: [
-      { title: "För företag — SmartKlimat" },
+      { title: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
         name: "description",
         content:
-          "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+          "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
       },
-      { property: "og:title", content: "För företag — SmartKlimat" },
+      { property: "og:title", content: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
         property: "og:description",
-        content: "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+        content: "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "För företag — SmartKlimat" },
+      { name: "twitter:title", content: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
         name: "twitter:description",
-        content: "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+        content: "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
       },
     ],
   }),

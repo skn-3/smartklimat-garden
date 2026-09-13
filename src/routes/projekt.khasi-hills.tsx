@@ -17,13 +17,13 @@ export const Route = createFileRoute("/projekt/khasi-hills")({
     links: [{ rel: "canonical", href: "https://smartklimat.org/projekt/khasi-hills" }],
     scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hem", "item": "https://smartklimat.org/"}, {"@type": "ListItem", "position": 2, "name": "Projekt", "item": "https://smartklimat.org/projekt"}, {"@type": "ListItem", "position": 3, "name": "Khasi Hills", "item": "https://smartklimat.org/projekt/khasi-hills"}]}` }],
     meta: [
-      { title: "Khasi Hills — Våra projekt — SmartKlimat" },
+      { title: "Khasi Hills, Indien — trädplantering med WeForest | SmartKlimat" },
       {
         name: "description",
         content:
-          "Urfolksstyrd restaurering av molnskog i Meghalaya — en av jordens våtaste och artrikaste trakter.",
+          "Urfolksstyrd restaurering av molnskog i Meghalaya, en av jordens våtaste trakter. Se hur WeForest-projektet växer och plantera träd i Khasi Hills.",
       },
-      { property: "og:title", content: "Khasi Hills — Våra projekt — SmartKlimat" },
+      { property: "og:title", content: "Khasi Hills, Indien — trädplantering med WeForest | SmartKlimat" },
       {
         property: "og:description",
         content: "Urfolksstyrd restaurering av molnskog i Meghalaya.",
