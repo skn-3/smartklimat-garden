@@ -120,6 +120,73 @@
     transform 700ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
+@keyframes liv-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(24px, -18px, 0) scale(1.06); }
+}
+@keyframes liv-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-22px, 20px, 0) scale(0.96); }
+}
+@keyframes liv-drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.98); }
+  50% { transform: translate3d(18px, -22px, 0) scale(1.05); }
+}
+@keyframes liv-sway {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -14px, 0) rotate(9deg); }
+}
+
+@utility liv-grain {
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.72'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+@utility liv-blob {
+  filter: blur(75px);
+}
+@utility liv-blob-salvia {
+  background: radial-gradient(circle, color-mix(in srgb, var(--salvia) 45%, transparent), transparent 70%);
+}
+@utility liv-blob-guld {
+  background: radial-gradient(circle, color-mix(in srgb, var(--guld) 28%, transparent), transparent 70%);
+}
+@utility liv-blob-apricot {
+  background: radial-gradient(circle, color-mix(in srgb, var(--apricot-2) 30%, transparent), transparent 70%);
+}
+@utility liv-blob-salvia-dark {
+  background: radial-gradient(circle, color-mix(in srgb, var(--salvia) 14%, transparent), transparent 70%);
+}
+@utility liv-blob-apricot-dark {
+  background: radial-gradient(circle, color-mix(in srgb, var(--apricot-2) 22%, transparent), transparent 70%);
+}
+@utility liv-drift-a {
+  animation: liv-drift-a 26s ease-in-out infinite;
+}
+@utility liv-drift-b {
+  animation: liv-drift-b 30s ease-in-out -8s infinite;
+}
+@utility liv-drift-c {
+  animation: liv-drift-c 24s ease-in-out -14s infinite;
+}
+@utility liv-sway-a {
+  animation: liv-sway 14s ease-in-out infinite;
+}
+@utility liv-sway-b {
+  animation: liv-sway 16s ease-in-out -7s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liv-drift-a,
+  .liv-drift-b,
+  .liv-drift-c,
+  .liv-sway-a,
+  .liv-sway-b {
+    animation: none;
+  }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
