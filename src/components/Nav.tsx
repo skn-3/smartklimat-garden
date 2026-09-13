@@ -33,7 +33,9 @@ export function Nav() {
           )}
         >
           <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-skogsgron whitespace-nowrap">
-            <img src="/brand/logo-stamp-ink.png" alt="" className="h-10 w-10" />
+            <span className="h-10 w-10 overflow-hidden rounded-full">
+              <img src="/brand/logo-stamp-ink.png" alt="" className="h-full w-full scale-110 object-cover" />
+            </span>
             <span>SmartKlimat</span>
           </Link>
 
@@ -94,14 +96,16 @@ export function Nav() {
         )}
       >
         <div className="flex min-h-[100dvh] flex-col items-start justify-center gap-2 px-8 pt-24">
-          <img
-            src="/brand/logo-stamp-ink.png"
-            alt=""
-            className={cn(
-              "mb-6 h-[72px] w-[72px] transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
-              open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
-            )}
-          />
+          <span className="mb-6 h-[72px] w-[72px] overflow-hidden rounded-full">
+            <img
+              src="/brand/logo-stamp-ink.png"
+              alt=""
+              className={cn(
+                "h-full w-full scale-110 object-cover transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
+                open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
+              )}
+            />
+          </span>
           {links.map((l, i) => (
             <Link
               key={l.to}
