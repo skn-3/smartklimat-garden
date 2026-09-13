@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
+import babasPostAsset from "@/assets/babas-post.png.asset.json";
+import babasProfileAsset from "@/assets/babas-profile.png.asset.json";
 
 const PLACEHOLDER_CARD = {
   eyebrow: "DITT FÖRETAG HÄR",
@@ -15,9 +17,9 @@ const INSTAGRAM_CARD = {
   location: "Stockholm",
   likes: "2 647 gilla-markeringar",
   comments: "Visa alla 153 kommentarer",
-  caption: "Ett träd för varje såld burgare — tillsammans med SmartKlimat",
-  // TODO: Johannes laddar upp den riktiga stillbilden som public/foretag/babas-still.jpg.
-  image: "/foretag/stam-hero.jpg",
+  caption: "Den största problematiken vi på Babas har gemensamt med omvärlden, är just mat industrin påverkan på klimatet..",
+  image: babasPostAsset.url,
+  profileImage: babasProfileAsset.url,
   href: "https://www.instagram.com/reel/BwZNUWsAiAu/",
 } as const;
 
@@ -93,8 +95,8 @@ function InstagramCard() {
       className="block w-full overflow-hidden rounded-2xl bg-white text-[#111] shadow-[0_24px_70px_rgba(0,0,0,0.28)] transition-[transform,box-shadow] duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-1 hover:shadow-[0_32px_84px_rgba(0,0,0,0.38)]"
     >
       <div className="flex items-center gap-2.5 px-3.5 py-3">
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#DCBE6E,#1E9E6A)] p-[1.5px]">
-          <span className="grid h-full w-full place-items-center rounded-full bg-skogsgron font-display text-[9px] font-bold text-white">BB</span>
+        <span className="grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-full border border-linje bg-white">
+          <img src={INSTAGRAM_CARD.profileImage} alt="Babas logotyp" className="h-full w-full object-contain" />
         </span>
         <span className="min-w-0 flex-1 leading-tight">
           <span className="flex items-center gap-1 text-[13px] font-bold">{INSTAGRAM_CARD.username}<VerifiedIcon /></span>
@@ -102,7 +104,7 @@ function InstagramCard() {
         </span>
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current"><circle cx="5" cy="12" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /></svg>
       </div>
-      <div className="relative aspect-[4/3] overflow-hidden bg-skogsgron">
+      <div className="relative aspect-[4/5] overflow-hidden bg-skogsgron">
         <img src={INSTAGRAM_CARD.image} alt="Babas Burgers samarbete med SmartKlimat" loading="lazy" className="h-full w-full object-cover object-center" />
         <span className="absolute right-3 top-3 text-white"><ReelIcon /></span>
       </div>
