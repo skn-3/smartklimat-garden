@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
+import { Grain } from "@/components/liv/Grain";
 import { GTM_ID, captureAttribution, initConsentDefaults } from "@/lib/analytics";
 
 function NotFoundComponent() {
@@ -170,6 +171,7 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
+      <Grain />
       <CookieBanner />
     </QueryClientProvider>
   );

@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@tanstack/react-router";
 import { Utensils, Car, Plane, Home, ShoppingBag } from "lucide-react";
 import { FadeUp } from "@/components/FadeUp";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,8 +32,9 @@ export function AvtryckTeaser() {
   }, []);
 
   return (
-    <section ref={ref} className="overflow-hidden bg-skogsgron px-6 py-20 md:py-24">
-      <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2">
+    <section ref={ref} className="relative isolate overflow-hidden bg-skogsgron px-6 py-20 md:py-24">
+      <Bakgrundsliv preset="dark-teaser" />
+      <div className="relative mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2">
         <FadeUp>
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-guld">Nytt · Avtryckskalkylatorn</p>
           <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-papper md:text-4xl">

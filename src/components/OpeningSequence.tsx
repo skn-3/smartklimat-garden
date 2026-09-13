@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Eyebrow } from "./Eyebrow";
 import { CtaButton } from "./CtaButton";
 import { usePlantedTotal } from "@/lib/planted";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -231,9 +232,10 @@ export function OpeningSequence() {
           ref={heroRef}
           data-opening-hero
           data-faded="false"
-          className="absolute inset-0"
+          className="isolate absolute inset-0 overflow-hidden"
           style={{ opacity: `min(1, calc((0.13 - var(--p, 0)) * 12))` as unknown as number, willChange: "opacity" }}
         >
+          <Bakgrundsliv preset="home-hero" />
           <video
             src="/opening/loop.mp4"
             poster="/opening/loop-poster.jpg"

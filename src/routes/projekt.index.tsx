@@ -38,6 +38,7 @@ function ProjektOversikt() {
   return (
     <>
       <PageIntro
+        liv="intro-branch"
         eyebrow="Våra projekt"
         title="Skogen vi bygger"
         lead="Tre platser, en partner i fält. Khasi Hills, Copperbelt och Pontal — där lokalsamhällena driver arbetet. Varje träd går in i ett av projekten nedan."
