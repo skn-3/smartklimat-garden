@@ -14,17 +14,17 @@ export const Route = createFileRoute("/kalkylator")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/kalkylator" }],
     meta: [
-      { title: "Kalkylatorn — SmartKlimat" },
+      { title: "CO2-kalkylator — räkna ut ditt klimatavtryck | SmartKlimat" },
       {
         name: "description",
         content:
-          "Räkna på flygresans koldioxid och plantera träden som binder den. Myclimate-metodik, öppna siffror.",
+          "Räkna ut flygresans koldioxidutsläpp med myclimate-metodik och se hur många träd som binder dem. Öppna siffror, gratis kalkylator på svenska.",
       },
-      { property: "og:title", content: "Kalkylatorn — SmartKlimat" },
+      { property: "og:title", content: "CO2-kalkylator — räkna ut ditt klimatavtryck | SmartKlimat" },
       {
         property: "og:description",
         content:
-          "Räkna på flygresans koldioxid och plantera träden som binder den. Myclimate-metodik, öppna siffror.",
+          "Räkna ut flygresans koldioxidutsläpp med myclimate-metodik och se hur många träd som binder dem. Öppna siffror, gratis kalkylator på svenska.",
       },
       { property: "og:url", content: "/kalkylator" },
     ],

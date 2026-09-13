@@ -17,16 +17,16 @@ export const Route = createFileRoute("/projekt/pontal")({
     links: [{ rel: "canonical", href: "https://smartklimat.org/projekt/pontal" }],
     scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hem", "item": "https://smartklimat.org/"}, {"@type": "ListItem", "position": 2, "name": "Projekt", "item": "https://smartklimat.org/projekt"}, {"@type": "ListItem", "position": 3, "name": "Pontal", "item": "https://smartklimat.org/projekt/pontal"}]}` }],
     meta: [
-      { title: "Pontal — Våra projekt — SmartKlimat" },
+      { title: "Pontal, Brasilien — trädplantering med WeForest | SmartKlimat" },
       {
         name: "description",
         content:
-          "Korridorer genom Atlantskogen som återkopplar reservaten — för tamarin, jaguar och myrslok.",
+          "Korridorer genom Atlantskogen som återkopplar reservaten för tamarin, jaguar och myrslok. Se WeForest-projektet i Pontal och plantera träd där.",
       },
-      { property: "og:title", content: "Pontal — Våra projekt — SmartKlimat" },
+      { property: "og:title", content: "Pontal, Brasilien — trädplantering med WeForest | SmartKlimat" },
       {
         property: "og:description",
-        content: "Korridorer genom Atlantskogen som återkopplar reservaten — för tamarin, jaguar och myrslok.",
+        content: "Korridorer genom Atlantskogen som återkopplar reservaten för tamarin, jaguar och myrslok. Se WeForest-projektet i Pontal och plantera träd där.",
       },
       { property: "og:image", content: "/projekt/po-3.jpg" },
       { property: "og:url", content: "/projekt/pontal" },
@@ -80,9 +80,9 @@ export const Route = createFileRoute("/projekt/pontal")({
       />
       <PhotoMosaic
         images={[
-          { src: "/projekt/po-4.jpg", alt: "Pontal — korridor" },
-          { src: "/projekt/po-5.jpg", alt: "Pontal — plantskola" },
-          { src: "/projekt/po-2.jpg", alt: "Pontal — Atlantskog" },
+          { src: "/projekt/po-4.jpg", alt: "Skogskorridor i Pontal, Brasilien — nyplanterad länk mellan reservat" },
+          { src: "/projekt/po-5.jpg", alt: "Plantskola i Pontal, Brasilien — plantor av inhemska trädarter" },
+          { src: "/projekt/po-2.jpg", alt: "Atlantskog i Pontal, Brasilien — tät ursprunglig regnskog" },
         ]}
       />
       <ArtChips

@@ -54,7 +54,7 @@ export function TemaVal({ theme, setTheme, halsning, setHalsning }: {
                 active ? "border-smaragd bg-mintpapper ring-1 ring-smaragd" : "border-linje bg-white hover:border-smaragd/50"}`}>
               {hasImage ? (
                 <span className="block aspect-[4/5] w-full overflow-hidden rounded-xl bg-mintpapper">
-                  <img src={t.bild} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  <img src={t.bild} alt="" loading="lazy" width={160} height={200} className="h-full w-full object-cover" />
                 </span>
               ) : (
                 <span className="flex aspect-[4/5] w-full items-center justify-center rounded-xl" style={{ background: `${t.prick}12` }}>

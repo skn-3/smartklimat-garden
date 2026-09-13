@@ -20,15 +20,15 @@ export const Route = createFileRoute("/plantera")({
   },
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/plantera" }],
-    scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@type": "Product", "name": "Trädplantering med värdebevis", "description": "Plantera träd i granskade WeForest-projekt. Spårbart värdebevis i ditt eller mottagarens namn.", "image": "https://smartklimat.org/og.png", "brand": {"@type": "Brand", "name": "SmartKlimat"}, "offers": {"@type": "Offer", "price": "35", "priceCurrency": "SEK", "availability": "https://schema.org/InStock", "url": "https://smartklimat.org/plantera"}}` }],
+    scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@type": "Product", "name": "Trädplantering med personligt värdebevis", "description": "Plantera träd i granskade WeForest-projekt. Spårbart värdebevis i ditt eller mottagarens namn.", "image": "https://smartklimat.org/og.png", "brand": {"@type": "Brand", "name": "SmartKlimat"}, "offers": {"@type": "Offer", "price": "35", "priceCurrency": "SEK", "availability": "https://schema.org/InStock", "url": "https://smartklimat.org/plantera"}}` }],
     meta: [
-      { title: "Plantera träd — SmartKlimat" },
+      { title: "Plantera träd — från 35 kr med personligt värdebevis | SmartKlimat" },
       {
         name: "description",
         content:
-          "Plantera själv, bli månadsplanterare eller ge bort träd i gåva. 35 kr per träd, planterat i granskade WeForest-projekt.",
+          "Plantera träd från 35 kr i granskade WeForest-projekt. Du får ett personligt värdebevis med egen verifieringslänk — som gåva eller månadsplantering.",
       },
-      { property: "og:title", content: "Plantera träd — SmartKlimat" },
+      { property: "og:title", content: "Plantera träd — från 35 kr med personligt värdebevis | SmartKlimat" },
       { property: "og:url", content: "/plantera" },
     ],
   }),
@@ -78,6 +78,8 @@ function TackVy({ tema }: { tema?: TemaId }) {
               <img
                 src={`/kort/kort-${tema}.jpg`}
                 alt=""
+                width={480}
+                height={600}
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>

@@ -10,13 +10,13 @@ export const Route = createFileRoute("/projekt/")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/projekt" }],
     meta: [
-      { title: "Våra projekt — SmartKlimat" },
+      { title: "Trädplanteringsprojekt med WeForest — Indien, Zambia, Brasilien" },
       {
         name: "description",
         content:
-          "Tre WeForest-projekt där lokalsamhällena driver arbetet — Khasi Hills i Meghalaya, Copperbelt i Zambia och Pontal i Brasilien.",
+          "Tre WeForest-projekt där lokalsamhällena driver arbetet: molnskogen i Khasi Hills, miombon i Copperbelt och vilddjurskorridorerna i Pontal. Se dem här.",
       },
-      { property: "og:title", content: "Våra projekt — SmartKlimat" },
+      { property: "og:title", content: "Trädplanteringsprojekt med WeForest — Indien, Zambia, Brasilien" },
       {
         property: "og:description",
         content:

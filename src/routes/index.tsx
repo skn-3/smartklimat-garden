@@ -12,7 +12,12 @@ import { ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    links: [{ rel: "canonical", href: "https://smartklimat.org/" }],
+    links: [
+      { rel: "canonical", href: "https://smartklimat.org/" },
+      // LCP: öppningssekvensens första bildruta — förladdas per skärmstorlek.
+      { rel: "preload", as: "image", href: "/opening/loop-poster.jpg", media: "(min-width: 768px)" },
+      { rel: "preload", as: "image", href: "/opening/loop-m-poster.jpg", media: "(max-width: 767px)" },
+    ],
     meta: [
       { title: "SmartKlimat — plantera träd med spårbart värdebevis" },
       { name: "description", content: "Plantera träd i granskade WeForest-projekt — från 35 kr, med spårbart värdebevis i ditt namn. Klimatkompensation byggd som teknik, för privatpersoner och företag." },
@@ -50,9 +55,9 @@ const STEPS = [
 ];
 
 const PROJECTS = [
-  { to: "/projekt/khasi-hills" as const, img: "/projekt/kh-1.jpg", land: "Indien", title: "Khasi Hills", line: "Urfolksstyrd molnskog i molnens boning." },
-  { to: "/projekt/copperbelt" as const, img: "/projekt/cb-1.jpg", land: "Zambia", title: "Copperbelt", line: "Bondens skog — bin, honung och miombo." },
-  { to: "/projekt/pontal" as const, img: "/projekt/po-1.jpg", land: "Brasilien", title: "Pontal", line: "Vilddjurens korridorer genom Atlantskogen." },
+  { to: "/projekt/khasi-hills" as const, img: "/projekt/kh-1.jpg", alt: "Molnskog i Khasi Hills, Indien — WeForest-projekt", land: "Indien", title: "Khasi Hills", line: "Urfolksstyrd molnskog i molnens boning." },
+  { to: "/projekt/copperbelt" as const, img: "/projekt/cb-1.jpg", alt: "Miomboskog i Copperbelt, Zambia — WeForest-projekt", land: "Zambia", title: "Copperbelt", line: "Bondens skog — bin, honung och miombo." },
+  { to: "/projekt/pontal" as const, img: "/projekt/po-1.jpg", alt: "Atlantskog i Pontal, Brasilien — WeForest-projekt", land: "Brasilien", title: "Pontal", line: "Vilddjurens korridorer genom Atlantskogen." },
 ];
 
 const TRUST = [
@@ -166,7 +171,7 @@ function Home() {
           </FadeUp>
           <FadeUp delay={60}>
             <p className="mt-4 max-w-2xl font-sans text-lg text-skogsgron/80">
-              Femton kort, femton tillfällen — alla planterar riktiga träd i Zambia
+              Tio kort, tio tillfällen — alla planterar riktiga träd i Zambia
             </p>
           </FadeUp>
 
@@ -182,8 +187,10 @@ function Home() {
                   <div className="overflow-hidden rounded-2xl bg-white shadow-sm shadow-linje/50 transition-all duration-500 [transition-timing-function:var(--ease-smart)] group-hover:-translate-y-1 group-hover:scale-[1.02] group-hover:shadow-md">
                     <img
                       src={`/kort/kort-${kort.slug}.jpg`}
-                      alt={kort.label}
+                      alt={`Gåvokort: ${kort.label} — plantera träd i present`}
                       loading="lazy"
+                      width={480}
+                      height={600}
                       className="aspect-[4/5] w-full object-cover"
                     />
                   </div>
@@ -273,8 +280,10 @@ function Home() {
                       <div className="overflow-hidden">
                         <img
                           src={p.img}
-                          alt={p.title}
+                          alt={p.alt}
                           loading="lazy"
+                          width={800}
+                          height={600}
                           className="aspect-[4/3] w-full object-cover transition-transform duration-700 [transition-timing-function:var(--ease-smart)] group-hover:scale-[1.05]"
                         />
                       </div>

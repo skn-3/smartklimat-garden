@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="mt-24 bg-skogsgron text-papper">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <img src="/brand/logo-stamp-vit.png" alt="SmartKlimat" className="h-16 w-16 md:h-20 md:w-20" />
+        <img src="/brand/logo-stamp-vit.png" alt="SmartKlimat" width={80} height={80} className="h-16 w-16 md:h-20 md:w-20" />
 
         <p className="mt-8 max-w-3xl font-display text-3xl font-bold leading-[1.05] tracking-tight md:text-5xl">
           Tänk smart, vi har ett gemensamt klimat.

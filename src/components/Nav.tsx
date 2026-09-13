@@ -34,7 +34,7 @@ export function Nav() {
         >
           <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-skogsgron whitespace-nowrap">
             <span className="h-10 w-10 overflow-hidden rounded-full">
-              <img src="/brand/logo-stamp-ink.png" alt="" className="h-full w-full scale-110 object-cover" />
+              <img src="/brand/logo-stamp-ink.png" alt="" width={40} height={40} className="h-full w-full scale-110 object-cover" />
             </span>
             <span>SmartKlimat</span>
           </Link>
@@ -100,6 +100,8 @@ export function Nav() {
             <img
               src="/brand/logo-stamp-ink.png"
               alt=""
+              width={72}
+              height={72}
               className={cn(
                 "h-full w-full scale-110 object-cover transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
                 open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",

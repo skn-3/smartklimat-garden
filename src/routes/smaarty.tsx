@@ -24,11 +24,11 @@ export const Route = createFileRoute("/smaarty")({
     links: [{ rel: "canonical", href: "https://smartklimat.org/smaarty" }],
     scripts: [{ type: "application/ld+json", children: `{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Vad kan man vinna?", "acceptedAnswer": {"@type": "Answer", "text": "Poängen spenderas i appens belöningsbutik — priser som fotbollar och biobiljetter. Lagledaren delar ut dem på träningen."}}, {"@type": "Question", "name": "Vad kostar ett träd?", "acceptedAnswer": {"@type": "Answer", "text": "35 kronor. Köparen betalar digitalt i samband med köpet, och varje träd ger säljaren poäng i appen."}}, {"@type": "Question", "name": "Hur får barnen sina konton?", "acceptedAnswer": {"@type": "Answer", "text": "Du som ledare skapar laget och bjuder in säljarna — barnen registrerar sig aldrig själva. Kontot är knutet till laget."}}, {"@type": "Question", "name": "Vad får den som köper?", "acceptedAnswer": {"@type": "Answer", "text": "Ett personligt värdebevis med sitt namn, antal träd och en egen verifieringslänk — går att visa upp, dela och kontrollera."}}, {"@type": "Question", "name": "Var planteras träden?", "acceptedAnswer": {"@type": "Answer", "text": "I våra tre WeForest-projekt: molnskogen i Khasi Hills, miombon i Copperbelt och vilddjurskorridorerna i Pontal. Klassen kan läsa om alla tre under Projekt."}}, {"@type": "Question", "name": "Behövs kontanter eller Swish-lappar?", "acceptedAnswer": {"@type": "Answer", "text": "Nej. Inga kontanter, inga lappar, inget att räkna ihop efteråt — allt sker digitalt i appen."}}, {"@type": "Question", "name": "Hur följer laget hur det går?", "acceptedAnswer": {"@type": "Answer", "text": "Topplistan uppdateras live, veckans hjälte koras varje vecka, och lagets samlade skog tickar uppåt för alla att se."}}, {"@type": "Question", "name": "Vilka uppgifter hanteras?", "acceptedAnswer": {"@type": "Answer", "text": "Ledaren skapar lagets konton — barnen registrerar aldrig sig själva. Vid ett köp används mottagarens namn och e-post för att skapa och skicka värdebeviset, inget mer."}}]}` }],
     meta: [
-      { title: "Smaarty — för lag och skolor — SmartKlimat" },
+      { title: "Smaarty — lagförsäljning som planterar träd | SmartKlimat" },
       {
         name: "description",
         content:
-          "Insamlingen som planterar skog. Barnen säljer träd, köparna får bevis, laget ser skogen växa.",
+          "Insamling för lag och skolor utan kontanter och lappar. Barnen säljer träd digitalt, köparen får värdebevis och laget ser sin skog växa live.",
       },
     ],
   }),

@@ -68,8 +68,10 @@ function PlaceholderCard() {
     >
       <img
         src={PLACEHOLDER_CARD.image}
-        alt="Mosstäckt stam mot mörk bakgrund"
+        alt="Mosstäckt trädstam mot mörk bakgrund"
         loading="lazy"
+        width={640}
+        height={420}
         className="h-[210px] w-full rounded-2xl object-cover"
         style={{ objectPosition: PLACEHOLDER_CARD.imagePosition }}
       />
@@ -96,7 +98,7 @@ function InstagramCard() {
     >
       <div className="flex items-center gap-2.5 px-3.5 py-3">
         <span className="grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-full border border-linje bg-white">
-          <img src={INSTAGRAM_CARD.profileImage} alt="Babas logotyp" className="h-full w-full scale-110 object-contain" />
+          <img src={INSTAGRAM_CARD.profileImage} alt="Babas Burgers logotyp" width={96} height={96} className="h-full w-full scale-110 object-contain" />
         </span>
         <span className="min-w-0 flex-1 leading-tight">
           <span className="flex items-center gap-1 text-[13px] font-bold">{INSTAGRAM_CARD.username}<VerifiedIcon /></span>
@@ -105,7 +107,7 @@ function InstagramCard() {
         <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current"><circle cx="5" cy="12" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /></svg>
       </div>
       <div className="relative aspect-[4/5] overflow-hidden bg-skogsgron">
-        <img src={INSTAGRAM_CARD.image} alt="Babas Burgers samarbete med SmartKlimat" loading="lazy" className="h-full w-full object-cover object-center" />
+        <img src={INSTAGRAM_CARD.image} alt="Babas Burgers inlägg om samarbetet med SmartKlimat" loading="lazy" width={640} height={640} className="h-full w-full object-cover object-center" />
         <span className="absolute right-3 top-3 text-white"><ReelIcon /></span>
       </div>
       <div className="px-3.5 pb-4 pt-3">
@@ -150,8 +152,10 @@ export function ForetagHero() {
       <img
         ref={imageRef}
         src="/foretag/stam-hero.jpg"
-        alt="Mosstäckt stam som svävar mot en mörk studiobakgrund"
+        alt="Mosstäckt trädstam som svävar mot en mörk studiobakgrund"
         loading="lazy"
+        width={2000}
+        height={1333}
         className="absolute inset-0 h-full w-full scale-110 object-cover object-[center_62%] will-change-transform"
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,20,16,0.88)_0%,rgba(12,20,16,0.72)_42%,rgba(12,20,16,0)_72%)] md:bg-[linear-gradient(90deg,rgba(12,20,16,0.62)_0%,rgba(12,20,16,0.62)_28%,rgba(12,20,16,0)_55%)]" />

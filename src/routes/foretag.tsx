@@ -16,24 +16,38 @@ import { ForetagHero } from "@/components/ForetagHero";
 export const Route = createFileRoute("/foretag")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/foretag" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map(([q, a]) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        }),
+      },
+    ],
     meta: [
-      { title: "För företag — SmartKlimat" },
+      { title: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
         name: "description",
         content:
-          "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+          "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
       },
-      { property: "og:title", content: "För företag — SmartKlimat" },
+      { property: "og:title", content: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
         property: "og:description",
-        content: "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+        content: "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "För företag — SmartKlimat" },
+      { name: "twitter:title", content: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
         name: "twitter:description",
-        content: "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+        content: "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
       },
     ],
   }),
@@ -308,7 +322,7 @@ function ForetagPage() {
           <div>
             <FadeUp>
               <div className="flex items-center gap-4">
-                <img src="/brand/mockfjards-badge.png" alt="Mockfjärds" className="h-14 w-14 rounded-full" />
+                <img src="/brand/mockfjards-badge.png" alt="Mockfjärds logotyp" width={56} height={56} className="h-14 w-14 rounded-full" />
                 <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8A7A52]">
                   Kundcase · Mockfjärds Fönster
                 </p>
