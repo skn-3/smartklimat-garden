@@ -12,6 +12,7 @@ import { PipelineJourney } from "@/components/foretag/PipelineJourney";
 import { PlantedCounter } from "@/components/PlantedCounter";
 import { VarforTrad } from "@/components/VarforTrad";
 import { ForetagHero } from "@/components/ForetagHero";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 export const Route = createFileRoute("/foretag")({
   head: () => ({
@@ -199,8 +200,9 @@ function ForetagPage() {
   return (
     <>
       {/* HERO */}
-      <section className="overflow-hidden px-6 pb-16 pt-28 md:pb-24 md:pt-36">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+      <section className="relative isolate overflow-hidden px-6 pb-16 pt-28 md:pb-24 md:pt-36">
+        <Bakgrundsliv preset="foretag-hero" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <div className="text-center md:text-left">
             <FadeUp>
               <Eyebrow>För företag</Eyebrow>
@@ -238,8 +240,9 @@ function ForetagPage() {
       <ForetagHero />
 
       {/* STATEMENT */}
-      <section className="px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-3xl text-center">
+      <section className="relative isolate overflow-hidden px-6 py-24 md:py-32">
+        <Bakgrundsliv preset="single-salvia" />
+        <div className="relative mx-auto max-w-3xl text-center">
           <FadeUp>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-skogsgron md:text-5xl">
               Era kunder litar inte på löften.
@@ -317,8 +320,9 @@ function ForetagPage() {
       </section>
 
       {/* KUNDCASE */}
-      <section className="bg-sand px-6 py-24 md:py-32">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_1fr]">
+      <section className="relative isolate overflow-hidden bg-sand px-6 py-24 md:py-32">
+        <Bakgrundsliv preset="warm-case" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_1fr]">
           <div>
             <FadeUp>
               <div className="flex items-center gap-4">
@@ -495,7 +499,8 @@ function ForetagPage() {
       {/* CTA */}
       <section className="px-6 pb-28">
         <FadeUp>
-          <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-skogsgron px-8 py-16 text-center md:py-20">
+          <div className="relative isolate mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-skogsgron px-8 py-16 text-center md:py-20">
+            <Bakgrundsliv preset="dark-glow" />
             <h2 className="font-display text-3xl font-bold tracking-tight text-papper md:text-5xl">
               Berätta om ert flöde.
             </h2>

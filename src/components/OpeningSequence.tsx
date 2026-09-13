@@ -235,7 +235,6 @@ export function OpeningSequence() {
           className="isolate absolute inset-0 overflow-hidden"
           style={{ opacity: `min(1, calc((0.13 - var(--p, 0)) * 12))` as unknown as number, willChange: "opacity" }}
         >
-          <Bakgrundsliv preset="home-hero" />
           <video
             src="/opening/loop.mp4"
             poster="/opening/loop-poster.jpg"
@@ -251,7 +250,8 @@ export function OpeningSequence() {
           <div className="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-mintpapper via-mintpapper/70 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-mintpapper/60 to-transparent" />
 
-          <div className="relative z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-start px-6 pt-28 text-center md:pt-36">
+          <div className="relative isolate z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-start overflow-hidden px-6 pt-28 text-center md:pt-36">
+            <Bakgrundsliv preset="home-hero" />
             <Eyebrow>Tech möter klimat</Eyebrow>
             <h1 className="mt-6 font-display font-bold leading-[0.95] tracking-tight text-skogsgron text-[clamp(3rem,12vw,7.5rem)]">
               Tänk smart.

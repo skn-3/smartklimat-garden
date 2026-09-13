@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Utensils, Car, Plane, Home, ShoppingBag, ArrowLeft, RotateCcw } from "lucide-react";
 import { FadeUp } from "@/components/FadeUp";
 import { cn } from "@/lib/utils";
+import { Bakgrundsliv } from "@/components/liv/Bakgrundsliv";
 
 export const Route = createFileRoute("/avtryck")({
   head: () => ({
@@ -75,8 +76,9 @@ function AvtryckPage() {
 
   return (
     <>
-      <section className="bg-papper px-6 pb-24 pt-32 md:pt-40">
-        <div className="mx-auto max-w-2xl">
+      <section className="relative isolate overflow-hidden bg-papper px-6 pb-24 pt-32 md:pt-40">
+        <Bakgrundsliv preset="intro-leaf" />
+        <div className="relative mx-auto max-w-2xl">
           <FadeUp>
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-smaragd-dark">Avtryckskalkylatorn</p>
             <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-skogsgron md:text-5xl">
