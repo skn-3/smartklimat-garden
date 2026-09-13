@@ -171,8 +171,8 @@ export function ForetagHero() {
         </div>
 
         <div className="mt-14 flex flex-col gap-6 md:absolute md:inset-y-0 md:right-6 md:mt-0 md:w-[43%]">
-          <div className="order-1 w-full md:absolute md:right-0 md:top-[9%] md:w-[66%]"><InstagramCard /></div>
-          <div className="order-2 w-full md:absolute md:bottom-[9%] md:left-0 md:w-[62%]"><PlaceholderCard /></div>
+          <div className="order-1 w-full md:absolute md:bottom-[7%] md:left-0 md:w-[66%]"><InstagramCard /></div>
+          <div className="order-2 w-full md:absolute md:right-0 md:top-[9%] md:w-[62%]"><PlaceholderCard /></div>
         </div>
       </div>
     </section>

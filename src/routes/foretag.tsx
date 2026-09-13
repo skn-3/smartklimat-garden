@@ -11,6 +11,7 @@ import { CertCard, CaseFlow } from "@/components/foretag/scenes";
 import { PipelineJourney } from "@/components/foretag/PipelineJourney";
 import { PlantedCounter } from "@/components/PlantedCounter";
 import { VarforTrad } from "@/components/VarforTrad";
+import { ForetagHero } from "@/components/ForetagHero";
 
 export const Route = createFileRoute("/foretag")({
   head: () => ({
@@ -207,6 +208,8 @@ function ForetagPage() {
           </FadeUp>
         </div>
       </section>
+
+      <ForetagHero />
 
       {/* STATEMENT */}
       <section className="px-6 py-24 md:py-32">
