@@ -84,6 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Klimatkompensation, byggd som teknik. Varje affär hos våra partners planterar träd.",
       },
       { property: "og:site_name", content: "SmartKlimat" },
+      { property: "og:locale", content: "sv_SE" },
       { property: "og:type", content: "website" },
       { property: "og:title", content: "SmartKlimat — Tänk smart, vi har ett gemensamt klimat" },
       {
@@ -110,6 +111,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       // Google Fonts — laddas via <link>, aldrig @import (bryter Lightning CSS-bygget).
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
