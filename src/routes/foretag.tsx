@@ -11,6 +11,7 @@ import { CertCard, CaseFlow } from "@/components/foretag/scenes";
 import { PipelineJourney } from "@/components/foretag/PipelineJourney";
 import { PlantedCounter } from "@/components/PlantedCounter";
 import { VarforTrad } from "@/components/VarforTrad";
+import { ForetagHero } from "@/components/ForetagHero";
 
 export const Route = createFileRoute("/foretag")({
   head: () => ({
@@ -21,6 +22,18 @@ export const Route = createFileRoute("/foretag")({
         name: "description",
         content:
           "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+      },
+      { property: "og:title", content: "För företag — SmartKlimat" },
+      {
+        property: "og:description",
+        content: "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "För företag — SmartKlimat" },
+      {
+        name: "twitter:description",
+        content: "Gör varje affär till skog. Automatisk klimatkompensation med spårbara värdebevis till era kunder.",
       },
     ],
   }),
@@ -207,6 +220,8 @@ function ForetagPage() {
           </FadeUp>
         </div>
       </section>
+
+      <ForetagHero />
 
       {/* STATEMENT */}
       <section className="px-6 py-24 md:py-32">
