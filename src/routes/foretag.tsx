@@ -16,6 +16,20 @@ import { ForetagHero } from "@/components/ForetagHero";
 export const Route = createFileRoute("/foretag")({
   head: () => ({
     links: [{ rel: "canonical", href: "https://smartklimat.org/foretag" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map(([q, a]) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        }),
+      },
+    ],
     meta: [
       { title: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
