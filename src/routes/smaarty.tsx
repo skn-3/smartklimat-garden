@@ -268,7 +268,7 @@ function SmaartyPage() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden px-6 pb-16 pt-28 md:pb-24 md:pt-36">
         <Bakgrundsliv preset="smaarty-hero" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <div className="text-center md:text-left">
             <FadeUp>
               <Eyebrow>Smaarty · För lag och skolor</Eyebrow>
@@ -335,7 +335,7 @@ function SmaartyPage() {
       {/* FUNKTIONER */}
       <section className="relative isolate overflow-hidden px-6 py-24 md:py-32">
         <Bakgrundsliv preset="single-salvia" />
-        <div className="relative mx-auto max-w-6xl">
+        <div className="mx-auto max-w-6xl">
           <FadeUp>
             <h2 className="font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
               Byggd för att kännas som ett spel.
@@ -392,7 +392,7 @@ function SmaartyPage() {
       {/* FÖR LEDAREN */}
       <section className="relative isolate overflow-hidden bg-sand px-6 py-24 md:py-32">
         <Bakgrundsliv preset="warm-case" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <div>
             <FadeUp>
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8A7A52]">Ur ledarens sits</p>

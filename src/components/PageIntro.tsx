@@ -16,7 +16,7 @@ export function PageIntro({
   return (
     <section className={liv ? "relative isolate overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32 px-6" : "pt-40 pb-24 md:pt-48 md:pb-32 px-6"}>
       {liv ? <Bakgrundsliv preset={liv} /> : null}
-      <div className="relative mx-auto w-full max-w-4xl">
+      <div className="mx-auto w-full max-w-4xl">
         <FadeUp>
           <Eyebrow>{eyebrow}</Eyebrow>
         </FadeUp>

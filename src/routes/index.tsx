@@ -91,7 +91,7 @@ function Home() {
       {/* TVÅ VÄGAR IN */}
       <section className="relative isolate overflow-hidden px-6 py-24 md:py-32">
         <Bakgrundsliv preset="home-paths" />
-        <div className="relative mx-auto w-full max-w-6xl">
+        <div className="mx-auto w-full max-w-6xl">
           <FadeUp>
             <Eyebrow>Två vägar in</Eyebrow>
           </FadeUp>
@@ -225,7 +225,7 @@ function Home() {
 
       <section className="relative isolate overflow-hidden bg-mintpapper/60 px-6 py-24 md:py-32">
         <Bakgrundsliv preset="home-steps" />
-        <div className="relative mx-auto w-full max-w-6xl">
+        <div className="mx-auto w-full max-w-6xl">
           <FadeUp>
             <h2 className="font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
               Från vardag till skog, i tre steg.

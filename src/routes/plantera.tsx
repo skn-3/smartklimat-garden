@@ -73,7 +73,7 @@ function TackVy({ tema }: { tema?: TemaId }) {
   return (
     <section className="relative isolate flex min-h-[70dvh] items-center overflow-hidden px-6 pb-28 pt-36">
       <Bakgrundsliv preset="soft-apricot" />
-      <div className="relative mx-auto max-w-xl text-center">
+      <div className="mx-auto max-w-xl text-center">
         {tema ? (
           <FadeUp>
             <div className="mx-auto w-48 overflow-hidden rounded-2xl bg-white shadow-md shadow-linje/60">

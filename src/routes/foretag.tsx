@@ -202,7 +202,7 @@ function ForetagPage() {
       {/* HERO */}
       <section className="relative isolate overflow-hidden px-6 pb-16 pt-28 md:pb-24 md:pt-36">
         <Bakgrundsliv preset="foretag-hero" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <div className="text-center md:text-left">
             <FadeUp>
               <Eyebrow>För företag</Eyebrow>
@@ -242,7 +242,7 @@ function ForetagPage() {
       {/* STATEMENT */}
       <section className="relative isolate overflow-hidden px-6 py-24 md:py-32">
         <Bakgrundsliv preset="single-salvia" />
-        <div className="relative mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <FadeUp>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-skogsgron md:text-5xl">
               Era kunder litar inte på löften.
@@ -322,7 +322,7 @@ function ForetagPage() {
       {/* KUNDCASE */}
       <section className="relative isolate overflow-hidden bg-sand px-6 py-24 md:py-32">
         <Bakgrundsliv preset="warm-case" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_1fr]">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_1fr]">
           <div>
             <FadeUp>
               <div className="flex items-center gap-4">

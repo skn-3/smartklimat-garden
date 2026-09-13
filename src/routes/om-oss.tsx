@@ -80,7 +80,7 @@ function OmOssPage() {
       {/* MANIFEST */}
       <section className="relative isolate overflow-hidden px-6 pb-20 pt-4 md:pb-28">
         <Bakgrundsliv preset="manifest" />
-        <div className="relative mx-auto w-full max-w-4xl">
+        <div className="mx-auto w-full max-w-4xl">
           {MANIFEST.map((m, i) => (
             <FadeUp key={m.text} delay={i * 120}>
               <p
@@ -127,7 +127,7 @@ function OmOssPage() {
       {/* TREKLANGEN */}
       <section className="relative isolate overflow-hidden px-6 pb-16 md:pb-24">
         <Bakgrundsliv preset="triad" />
-        <div className="relative mx-auto grid w-full max-w-6xl gap-6 md:grid-cols-3">
+        <div className="mx-auto grid w-full max-w-6xl gap-6 md:grid-cols-3">
           {TREKLANG.map((t, i) => (
             <FadeUp key={t.eyebrow} delay={i * 80}>
               <DoubleFrame innerClassName="h-full p-7">
@@ -156,7 +156,7 @@ function OmOssPage() {
       {/* KONTAKT */}
       <section className="relative isolate overflow-hidden px-6 py-24 md:py-32">
         <Bakgrundsliv preset="contact-card" />
-        <div className="relative mx-auto w-full max-w-6xl">
+        <div className="mx-auto w-full max-w-6xl">
           <FadeUp>
             <DoubleFrame innerClassName="px-6 py-12 md:px-14 md:py-20">
               <div className="grid gap-10 md:grid-cols-[1.3fr_1fr] md:items-end">

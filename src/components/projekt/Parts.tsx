@@ -17,7 +17,7 @@ export function StatBand({
   return (
     <section className={liv ? "relative isolate overflow-hidden px-6" : "px-6"}>
       {liv ? <Bakgrundsliv preset="stat-subtle" /> : null}
-      <div className="relative mx-auto w-full max-w-6xl border-y border-linje py-10 md:py-14">
+      <div className="mx-auto w-full max-w-6xl border-y border-linje py-10 md:py-14">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           {items.map((it, i) => (
             <FadeUp key={i} delay={i * 60}>

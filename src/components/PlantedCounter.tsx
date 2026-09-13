@@ -52,7 +52,7 @@ export function PlantedCounter({ liv = false }: { liv?: boolean }) {
   return (
     <section className={liv ? "relative isolate overflow-hidden px-6 py-24 md:py-32" : "px-6 py-24 md:py-32"}>
       {liv ? <Bakgrundsliv preset="home-counter" /> : null}
-      <div ref={ref} className="relative mx-auto w-full max-w-6xl">
+      <div ref={ref} className="mx-auto w-full max-w-6xl">
         <Eyebrow>Planterat, hittills</Eyebrow>
         <p className="mt-6 font-mono text-[clamp(3.2rem,10vw,6.5rem)] font-semibold leading-none tracking-tight text-skogsgron tabular-nums">
           {value.toLocaleString("sv-SE").replace(/\u00a0/g, " ")}
