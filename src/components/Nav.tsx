@@ -98,7 +98,7 @@ export function Nav() {
             src="/brand/logo-stamp-ink.png"
             alt=""
             className={cn(
-              "mb-6 h-16 w-16 transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
+              "mb-6 h-[72px] w-[72px] transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
               open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
             )}
           />
