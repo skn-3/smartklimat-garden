@@ -12,7 +12,12 @@ import { ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    links: [{ rel: "canonical", href: "https://smartklimat.org/" }],
+    links: [
+      { rel: "canonical", href: "https://smartklimat.org/" },
+      // LCP: öppningssekvensens första bildruta — förladdas per skärmstorlek.
+      { rel: "preload", as: "image", href: "/opening/loop-poster.jpg", media: "(min-width: 768px)" },
+      { rel: "preload", as: "image", href: "/opening/loop-m-poster.jpg", media: "(max-width: 767px)" },
+    ],
     meta: [
       { title: "SmartKlimat — plantera träd med spårbart värdebevis" },
       { name: "description", content: "Plantera träd i granskade WeForest-projekt — från 35 kr, med spårbart värdebevis i ditt namn. Klimatkompensation byggd som teknik, för privatpersoner och företag." },

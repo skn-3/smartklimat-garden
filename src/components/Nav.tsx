@@ -100,6 +100,8 @@ export function Nav() {
             <img
               src="/brand/logo-stamp-ink.png"
               alt=""
+              width={72}
+              height={72}
               className={cn(
                 "h-full w-full scale-110 object-cover transition-[transform,opacity] duration-700 [transition-timing-function:var(--ease-smart)]",
                 open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
