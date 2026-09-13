@@ -77,7 +77,7 @@ const TEMANKORT = [
   { slug: "semester", label: "Semester" },
   { slug: "resa", label: "Resa" },
   { slug: "hjartans", label: "Hjärtans" },
-  { slug: "environment", label: "Environment" },
+  { slug: "environment", label: "Miljö" },
 ];
 
 function Home() {

@@ -14,6 +14,7 @@ import { FlowPulse } from "@/components/FlowPulse";
 import { GrowingTrees } from "@/components/smaarty/GrowingTrees";
 import { KomIgangLoop } from "@/components/smaarty/KomIgangLoop";
 import { RewardShowcase } from "@/components/smaarty/RewardShowcase";
+import { usePlantedTotal } from "@/lib/planted";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -226,8 +227,10 @@ const FEATURES = [
   { eb: "Nivåer", title: "Från skott till fullvuxet träd", body: "Varje sålt träd växer säljarens eget nivåträd — fem stadier, från första skottet till fullvuxen krona." },
   { eb: "Märken", title: "Grön tumme, Skogshjälte, Eldsjäl", body: "Riktiga milstolpar med riktiga namn — och Veckans hjälte koras i varje lag, varje vecka." },
   { eb: "Laget", title: "Veckomål som ger alla bonus", body: "När laget når målet tillsammans får varenda säljare poäng. Helg-sprintar håller tempot uppe." },
-  { eb: "Belöningar", title: "Poängen blir priser", body: "Säljarna löser in sina poäng mot belöningar direkt i appen — fotbollar, biobiljetter, sånt som känns på riktigt." },
+  { eb: "Belöningar", title: "Poängen blir priser", body: "Säljarna löser in sina poäng mot belöningar direkt i appen — fotbollar, biobiljetter, sånt man faktiskt vill ha." },
 ];
+
+const SMAARTY_MAILTO = "mailto:hej@smartklimat.org?subject=Smaarty%20%E2%80%94%20lag%2Fskola&body=Hej!%0A%0AVi%20vill%20starta%20en%20insamling.%0A%0ALag%2Fklass%3A%0AAntal%20s%C3%A4ljare%20(ungef%C3%A4r)%3A%0A";
 
 const LEADER_POINTS = [
   "Full översikt över försäljning och aktivitet, live",
@@ -256,6 +259,9 @@ const STARTPAKET = [
 ];
 
 function SmaartyPage() {
+  const planted = usePlantedTotal();
+  const plantedLabel = planted.toLocaleString("sv-SE").replace(/\u00a0/g, " ");
+
   return (
     <>
       {/* HERO */}
@@ -277,7 +283,18 @@ function SmaartyPage() {
             </FadeUp>
             <FadeUp delay={180}>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
-                <CtaButton to="/smaarty" variant="primary">Starta ert lag</CtaButton>
+                <a
+                  href={SMAARTY_MAILTO}
+                  className="group inline-flex items-center gap-3 rounded-full bg-skogsgron py-1.5 pl-6 pr-1.5 text-sm font-medium text-papper transition-[transform,opacity] duration-500 [transition-timing-function:var(--ease-smart)] will-change-transform hover:-translate-y-0.5"
+                >
+                  <span className="py-2">Starta ert lag</span>
+                  <span className="grid h-9 w-9 place-items-center rounded-full bg-smaragd text-white transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:translate-x-0.5">
+                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                </a>
                 <CtaButton to="/projekt" variant="secondary">Våra projekt</CtaButton>
               </div>
             </FadeUp>
@@ -419,7 +436,7 @@ function SmaartyPage() {
                 {[
                   ["20 kg", "koldioxid per träd, varje år"],
                   ["3", "projekt på tre kontinenter"],
-                  ["27 393", "träd planterade hittills"],
+                  [plantedLabel, "träd planterade hittills"],
                 ].map(([a, b]) => (
                   <div key={a}>
                     <p className="font-mono text-4xl font-semibold text-skogsgron tabular-nums">{a}</p>
@@ -431,7 +448,7 @@ function SmaartyPage() {
           </FadeUp>
           <FadeUp delay={140}>
             <p className="mx-auto mt-10 max-w-xl text-skogsgron/70">
-              Träden går in i samma projekt som allt annat vi planterar — Khasi Hills, Copperbelt och Pontal. Klassen kan läsa om sitt.
+              Träden går in i samma projekt som allt annat vi planterar — Khasi Hills, Copperbelt och Pontal. Varje klass kan läsa om sitt projekt.
             </p>
           </FadeUp>
           <FadeUp delay={180}>
@@ -473,7 +490,7 @@ function SmaartyPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="mailto:kontakt@smartklimat.org?subject=Smaarty%20%E2%80%94%20lag%2Fskola&body=Hej!%0A%0AVi%20vill%20starta%20en%20insamling.%0A%0ALag%2Fklass%3A%0AAntal%20s%C3%A4ljare%20(ungef%C3%A4r)%3A%0A"
+                href={SMAARTY_MAILTO}
                 className="rounded-full bg-smaragd px-7 py-3 text-[15px] font-medium text-white transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
               >
                 Kom igång

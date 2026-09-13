@@ -145,7 +145,7 @@ function FlowCalc() {
             Räknat på ett träd per affär och 20 kg koldioxid per träd och år. Fler träd per affär? Vi skalar.
           </p>
           <a
-            href={`mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=${body}`}
+            href={`mailto:hej@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=${body}`}
             className="rounded-full bg-skogsgron px-7 py-3 text-[15px] font-medium text-papper transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
           >
             Skicka volymen till oss
@@ -218,7 +218,7 @@ function ForetagPage() {
             <FadeUp delay={180}>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
                 <a
-                  href="mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=Hej!%0A%0AVi är intresserade av ett upplägg.%0A%0AFöretag:%0AAffärer per månad (ungefär):%0A"
+                  href="mailto:hej@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=Hej!%0A%0AVi är intresserade av ett upplägg.%0A%0AFöretag:%0AAffärer per månad (ungefär):%0A"
                   className="rounded-full bg-skogsgron px-7 py-3 text-[15px] font-medium text-papper transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
                 >
                   Boka ett samtal
@@ -504,7 +504,7 @@ function ForetagPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="mailto:kontakt@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=Hej!%0A%0AVi är intresserade av ett upplägg.%0A%0AFöretag:%0AAffärer per månad (ungefär):%0A"
+                href="mailto:hej@smartklimat.org?subject=F%C3%B6retagsuppl%C3%A4gg%20%E2%80%94%20SmartKlimat&body=Hej!%0A%0AVi är intresserade av ett upplägg.%0A%0AFöretag:%0AAffärer per månad (ungefär):%0A"
                 className="rounded-full bg-smaragd px-7 py-3 text-[15px] font-medium text-white transition-transform duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-0.5"
               >
                 Boka ett samtal

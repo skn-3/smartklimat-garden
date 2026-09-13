@@ -102,7 +102,7 @@ function TackVy({ tema }: { tema?: TemaId }) {
         <FadeUp delay={180}>
           <p className="mx-auto mt-3 max-w-md text-sm text-skogsgron/55">
             Köpte du en gåva skapas beviset i mottagarens namn. Ingen mail inom några minuter? Titta i
-            skräpposten eller skriv till kontakt@smartklimat.org.
+            skräpposten eller skriv till hej@smartklimat.org.
           </p>
         </FadeUp>
         <FadeUp delay={240}>
@@ -135,7 +135,7 @@ function PlanteraPage() {
     const body = encodeURIComponent(
       `Hej!\n\nJag vill plantera ${qty} träd (${label}).\n\nSäg till mig när kassan öppnar.\n`,
     );
-    return `mailto:kontakt@smartklimat.org?subject=${encodeURIComponent("Plantera träd — SmartKlimat")}&body=${body}`;
+    return `mailto:hej@smartklimat.org?subject=${encodeURIComponent("Plantera träd — SmartKlimat")}&body=${body}`;
   }, [mode, qty]);
 
   async function pay(method: "stripe" | "swish") {

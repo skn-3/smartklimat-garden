@@ -50,7 +50,7 @@ const SECTIONS = [
     title: "Pris och betalning",
     body: (
       <>
-        Priset är <strong>35 kr per träd</strong> inklusive moms. Betalning sker via Stripe med kort, Apple
+        Priset är <strong>35 kr per träd</strong>. Betalning sker via Stripe med kort, Apple
         Pay eller Google Pay. Alla priser anges i svenska kronor och är inklusive moms.
       </>
     ),
@@ -115,7 +115,7 @@ function VillkorPage() {
     <>
       <PageIntro
         eyebrow="Köpvillkor"
-        title="Tydliga villkor för ett grönare köp."
+        title="Villkoren, rakt upp och ner."
         lead="Här hittar du information om priser, betalning, leverans, ångerrätt och kontaktuppgifter."
       />
 
@@ -136,7 +136,7 @@ function VillkorPage() {
 
           <FadeUp delay={SECTIONS.length * 60}>
             <p className="mt-16 text-sm text-skogsgron/55">
-              Senast uppdaterad: {new Date().toLocaleDateString("sv-SE")}.
+              Senast uppdaterad: 13 september 2026.
             </p>
           </FadeUp>
         </div>

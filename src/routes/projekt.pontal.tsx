@@ -66,7 +66,7 @@ export const Route = createFileRoute("/projekt/pontal")({
       <NarrativeSection
         eyebrow="Apan som kom tillbaka"
         title="Den svarta lejontamarinen troddes utdöd i 65 år."
-        body="När den återupptäcktes 1970 var populationen nere på omkring 100 individer. Idag lever runt 1 800 svarta lejontamariner i Atlantskogen, och 2008 flyttades arten från akut hotad till hotad — ett av få rovdjursnära comeback-fall i regionen."
+        body="När den återupptäcktes 1970 var populationen nere på omkring 100 individer. Idag lever runt 1 800 svarta lejontamariner i Atlantskogen, och 2008 flyttades arten från akut hotad till hotad — en av regionens få riktiga comeback-arter."
       />
       <StoryCard
         eyebrow="Ur fältet"

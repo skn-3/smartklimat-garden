@@ -20,6 +20,7 @@ export function Footer() {
               <Link to="/smaarty" className="hover:text-papper">Smaarty</Link>
               <Link to="/om-oss" className="hover:text-papper">Om oss</Link>
               <Link to="/kalkylator" className="hover:text-papper">Kalkylator</Link>
+              <Link to="/avtryck" className="hover:text-papper">Avtryck</Link>
               <Link to="/kontakt" className="hover:text-papper">Kontakt</Link>
               <Link to="/villkor" className="hover:text-papper">Köpvillkor</Link>
               <Link to="/integritet" className="hover:text-papper">Integritet</Link>
@@ -28,8 +29,8 @@ export function Footer() {
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-papper/40">Kontakt</p>
             <div className="mt-4 flex flex-col gap-2.5 text-sm">
-              <a href="mailto:kontakt@smartklimat.org" className="text-papper/70 hover:text-papper">
-                kontakt@smartklimat.org
+              <a href="mailto:hej@smartklimat.org" className="text-papper/70 hover:text-papper">
+                hej@smartklimat.org
               </a>
               <p className="text-papper/50">Stockholm, Sverige</p>
             </div>

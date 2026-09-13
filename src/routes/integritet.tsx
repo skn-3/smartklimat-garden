@@ -35,7 +35,7 @@ function IntegritetPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#52705F]">
             Vi planterar träd — inte kakor i onödan. Här är exakt vad vi sparar, varför vi sparar det,
-            vem som ser vad och hur du får bort det. Senast uppdaterad 5 juli 2026.
+            vem som ser vad och hur du får bort det. Senast uppdaterad 13 september 2026.
           </p>
         </FadeUp>
 
@@ -81,8 +81,9 @@ function IntegritetPage() {
             eller Swish-nummer till föreningen).
           </p>
           <p>
-            Sajten använder inga marknadsföringscookies och ingen reklamspårning. De kakor som förekommer
-            behövs för inloggning och betalning.
+            Sajten sätter inga analys- eller marknadsföringscookies utan ditt samtycke. Nödvändiga kakor används
+            för drift och betalning. Väljer du att tillåta analys eller marknadsföring i kakbannern kan Google
+            Analytics och annonsplattformar sätta kakor. Ditt val gäller direkt och kan ändras när som helst.
           </p>
         </Avsnitt>
 
