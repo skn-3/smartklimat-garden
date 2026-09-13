@@ -96,7 +96,7 @@ function InstagramCard() {
     >
       <div className="flex items-center gap-2.5 px-3.5 py-3">
         <span className="grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-full border border-linje bg-white">
-          <img src={INSTAGRAM_CARD.profileImage} alt="Babas logotyp" className="h-full w-full object-contain" />
+          <img src={INSTAGRAM_CARD.profileImage} alt="Babas logotyp" className="h-full w-full scale-110 object-contain" />
         </span>
         <span className="min-w-0 flex-1 leading-tight">
           <span className="flex items-center gap-1 text-[13px] font-bold">{INSTAGRAM_CARD.username}<VerifiedIcon /></span>
