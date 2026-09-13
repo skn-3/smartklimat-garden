@@ -165,7 +165,7 @@ function AvtryckPage() {
                       sig fri: minska där du kan, och plantera för det som blir kvar. Varje träd räknas, bokstavligen.
                     </p>
                     <div className="mt-5 flex flex-wrap gap-3">
-                      <Link to="/plantera" search={{}}
+                      <Link to="/plantera" search={{ antal: undefined, tack: undefined, tema: undefined }}
                         className="inline-flex items-center gap-2 rounded-full bg-skogsgron px-7 py-3.5 font-display font-bold text-papper transition-transform hover:scale-[1.03]">
                         Plantera träd →
                       </Link>
