@@ -5,10 +5,10 @@ import babasProfileAsset from "@/assets/babas-profile.png.asset.json";
 
 const PLACEHOLDER_CARD = {
   eyebrow: "DITT FÖRETAG HÄR",
-  name: "Företag 1",
+  name: "Företag 2",
   description: "En rad om samarbetet.",
-  image: "/foretag/stam-hero.jpg",
-  imagePosition: "60% 28%",
+  video: "/videos/foretag-2.mp4",
+  poster: "/videos/foretag-2-poster.jpg",
   href: "#",
 } as const;
 
