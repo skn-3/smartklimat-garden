@@ -84,7 +84,7 @@ const FAQ_ITEMS: Array<[string, string]> = [
   ["Hur lång är uppstarten?", "Uppstarten tar dagar, inte månader. Starter kräver ingen integration alls. Vi lägger upp er samma vecka, och första rapporteringen kan ske direkt."],
   ["Måste vi integrera tekniskt?", "Nej. Starter bygger på enkel månadsrapportering av era affärer. När ni vill växla upp kopplar vi vår gateway till ert flöde — då sker allt automatiskt."],
   ["Vad får våra kunder?", "Ett personligt värdebevis med sitt namn, ert varumärke och en egen verifieringslänk som de kan kontrollera och dela när som helst."],
-  ["Hur vet vi att träden faktiskt finns?", "Varje träd planteras i WeForests program och granskas externt av Preferred by Nature. Ert flöde syns i vår live-data, och varje kunds värdebevis har en öppen verifieringslänk — ni behöver inte lita på oss, ni kan kontrollera själva."],
+  ["Hur vet vi att träden faktiskt finns?", "Varje träd planteras i WeForests program och granskas externt av Preferred by Nature. Ert flöde syns i vår live-data, och varje kunds värdebevis har en öppen verifieringslänk — allt är öppet att kontrollera, när som helst."],
   ["Vad kostar det?", "Prissättningen följer volymen. Berätta hur många affärer ni gör i månaden, så återkommer vi med ett konkret upplägg."],
   ["Var planteras träden?", "I våra tre WeForest-projekt — molnskogen i Khasi Hills, miombon i Copperbelt och vilddjurskorridorerna i Pontal. Arbetet granskas externt av Preferred by Nature."],
   ["Kan beviset bära vårt varumärke?", "Ja. Er logotyp och avsändare är standard i alla upplägg, och i Skräddarsytt designar vi certifikatet helt efter er profil."],
@@ -245,14 +245,14 @@ function ForetagPage() {
         <div className="mx-auto max-w-3xl text-center">
           <FadeUp>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-skogsgron md:text-5xl">
-              Era kunder litar inte på löften.
+              Ett träd att följa.
               <br />
-              <span className="text-smaragd">De litar på bevis.</span>
+              <span className="text-smaragd">Ett bevis att visa upp.</span>
             </h2>
           </FadeUp>
           <FadeUp delay={80}>
             <p className="mx-auto mt-6 max-w-xl text-lg text-skogsgron/70">
-              Varje träd hos oss får ett verifierbart värdebevis med en egen länk — som kunden kan kontrollera själv, när som helst. Ingen årsrapport i en byrålåda. Ett kvitto i handen.
+              Varje träd hos oss får ett personligt värdebevis med en egen verifieringslänk — kunden kan följa sitt träd, kontrollera det och dela det vidare, när som helst. Klimatnytta man kan hålla i handen.
             </p>
           </FadeUp>
         </div>
