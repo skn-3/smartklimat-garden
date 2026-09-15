@@ -5,10 +5,10 @@ import babasProfileAsset from "@/assets/babas-profile.png.asset.json";
 
 const PLACEHOLDER_CARD = {
   eyebrow: "DITT FÖRETAG HÄR",
-  name: "Företag 1",
+  name: "Företag 2",
   description: "En rad om samarbetet.",
-  image: "/foretag/stam-hero.jpg",
-  imagePosition: "60% 28%",
+  video: "/videos/foretag-2.mp4",
+  poster: "/videos/foretag-2-poster.jpg",
   href: "#",
 } as const;
 
@@ -61,19 +61,32 @@ function ReelIcon() {
 }
 
 function PlaceholderCard() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.defaultMuted = true;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
+
   return (
     <a
       href={PLACEHOLDER_CARD.href}
       className="group block w-full rounded-3xl bg-papper/80 p-2.5 text-skogsgron shadow-[0_24px_70px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[transform,box-shadow] duration-500 [transition-timing-function:var(--ease-smart)] hover:-translate-y-1 hover:shadow-[0_32px_84px_rgba(0,0,0,0.38)]"
     >
-      <img
-        src={PLACEHOLDER_CARD.image}
-        alt="Mosstäckt trädstam mot mörk bakgrund"
-        loading="lazy"
-        width={640}
-        height={420}
+      <video
+        ref={videoRef}
+        src={PLACEHOLDER_CARD.video}
+        poster={PLACEHOLDER_CARD.poster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
         className="h-[210px] w-full rounded-2xl object-cover"
-        style={{ objectPosition: PLACEHOLDER_CARD.imagePosition }}
       />
       <div className="relative px-4 pb-4 pt-5">
         <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-skogsgron/55">{PLACEHOLDER_CARD.eyebrow}</p>
