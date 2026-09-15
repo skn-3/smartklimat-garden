@@ -5,8 +5,8 @@ import babasProfileAsset from "@/assets/babas-profile.png.asset.json";
 
 const PLACEHOLDER_CARD = {
   eyebrow: "DITT FÖRETAG HÄR",
-  name: "Företag 2",
-  description: "En rad om samarbetet.",
+  name: "Mockfjärds Fönster",
+  description: "Ett träd planterat per fönster.",
   video: "/videos/foretag-2.mp4",
   poster: "/videos/foretag-2-poster.jpg",
   href: "#",
