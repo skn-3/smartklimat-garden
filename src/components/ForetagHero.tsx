@@ -89,8 +89,7 @@ function PlaceholderCard() {
         className="h-[210px] w-full rounded-2xl object-cover"
       />
       <div className="relative px-4 pb-4 pt-5">
-        <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-skogsgron/55">{PLACEHOLDER_CARD.eyebrow}</p>
-        <h3 className="mt-2 font-display text-2xl font-bold">{PLACEHOLDER_CARD.name}</h3>
+        <h3 className="font-display text-2xl font-bold">{PLACEHOLDER_CARD.name}</h3>
         <p className="mt-1 pr-12 text-sm text-skogsgron/65">{PLACEHOLDER_CARD.description}</p>
         <span className="absolute bottom-2 right-2 grid h-10 w-10 place-items-center rounded-full bg-skogsgron text-guld transition-transform duration-500 [transition-timing-function:var(--ease-smart)] group-hover:rotate-45">
           <AsteriskIcon />
