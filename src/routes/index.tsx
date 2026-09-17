@@ -112,7 +112,7 @@ function Home() {
                         Gör varje affär till skog.
                       </h3>
                       <p className="mt-3 max-w-sm text-sm text-skogsgron/70">
-                        Automatisk klimatkompensation i ert orderflöde — kunden får ett verifierbart bevis med ert varumärke.
+                        Automatisk klimatkompensation i ert orderflöde — klimathjälten får ett verifierbart bevis med ert varumärke.
                       </p>
                     </div>
                     <div className="relative flex items-end justify-between">
@@ -138,7 +138,7 @@ function Home() {
                         Insamlingen som planterar skog.
                       </h3>
                       <p className="mt-3 max-w-sm text-sm text-skogsgron/70">
-                        Barnen säljer träd, poängen tickar, laget ser skogen växa — inga kartonger, inga kontanter.
+                        Barnen planterar träd, poängen tickar, laget ser skogen växa — inga kartonger, inga kontanter.
                       </p>
                     </div>
                     <div className="relative flex items-end justify-between">

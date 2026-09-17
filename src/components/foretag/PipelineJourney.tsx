@@ -16,7 +16,7 @@ const BEATS = [
   { key: "deal", nr: "01", title: "Affären signeras", sub: "Ingenting ändras i ert flöde — säljaren gör exakt som vanligt.", Scene: SceneDeal },
   { key: "system", nr: "02", title: "Systemet tar emot", sub: "Ordern når vår gateway i samma sekund. Verifierad, registrerad, klar.", Scene: SceneSystem },
   { key: "trees", nr: "03", title: "Träden planteras", sub: "Åtta fönster blir åtta träd i något av våra projekt — och räknaren tickar.", Scene: SceneTrees },
-  { key: "cert", nr: "04", title: "Kunden får beviset", sub: "Ett personligt värdebevis med ert varumärke och egen verifieringslänk.", Scene: SceneCert },
+  { key: "cert", nr: "04", title: "Klimathjälten får beviset", sub: "Ett personligt värdebevis med ert varumärke och egen verifieringslänk.", Scene: SceneCert },
 ] as const;
 
 const N = BEATS.length;

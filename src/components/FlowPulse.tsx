@@ -11,7 +11,7 @@ const FLOWS: Record<Variant, { nodes: { label: string; sub: string }[]; eyebrow:
       { label: "AFFÄR", sub: "signeras" },
       { label: "SMARTKLIMAT", sub: "tar emot" },
       { label: "TRÄD", sub: "planteras" },
-      { label: "BEVIS", sub: "till kunden" },
+      { label: "BEVIS", sub: "till klimathjälten" },
     ],
   },
   smaarty: {
@@ -19,7 +19,7 @@ const FLOWS: Record<Variant, { nodes: { label: string; sub: string }[]; eyebrow:
     title: "Sälj. Plantera. Levla.",
     nodes: [
       { label: "SÄLJ", sub: "du knackar på" },
-      { label: "TRÄD", sub: "växer på riktigt" },
+      { label: "TRÄD", sub: "växer" },
       { label: "POÄNG", sub: "du levlar" },
     ],
   },

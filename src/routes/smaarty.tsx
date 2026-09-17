@@ -30,7 +30,7 @@ export const Route = createFileRoute("/smaarty")({
       {
         name: "description",
         content:
-          "Insamling för lag och skolor utan kontanter och lappar. Barnen säljer träd digitalt, köparen får värdebevis och laget ser sin skog växa live.",
+          "Insamling för lag och skolor utan kontanter och lappar. Barnen planterar träd digitalt, köparen får värdebevis och laget ser sin skog växa live.",
       },
     ],
   }),
@@ -280,7 +280,7 @@ function SmaartyPage() {
             </FadeUp>
             <FadeUp delay={120}>
               <p className="mx-auto mt-6 max-w-md text-lg text-skogsgron/70 md:mx-0">
-                Inga kartonger. Ingen leverans. Barnen säljer träd, köparna får bevis, och hela laget ser skogen växa.
+                Inga kartonger. Ingen leverans. Barnen planterar träd, köparna får bevis, och hela laget ser skogen växa.
               </p>
             </FadeUp>
             <FadeUp delay={180}>

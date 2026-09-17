@@ -58,7 +58,7 @@ export function SceneDeal({ active = false }: { active?: boolean }) {
             <p className="font-mono text-lg font-semibold text-skogsgron">#4821</p>
           </div>
           <div>
-            <p className="text-[11px] text-skogsgron/50">Kund</p>
+            <p className="text-[11px] text-skogsgron/50">Klimathjälte</p>
             <p className="font-medium text-skogsgron">Villa Ek, Täby</p>
           </div>
           <div>

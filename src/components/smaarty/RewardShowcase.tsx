@@ -90,7 +90,7 @@ export function RewardShowcase() {
           <FadeUp>
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#C4762B]">Belöningarna</p>
             <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
-              Poängen blir priser. På riktigt.
+              Poängen blir priser.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-[#52705F]">
               Varje sålt träd ger poäng — och poängen spenderas i appens belöningsbutik.
