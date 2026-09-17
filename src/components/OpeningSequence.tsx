@@ -87,7 +87,7 @@ export function OpeningSequence() {
         const d = video.duration;
         if (d && Number.isFinite(d)) {
           const t = target * d;
-          if (Math.abs(video.currentTime - t) > 0.001) video.currentTime = t;
+          if (Math.abs(video.currentTime - t) > 1 / 24 && !video.seeking) video.currentTime = t;
         }
         raf = requestAnimationFrame(tick);
       };
@@ -116,6 +116,7 @@ export function OpeningSequence() {
       const loaded = new Set<number>();
       let current = -1;
       let pending = -1;
+      let drawRaf = 0;
       const draw = (idx: number) => {
         let j = idx;
         while (j > 0 && !loaded.has(j)) j--;
@@ -128,15 +129,29 @@ export function OpeningSequence() {
         const w = im.width * s, h = im.height * s;
         ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
       };
+      const requestDraw = (idx: number) => {
+        pending = idx;
+        if (drawRaf) return;
+        drawRaf = requestAnimationFrame(() => {
+          drawRaf = 0;
+          const nextFrame = pending;
+          pending = -1;
+          draw(nextFrame);
+        });
+      };
       const load = (i: number, retried = false) => {
         const im = new Image();
         im.decoding = "async";
         im.src = FILM.frame(i + 1);
-        im.onload = () => {
+        im.onload = async () => {
+          try {
+            await im.decode();
+          } catch {
+            // A loaded image remains drawable when explicit decode is unavailable.
+          }
           loaded.add(i);
-          if (pending >= 0) { const p2 = pending; pending = -1; draw(p2); }
-          else if (current < 0 && i === 0) draw(0);
-          else if (i > current && current >= 0 && i <= current + 2) draw(i);
+          if (pending >= 0) requestDraw(pending);
+          else if (current < 0 && i === 0) requestDraw(0);
         };
         im.onerror = () => { if (!retried) setTimeout(() => load(i, true), 400); };
         imgs[i] = im;
@@ -149,12 +164,12 @@ export function OpeningSequence() {
         if (next < FILM.frameCount) idle = window.setTimeout(trickle, 100);
       };
       idle = window.setTimeout(trickle, 250);
-      const onResize = () => { size(); current = -1; draw(pending >= 0 ? pending : 0); };
+      const onResize = () => { size(); current = -1; requestDraw(pending >= 0 ? pending : 0); };
       window.addEventListener("resize", onResize);
-      cleanupFrames = () => { clearTimeout(idle); window.removeEventListener("resize", onResize); };
+      cleanupFrames = () => { clearTimeout(idle); cancelAnimationFrame(drawRaf); window.removeEventListener("resize", onResize); };
       applyProgress = (p) => {
         const f = gsap.utils.clamp(0, 1, (p - FILM_START) / (FILM_END - FILM_START));
-        draw(Math.round(f * (FILM.frameCount - 1)));
+        requestDraw(Math.round(f * (FILM.frameCount - 1)));
       };
     }
 
@@ -220,7 +235,7 @@ export function OpeningSequence() {
             className="pointer-events-none absolute inset-x-0 bottom-8 z-30 hidden justify-center md:flex"
             style={{ opacity: `min(1, calc(var(--p, 0) * 10))` as unknown as number }}
           >
-            <span className="rounded-full border border-linje bg-papper/90 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-smaragd-dark">
+            <span className="rounded-full border border-linje bg-papper/90 px-4 py-2 font-mono text-[12px] uppercase tracking-[0.16em] text-skogsgron">
               Förbereder filmen
             </span>
           </div>
@@ -249,9 +264,9 @@ export function OpeningSequence() {
           />
           <div className="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-mintpapper via-mintpapper/70 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-mintpapper/60 to-transparent" />
+          <Bakgrundsliv preset="home-hero" className="opening-hero-decor z-[1]" />
 
-          <div className="relative isolate z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-start overflow-hidden px-6 pt-28 text-center md:pt-36">
-            <Bakgrundsliv preset="home-hero" />
+          <div className="relative isolate z-10 mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-start px-6 pt-28 text-center md:pt-36">
             <Eyebrow>Tech möter klimat</Eyebrow>
             <h1 className="mt-6 font-display font-bold leading-[0.95] tracking-tight text-skogsgron text-[clamp(3rem,12vw,7.5rem)]">
               Tänk smart.
@@ -266,7 +281,7 @@ export function OpeningSequence() {
               <CtaButton to="/plantera" variant="primary">Plantera träd</CtaButton>
               <CtaButton to="/projekt" variant="secondary">Våra projekt</CtaButton>
             </div>
-            <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-smaragd-dark">
+            <p className="mt-8 rounded-full border border-linje bg-papper/90 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-smaragd-dark">
               {plantedTotal.toLocaleString("sv-SE").replace(/\u00a0/g, " ")} träd planterade · live
             </p>
 
@@ -282,7 +297,7 @@ export function OpeningSequence() {
           >
             <div
               className={`absolute inset-x-0 top-0 h-[52%] bg-gradient-to-b to-transparent ${
-                b.dark ? "from-skogsgron/70 via-skogsgron/35" : "from-mintpapper/80 via-mintpapper/40"
+                b.dark ? "from-skogsgron/70 via-skogsgron/35" : "from-papper/80 via-papper/40"
               }`}
             />
             <div className="absolute inset-x-0 top-[19%] px-6 text-center md:top-[24%]">

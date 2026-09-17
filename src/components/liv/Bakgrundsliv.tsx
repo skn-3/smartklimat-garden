@@ -136,9 +136,9 @@ function Leaf({ className, tone = "salvia" }: { className: string; tone?: Item["
   );
 }
 
-export function Bakgrundsliv({ preset }: { preset: LivPreset }) {
+export function Bakgrundsliv({ preset, className }: { preset: LivPreset; className?: string }) {
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div aria-hidden className={cn("pointer-events-none absolute inset-0 -z-10 overflow-hidden", className)}>
       {PRESETS[preset].map((item, index) => {
         if (item.kind === "blob") {
           return <span key={index} className={cn("liv-blob absolute rounded-full", item.tone && TONE_CLASS[item.tone], item.className)} />;
