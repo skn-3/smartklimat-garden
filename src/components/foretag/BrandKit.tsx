@@ -45,8 +45,7 @@ export function BrandKit() {
             </h2>
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-salvia">
               Tänk kreditvärdighetens AAA — fast för klimatansvar, och bättre: varje gång ni bär märket
-              står spårbara bevis bakom. Kunden kan verifiera med ett klick. Det gör det tryggt att skylta,
-              på riktigt.
+              står spårbara bevis bakom. Klimathjälten kan verifiera med ett klick. Det gör det tryggt att skylta.
             </p>
           </FadeUp>
         </div>

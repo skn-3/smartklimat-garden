@@ -36,19 +36,19 @@ export const Route = createFileRoute("/foretag")({
       {
         name: "description",
         content:
-          "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
+          "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era klimathjältar får spårbara värdebevis och ni får material att visa upp.",
       },
       { property: "og:title", content: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
         property: "og:description",
-        content: "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
+        content: "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era klimathjältar får spårbara värdebevis och ni får material att visa upp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Klimatkompensation för företag — träd för varje affär | SmartKlimat" },
       {
         name: "twitter:description",
-        content: "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era kunder får spårbara värdebevis och ni får material att visa upp.",
+        content: "Klimatkompensation för företag: plantera träd för varje affär, automatiskt. Era klimathjältar får spårbara värdebevis och ni får material att visa upp.",
       },
     ],
   }),
@@ -83,8 +83,8 @@ const TRUST = [
 const FAQ_ITEMS: Array<[string, string]> = [
   ["Hur lång är uppstarten?", "Uppstarten tar dagar, inte månader. Starter kräver ingen integration alls. Vi lägger upp er samma vecka, och första rapporteringen kan ske direkt."],
   ["Måste vi integrera tekniskt?", "Nej. Starter bygger på enkel månadsrapportering av era affärer. När ni vill växla upp kopplar vi vår gateway till ert flöde — då sker allt automatiskt."],
-  ["Vad får våra kunder?", "Ett personligt värdebevis med sitt namn, ert varumärke och en egen verifieringslänk som de kan kontrollera och dela när som helst."],
-  ["Hur vet vi att träden faktiskt finns?", "Varje träd planteras i WeForests program och granskas externt av Preferred by Nature. Ert flöde syns i vår live-data, och varje kunds värdebevis har en öppen verifieringslänk — allt är öppet att kontrollera, när som helst."],
+  ["Vad får våra klimathjältar?", "Ett personligt värdebevis med sitt namn, ert varumärke och en egen verifieringslänk som de kan kontrollera och dela när som helst."],
+  ["Hur vet vi att träden faktiskt finns?", "Varje träd planteras i WeForests program och granskas externt av Preferred by Nature. Ert flöde syns i vår live-data, och varje klimathjältes värdebevis har en öppen verifieringslänk — allt är öppet att kontrollera, när som helst."],
   ["Vad kostar det?", "Prissättningen följer volymen. Berätta hur många affärer ni gör i månaden, så återkommer vi med ett konkret upplägg."],
   ["Var planteras träden?", "I våra tre WeForest-projekt — molnskogen i Khasi Hills, miombon i Copperbelt och vilddjurskorridorerna i Pontal. Arbetet granskas externt av Preferred by Nature."],
   ["Kan beviset bära vårt varumärke?", "Ja. Er logotyp och avsändare är standard i alla upplägg, och i Skräddarsytt designar vi certifikatet helt efter er profil."],
@@ -214,7 +214,7 @@ function ForetagPage() {
             </FadeUp>
             <FadeUp delay={120}>
               <p className="mx-auto mt-6 max-w-md text-lg text-skogsgron/70 md:mx-0">
-                Automatisk klimatkompensation, inbyggd i era affärer. Era kunder får spårbara bevis på planterade träd — ni får en klimatberättelse som är sann.
+                Automatisk klimatkompensation, inbyggd i era affärer. Era klimathjältar får spårbara bevis på planterade träd — ni får en klimatberättelse som är sann.
               </p>
             </FadeUp>
             <FadeUp delay={180}>
@@ -252,7 +252,7 @@ function ForetagPage() {
           </FadeUp>
           <FadeUp delay={80}>
             <p className="mx-auto mt-6 max-w-xl text-lg text-skogsgron/70">
-              Varje träd hos oss får ett personligt värdebevis med en egen verifieringslänk — kunden kan följa sitt träd, kontrollera det och dela det vidare, när som helst. Klimatnytta man kan hålla i handen.
+              Varje träd hos oss får ett personligt värdebevis med en egen verifieringslänk — klimathjälten kan följa sitt träd, kontrollera det och dela det vidare, när som helst. Klimatnytta man kan hålla i handen.
             </p>
           </FadeUp>
         </div>
@@ -279,7 +279,7 @@ function ForetagPage() {
               {
                 eb: "I marknadsföringen",
                 title: "Färdigt innehåll att posta",
-                body: "Live-statistik att visa upp, bevis kunderna delar vidare, och en berättelse som växer med varje order.",
+                body: "Live-statistik att visa upp, bevis klimathjältarna delar vidare, och en berättelse som växer med varje order.",
               },
               {
                 eb: "I redovisningen",
@@ -339,7 +339,7 @@ function ForetagPage() {
             </FadeUp>
             <FadeUp delay={100}>
               <p className="mt-4 max-w-xl text-lg text-[#5C5238]">
-                I Stockholmsregionen får varje slutfört fönsterbyte hos Mockfjärds ett träd planterat — automatiskt, i samma stund som ordern går igenom. Säljarna säljer som vanligt. Kunden får ett personligt värdebevis med Mockfjärds som avsändare, verifierbart via en egen länk.
+                I Stockholmsregionen får varje slutfört fönsterbyte hos Mockfjärds ett träd planterat — automatiskt, i samma stund som ordern går igenom. Säljarna säljer som vanligt. Klimathjälten får ett personligt värdebevis med Mockfjärds som avsändare, verifierbart via en egen länk.
               </p>
             </FadeUp>
             <FadeUp delay={130}>
@@ -425,12 +425,12 @@ function ForetagPage() {
             </FadeUp>
             <FadeUp delay={60}>
               <h2 className="mt-6 font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
-                Det era kunder faktiskt får.
+                Det era klimathjältar faktiskt får.
               </h2>
             </FadeUp>
             <ul className="mt-8 space-y-4">
               {[
-                "Personligt — kundens namn och antal träd",
+                "Personligt — klimathjältens namn och antal träd",
                 "Ert varumärke som avsändare",
                 "Egen verifieringslänk, öppen för alla",
                 "Genereras i samma sekund som affären",
@@ -455,7 +455,7 @@ function ForetagPage() {
           </FadeUp>
           <FadeUp delay={60}>
             <h2 className="mt-6 max-w-2xl font-display text-3xl font-bold tracking-tight text-skogsgron md:text-4xl">
-              Fem skäl era kunder förstår direkt.
+              Fem skäl era klimathjältar förstår direkt.
             </h2>
           </FadeUp>
           <FadeUp delay={120}>
