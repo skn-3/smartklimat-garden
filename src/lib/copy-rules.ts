@@ -14,5 +14,9 @@
  *    månader" finns i FAQ och ska inte upprepas i marknadskopian.
  * 5. Vid nya copyvarianter: sök alltid först efter befintlig formulering
  *    innan en ny läggs till, så samma sak inte finns i flera versioner.
+ * 6. Uttrycket "på riktigt" är förbjudet i all copy.
+ * 7. Negativ eller misstroendebaserad framing är förbjuden, till exempel
+ *    "litar inte på löften" och kontraster som "ingen X — bara Y".
+ *    Skriv alltid den positiva förmågan direkt.
  */
 export {};
