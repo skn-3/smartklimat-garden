@@ -252,7 +252,7 @@ function ForetagPage() {
           </FadeUp>
           <FadeUp delay={80}>
             <p className="mx-auto mt-6 max-w-xl text-lg text-skogsgron/70">
-              Varje träd hos oss får ett personligt värdebevis med en egen verifieringslänk — klimathjälten kan följa sitt träd, kontrollera det och dela det vidare, när som helst. Klimatnytta man kan hålla i handen.
+              Varje träd hos oss får ett personligt värdebevis med en egen verifieringslänk — klimathjälten kan följa sitt träd, kontrollera det och dela det vidare, när som helst.
             </p>
           </FadeUp>
         </div>
