@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
 
 export const Route = createFileRoute("/integritet")({
@@ -107,9 +106,9 @@ function IntegritetPage() {
         <FadeUp>
           <p className="mt-16 text-sm text-skogsgron/55">
             Frågor om dina uppgifter? Skriv till{" "}
-            <Link to="/kontakt" className="underline underline-offset-4 hover:text-skogsgron">
+            <a href="mailto:hej@smartklimat.org" className="underline underline-offset-4 hover:text-skogsgron">
               hej@smartklimat.org
-            </Link>
+            </a>
             .
           </p>
         </FadeUp>
