@@ -23,7 +23,7 @@ export function Footer() {
               <Link to="/avtryck" className="hover:text-papper">Avtryck</Link>
               <Link to="/kontakt" className="hover:text-papper">Kontakt</Link>
               <Link to="/villkor" className="hover:text-papper">Köpvillkor</Link>
-              <Link to="/integritet" className="hover:text-papper">Integritet</Link>
+              <Link to="/integritet" className="hover:text-papper">Integritetspolicy</Link>
             </nav>
           </div>
           <div>

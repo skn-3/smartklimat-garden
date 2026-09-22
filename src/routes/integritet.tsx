@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
 
 export const Route = createFileRoute("/integritet")({
@@ -6,7 +7,19 @@ export const Route = createFileRoute("/integritet")({
     links: [{ rel: "canonical", href: "https://smartklimat.org/integritet" }],
     meta: [
       { title: "Integritetspolicy — så hanterar vi dina uppgifter | SmartKlimat" },
-      { name: "description", content: "Så hanterar SmartKlimat dina personuppgifter i klarspråk: vad vi sparar, varför, hur länge, vem som ser vad och hur du får uppgifterna raderade." },
+      {
+        name: "description",
+        content:
+          "Så hanterar SmartKlimat dina personuppgifter: värdebevis du hämtar via QR-kod, köp och gåvor, dina rättigheter och hur du återkallar samtycke — i klarspråk.",
+      },
+      { property: "og:title", content: "Integritetspolicy — så hanterar vi dina uppgifter | SmartKlimat" },
+      {
+        property: "og:description",
+        content:
+          "Så hanterar SmartKlimat dina personuppgifter: värdebevis du hämtar via QR-kod, köp och gåvor, dina rättigheter och hur du återkallar samtycke.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://smartklimat.org/integritet" },
     ],
   }),
   component: IntegritetPage,
@@ -34,121 +47,72 @@ function IntegritetPage() {
             Din data, i klarspråk.
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#52705F]">
-            Vi planterar träd — inte kakor i onödan. Här är exakt vad vi sparar, varför vi sparar det,
-            vem som ser vad och hur du får bort det. Senast uppdaterad 13 september 2026.
+            Vi planterar träd — inte kakor i onödan. Här är exakt vad vi sparar, varför vi sparar det och hur du får
+            det bort. Senast uppdaterad 22 september 2026.
           </p>
         </FadeUp>
+
+        <Avsnitt nr="01" rubrik="Personuppgiftsansvarig">
+          <p>
+            SmartKlimatKompensera på Tellus AB (org.nr 559370-9453) — i vardagligt tal SmartKlimat — är
+            personuppgiftsansvarig för behandlingen som beskrivs här. Frågor, invändningar och begäranden skickas
+            till{" "}
+            <a href="mailto:hej@smartklimat.org" className="font-semibold text-smaragd-dark underline underline-offset-4">
+              hej@smartklimat.org
+            </a>{" "}
+            — vi svarar utan onödigt dröjsmål.
+          </p>
+        </Avsnitt>
+
+        <Avsnitt nr="02" rubrik="När du hämtar ditt värdebevis">
+          <p>
+            Får du en QR-kod eller en länk i ett kundmöte — till exempel via vår partner{" "}
+            <span className="font-semibold text-skogsgron">Mockfjärds Fönster</span> — är dina träd redan planterade,
+            och beviset är anonymt tills du själv hämtar det. Vi samlar in uppgifterna direkt från dig på
+            hämtningssidan: ingen samarbetspartner skickar ditt namn eller din e-post till oss.
+          </p>
+          <p>
+            Det vi sparar är ditt namn, din e-postadress och en samtyckeslogg — tidsstämpel, vilken text du godkände,
+            hämtningskoden och vilka val du gjorde.
+          </p>
+          <p>
+            Uppgifterna använder vi för att utfärda ditt personliga värdebevis, mejla det till dig och — endast om du
+            valt det — skicka uppdateringar om trädens utveckling. Den lagliga grunden är ditt samtycke.
+          </p>
+          <p>
+            Vi sparar uppgifterna så länge värdebeviset är personligt. Återkallar du samtycket tas namn och e-post
+            bort omgående och beviset blir anonymt igen. Samtyckesloggen sparas i 24 månader — som bevis på att
+            samtycket lämnats och senare återkallats.
+          </p>
+        </Avsnitt>
+
+        <Avsnitt nr="03" rubrik="Köp och gåvor via SmartKlimat">
+          <p>
+            Köper du träd direkt hos oss lagrar vi ditt namn och din e-postadress för att skicka värdebeviset till
+            dig. Vid schemalagda gåvor sparar vi även mottagarens e-postadress — enbart för att leverera gåvan.
+          </p>
+        </Avsnitt>
+
+        <Avsnitt nr="04" rubrik="Dina rättigheter">
+          <p>
+            Du har rätt att få tillgång till dina uppgifter (registerutdrag), få felaktiga uppgifter rättade, bli
+            raderad, få behandlingen begränsad och invända mot behandling. Du kan när som helst återkalla ditt
+            samtycke — via länken i våra mail eller genom att mejla oss.
+          </p>
+          <p>
+            Är du inte nöjd med hur vi hanterar det har du rätt att klaga hos Integritetsskyddsmyndigheten (imy.se).
+          </p>
+        </Avsnitt>
 
         <FadeUp>
-          <div className="mt-10 rounded-3xl border border-linje bg-mintpapper/70 p-6 md:p-8">
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-smaragd-dark">Kortversionen</p>
-            <ul className="mt-4 space-y-3 text-[16px] leading-relaxed text-[#3D5648]">
-              <li>Vi sparar det som krävs för att plantera dina träd, utfärda ditt bevis och hålla dig uppdaterad — inte mer.</li>
-              <li>Kortuppgifter hanteras av Stripe. Vi ser dem aldrig och lagrar dem aldrig.</li>
-              <li>WeForest, som planterar träden, får aldrig några personuppgifter — bara antal träd.</li>
-              <li>I Smaarty visas barn endast med förnamn, valfri profilbild och lagnamn. Aldrig efternamn eller kontaktuppgifter.</li>
-              <li>Alla utskick om dina träd har en avregistreringslänk. Ett klick, sen är det tyst.</li>
-              <li>Du kan alltid be oss visa, rätta eller radera det vi har om dig: hej@smartklimat.org.</li>
-            </ul>
-          </div>
+          <p className="mt-16 text-sm text-skogsgron/55">
+            Frågor om dina uppgifter? Skriv till{" "}
+            <Link to="/kontakt" className="underline underline-offset-4 hover:text-skogsgron">
+              hej@smartklimat.org
+            </Link>
+            .
+          </p>
         </FadeUp>
-
-        <Avsnitt nr="01" rubrik="Vem som ansvarar">
-          <p>
-            SmartKlimatKompensera på Tellus AB (org.nr 559370-9453), Morsstigen 3, 141 71 Segeltorp —
-            i vardagligt tal SmartKlimat — är personuppgiftsansvarig för behandlingen som beskrivs här.
-            Frågor, invändningar och begäranden skickas till <span className="font-semibold">hej@smartklimat.org</span> —
-            vi svarar utan onödigt dröjsmål.
-          </p>
-        </Avsnitt>
-
-        <Avsnitt nr="02" rubrik="Vad vi samlar in — och från vem">
-          <p>
-            <span className="font-semibold text-skogsgron">Om du planterar träd hos oss</span> sparar vi ditt namn,
-            din e-postadress, ditt köp (antal träd, belopp, tidpunkt) och ditt värdebevis. Betalningen sker hos
-            Stripe; vi tar aldrig emot eller lagrar kortuppgifter. Ger du bort träd sparar vi även mottagarens
-            namn, din hälsning och mottagarens e-post om du anger den — enbart för att leverera gåvan.
-          </p>
-          <p>
-            <span className="font-semibold text-skogsgron">Om du är kund hos en partner</span>, till exempel
-            Mockfjärds Fönster, får vi ditt namn och din e-postadress från din beställning — enbart för att
-            plantera dina träd, utfärda ditt bevis i ditt namn och skicka det till dig.
-          </p>
-          <p>
-            <span className="font-semibold text-skogsgron">Om du säljer i Smaarty</span> sparar vi förnamn,
-            e-postadress, lagtillhörighet, försäljning och poäng, samt profilbild om du väljer att ladda upp en.
-            Lagledare lämnar dessutom kontaktuppgifter och lagets utbetalningsuppgifter (till exempel bankgiro
-            eller Swish-nummer till föreningen).
-          </p>
-          <p>
-            Sajten sätter inga analys- eller marknadsföringscookies utan ditt samtycke. Nödvändiga kakor används
-            för drift och betalning. Väljer du att tillåta analys eller marknadsföring i kakbannern kan Google
-            Analytics och annonsplattformar sätta kakor. Ditt val gäller direkt och kan ändras när som helst.
-          </p>
-        </Avsnitt>
-
-        <Avsnitt nr="03" rubrik="Barn i Smaarty">
-          <p>
-            Smaarty är byggt för unga säljare, och det syns i hur lite vi samlar in: förnamn räcker. I topplistor
-            och loggar visas endast förnamn, valfri profilbild och lagets namn — aldrig efternamn, aldrig
-            kontaktuppgifter, oavsett hur bra det går.
-          </p>
-          <p>
-            För barn under 13 år krävs att en vårdnadshavare involveras vid registreringen: vi ber om
-            vårdnadshavarens e-postadress och skickar information om kontot dit. Profilbilden är helt frivillig,
-            barnet väljer själv motiv, och varje bild kan rapporteras och tas bort — av lagledaren eller av oss.
-            Pushnotiser är avstängda tills man själv slår på dem, och de är få, vänliga och aldrig köppress.
-          </p>
-        </Avsnitt>
-
-        <Avsnitt nr="04" rubrik="Varför vi behandlar uppgifterna">
-          <p>
-            För att fullgöra köpet och tjänsten: plantera träden, utfärda och verifiera värdebeviset, skicka
-            bevismailet, driva Smaarty med lag, poäng och utbetalningar (rättslig grund: avtal). För att hålla
-            dig uppdaterad om skogen dina träd växer i, med rapporter från projekten (berättigat intresse —
-            och varje utskick har en avregistreringslänk som gäller direkt). För att uppfylla lagkrav, som
-            bokföring (rättslig förpliktelse). Samtycke använder vi där det hör hemma: pushnotiser och
-            profilbilder.
-          </p>
-        </Avsnitt>
-
-        <Avsnitt nr="05" rubrik="Vilka vi delar med — och inte">
-          <p>
-            Vi säljer aldrig personuppgifter. Vi använder ett fåtal leverantörer som behandlar data för vår
-            räkning: Stripe (betalningar), Resend (e-postleverans), Supabase (databas och lagring) samt vår
-            driftplattform. Med var och en finns biträdesavtal.
-          </p>
-          <p>
-            Och det vi är mest stolta över: <span className="font-semibold text-skogsgron">WeForest, som
-            planterar träden, får aldrig några personuppgifter alls.</span> De får veta hur många träd som ska
-            planteras — inte av vem eller för vem. Ditt namn bor på beviset, inte i skogen.
-          </p>
-        </Avsnitt>
-
-        <Avsnitt nr="06" rubrik="Hur länge vi sparar">
-          <p>
-            Transaktionsuppgifter sparas i sju år enligt bokföringslagen. Konton i Smaarty finns kvar tills de
-            raderas — av dig, av vårdnadshavare eller på begäran. Profilbilder raderas omedelbart när du tar
-            bort dem. Avregistrerar du dig från utskick sparar vi din adress på en spärrlista, så att ditt nej
-            fortsätter att gälla.
-          </p>
-        </Avsnitt>
-
-        <Avsnitt nr="07" rubrik="Dina rättigheter">
-          <p>
-            Du har rätt att få veta vad vi har om dig (registerutdrag), få fel rättade, bli raderad där lagen
-            tillåter, invända mot behandling, och få ut dina uppgifter. Skriv till
-            <span className="font-semibold"> hej@smartklimat.org</span> så hjälper vi dig. Är du inte nöjd med
-            hur vi hanterar det har du rätt att klaga hos Integritetsskyddsmyndigheten (imy.se).
-          </p>
-        </Avsnitt>
-
-        <Avsnitt nr="08" rubrik="När policyn ändras">
-          <p>
-            Bygger vi något nytt som påverkar dina uppgifter uppdaterar vi den här sidan och datumet högst
-            upp. Större förändringar berättar vi om i förväg via e-post till berörda.
-          </p>
-        </Avsnitt>
       </div>
     </main>
   );
