@@ -16,14 +16,21 @@ import { Route as OmOssRouteImport } from './routes/om-oss'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KalkylatorRouteImport } from './routes/kalkylator'
 import { Route as IntegritetRouteImport } from './routes/integritet'
+import { Route as IdagRouteImport } from './routes/idag'
 import { Route as ForetagRouteImport } from './routes/foretag'
 import { Route as AvtryckRouteImport } from './routes/avtryck'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjektIndexRouteImport } from './routes/projekt.index'
+import { Route as IdagIndexRouteImport } from './routes/idag.index'
 import { Route as VIdRouteImport } from './routes/v.$id'
 import { Route as ProjektPontalRouteImport } from './routes/projekt.pontal'
 import { Route as ProjektKhasiHillsRouteImport } from './routes/projekt.khasi-hills'
 import { Route as ProjektCopperbeltRouteImport } from './routes/projekt.copperbelt'
+import { Route as IdagSaGorViNyheternaRouteImport } from './routes/idag.sa-gor-vi-nyheterna'
+import { Route as IdagRattelserRouteImport } from './routes/idag.rattelser'
+import { Route as IdagOmRedaktionenRouteImport } from './routes/idag.om-redaktionen'
+import { Route as IdagSlugRouteImport } from './routes/idag.$slug'
+import { Route as IdagBildIdRouteImport } from './routes/idag.bild.$id'
 
 const VillkorRoute = VillkorRouteImport.update({
   id: '/villkor',
@@ -60,6 +67,11 @@ const IntegritetRoute = IntegritetRouteImport.update({
   path: '/integritet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IdagRoute = IdagRouteImport.update({
+  id: '/idag',
+  path: '/idag',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForetagRoute = ForetagRouteImport.update({
   id: '/foretag',
   path: '/foretag',
@@ -79,6 +91,11 @@ const ProjektIndexRoute = ProjektIndexRouteImport.update({
   id: '/projekt/',
   path: '/projekt/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const IdagIndexRoute = IdagIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => IdagRoute,
 } as any)
 const VIdRoute = VIdRouteImport.update({
   id: '/v/$id',
@@ -100,11 +117,37 @@ const ProjektCopperbeltRoute = ProjektCopperbeltRouteImport.update({
   path: '/projekt/copperbelt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IdagSaGorViNyheternaRoute = IdagSaGorViNyheternaRouteImport.update({
+  id: '/sa-gor-vi-nyheterna',
+  path: '/sa-gor-vi-nyheterna',
+  getParentRoute: () => IdagRoute,
+} as any)
+const IdagRattelserRoute = IdagRattelserRouteImport.update({
+  id: '/rattelser',
+  path: '/rattelser',
+  getParentRoute: () => IdagRoute,
+} as any)
+const IdagOmRedaktionenRoute = IdagOmRedaktionenRouteImport.update({
+  id: '/om-redaktionen',
+  path: '/om-redaktionen',
+  getParentRoute: () => IdagRoute,
+} as any)
+const IdagSlugRoute = IdagSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => IdagRoute,
+} as any)
+const IdagBildIdRoute = IdagBildIdRouteImport.update({
+  id: '/bild/$id',
+  path: '/bild/$id',
+  getParentRoute: () => IdagRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/avtryck': typeof AvtryckRoute
   '/foretag': typeof ForetagRoute
+  '/idag': typeof IdagRouteWithChildren
   '/integritet': typeof IntegritetRoute
   '/kalkylator': typeof KalkylatorRoute
   '/kontakt': typeof KontaktRoute
@@ -112,11 +155,17 @@ export interface FileRoutesByFullPath {
   '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/villkor': typeof VillkorRoute
+  '/idag/$slug': typeof IdagSlugRoute
+  '/idag/om-redaktionen': typeof IdagOmRedaktionenRoute
+  '/idag/rattelser': typeof IdagRattelserRoute
+  '/idag/sa-gor-vi-nyheterna': typeof IdagSaGorViNyheternaRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
+  '/idag/': typeof IdagIndexRoute
   '/projekt/': typeof ProjektIndexRoute
+  '/idag/bild/$id': typeof IdagBildIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -129,17 +178,24 @@ export interface FileRoutesByTo {
   '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/villkor': typeof VillkorRoute
+  '/idag/$slug': typeof IdagSlugRoute
+  '/idag/om-redaktionen': typeof IdagOmRedaktionenRoute
+  '/idag/rattelser': typeof IdagRattelserRoute
+  '/idag/sa-gor-vi-nyheterna': typeof IdagSaGorViNyheternaRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
+  '/idag': typeof IdagIndexRoute
   '/projekt': typeof ProjektIndexRoute
+  '/idag/bild/$id': typeof IdagBildIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/avtryck': typeof AvtryckRoute
   '/foretag': typeof ForetagRoute
+  '/idag': typeof IdagRouteWithChildren
   '/integritet': typeof IntegritetRoute
   '/kalkylator': typeof KalkylatorRoute
   '/kontakt': typeof KontaktRoute
@@ -147,11 +203,17 @@ export interface FileRoutesById {
   '/plantera': typeof PlanteraRoute
   '/smaarty': typeof SmaartyRoute
   '/villkor': typeof VillkorRoute
+  '/idag/$slug': typeof IdagSlugRoute
+  '/idag/om-redaktionen': typeof IdagOmRedaktionenRoute
+  '/idag/rattelser': typeof IdagRattelserRoute
+  '/idag/sa-gor-vi-nyheterna': typeof IdagSaGorViNyheternaRoute
   '/projekt/copperbelt': typeof ProjektCopperbeltRoute
   '/projekt/khasi-hills': typeof ProjektKhasiHillsRoute
   '/projekt/pontal': typeof ProjektPontalRoute
   '/v/$id': typeof VIdRoute
+  '/idag/': typeof IdagIndexRoute
   '/projekt/': typeof ProjektIndexRoute
+  '/idag/bild/$id': typeof IdagBildIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -159,6 +221,7 @@ export interface FileRouteTypes {
     | '/'
     | '/avtryck'
     | '/foretag'
+    | '/idag'
     | '/integritet'
     | '/kalkylator'
     | '/kontakt'
@@ -166,11 +229,17 @@ export interface FileRouteTypes {
     | '/plantera'
     | '/smaarty'
     | '/villkor'
+    | '/idag/$slug'
+    | '/idag/om-redaktionen'
+    | '/idag/rattelser'
+    | '/idag/sa-gor-vi-nyheterna'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
     | '/v/$id'
+    | '/idag/'
     | '/projekt/'
+    | '/idag/bild/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -183,16 +252,23 @@ export interface FileRouteTypes {
     | '/plantera'
     | '/smaarty'
     | '/villkor'
+    | '/idag/$slug'
+    | '/idag/om-redaktionen'
+    | '/idag/rattelser'
+    | '/idag/sa-gor-vi-nyheterna'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
     | '/v/$id'
+    | '/idag'
     | '/projekt'
+    | '/idag/bild/$id'
   id:
     | '__root__'
     | '/'
     | '/avtryck'
     | '/foretag'
+    | '/idag'
     | '/integritet'
     | '/kalkylator'
     | '/kontakt'
@@ -200,17 +276,24 @@ export interface FileRouteTypes {
     | '/plantera'
     | '/smaarty'
     | '/villkor'
+    | '/idag/$slug'
+    | '/idag/om-redaktionen'
+    | '/idag/rattelser'
+    | '/idag/sa-gor-vi-nyheterna'
     | '/projekt/copperbelt'
     | '/projekt/khasi-hills'
     | '/projekt/pontal'
     | '/v/$id'
+    | '/idag/'
     | '/projekt/'
+    | '/idag/bild/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AvtryckRoute: typeof AvtryckRoute
   ForetagRoute: typeof ForetagRoute
+  IdagRoute: typeof IdagRouteWithChildren
   IntegritetRoute: typeof IntegritetRoute
   KalkylatorRoute: typeof KalkylatorRoute
   KontaktRoute: typeof KontaktRoute
@@ -276,6 +359,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IntegritetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/idag': {
+      id: '/idag'
+      path: '/idag'
+      fullPath: '/idag'
+      preLoaderRoute: typeof IdagRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/foretag': {
       id: '/foretag'
       path: '/foretag'
@@ -303,6 +393,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/projekt/'
       preLoaderRoute: typeof ProjektIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/idag/': {
+      id: '/idag/'
+      path: '/'
+      fullPath: '/idag/'
+      preLoaderRoute: typeof IdagIndexRouteImport
+      parentRoute: typeof IdagRoute
     }
     '/v/$id': {
       id: '/v/$id'
@@ -332,13 +429,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjektCopperbeltRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/idag/sa-gor-vi-nyheterna': {
+      id: '/idag/sa-gor-vi-nyheterna'
+      path: '/sa-gor-vi-nyheterna'
+      fullPath: '/idag/sa-gor-vi-nyheterna'
+      preLoaderRoute: typeof IdagSaGorViNyheternaRouteImport
+      parentRoute: typeof IdagRoute
+    }
+    '/idag/rattelser': {
+      id: '/idag/rattelser'
+      path: '/rattelser'
+      fullPath: '/idag/rattelser'
+      preLoaderRoute: typeof IdagRattelserRouteImport
+      parentRoute: typeof IdagRoute
+    }
+    '/idag/om-redaktionen': {
+      id: '/idag/om-redaktionen'
+      path: '/om-redaktionen'
+      fullPath: '/idag/om-redaktionen'
+      preLoaderRoute: typeof IdagOmRedaktionenRouteImport
+      parentRoute: typeof IdagRoute
+    }
+    '/idag/$slug': {
+      id: '/idag/$slug'
+      path: '/$slug'
+      fullPath: '/idag/$slug'
+      preLoaderRoute: typeof IdagSlugRouteImport
+      parentRoute: typeof IdagRoute
+    }
+    '/idag/bild/$id': {
+      id: '/idag/bild/$id'
+      path: '/bild/$id'
+      fullPath: '/idag/bild/$id'
+      preLoaderRoute: typeof IdagBildIdRouteImport
+      parentRoute: typeof IdagRoute
+    }
   }
 }
+
+interface IdagRouteChildren {
+  IdagSlugRoute: typeof IdagSlugRoute
+  IdagOmRedaktionenRoute: typeof IdagOmRedaktionenRoute
+  IdagRattelserRoute: typeof IdagRattelserRoute
+  IdagSaGorViNyheternaRoute: typeof IdagSaGorViNyheternaRoute
+  IdagIndexRoute: typeof IdagIndexRoute
+  IdagBildIdRoute: typeof IdagBildIdRoute
+}
+
+const IdagRouteChildren: IdagRouteChildren = {
+  IdagSlugRoute: IdagSlugRoute,
+  IdagOmRedaktionenRoute: IdagOmRedaktionenRoute,
+  IdagRattelserRoute: IdagRattelserRoute,
+  IdagSaGorViNyheternaRoute: IdagSaGorViNyheternaRoute,
+  IdagIndexRoute: IdagIndexRoute,
+  IdagBildIdRoute: IdagBildIdRoute,
+}
+
+const IdagRouteWithChildren = IdagRoute._addFileChildren(IdagRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AvtryckRoute: AvtryckRoute,
   ForetagRoute: ForetagRoute,
+  IdagRoute: IdagRouteWithChildren,
   IntegritetRoute: IntegritetRoute,
   KalkylatorRoute: KalkylatorRoute,
   KontaktRoute: KontaktRoute,
