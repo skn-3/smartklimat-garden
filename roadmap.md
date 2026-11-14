@@ -7,3 +7,9 @@
 - [x] Lägg till och kör tester för spärr, text, validering, källänkar och bild-id.
 - [x] Kontrollera avlyssnade sidlägen, riktiga API-anrop, mobil/desktop och befintliga sidor.
 - [x] Verifiera bygge, redovisa begränsningar och committa utan att publicera.
+
+## Rättad svarstolkning
+
+- [x] Godta `sources: null` och filtrera ogiltiga bilder, ofullständiga källor och trasiga listposter.
+- [x] Testa det ordagranna exempelsvaret och avvikelsefallen.
+- [x] Kontrollera avlyssnad framsida, typkontroll och bygge utan publicering.

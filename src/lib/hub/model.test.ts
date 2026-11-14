@@ -26,6 +26,50 @@ const listItem = {
   picture: null,
 };
 
+const realListResponse = [
+  {
+    slug: "sa-raknas-ett-trad",
+    kind: "artikel",
+    series: "Så funkar det",
+    headline: "Så räknas ett träd",
+    lead: "Siffran gäller träd som väntas överleva.",
+    body: null,
+    source_line: null,
+    sources: null,
+    published_at: "2026-11-14T12:21:48.832177+01:00",
+    corrected: false,
+    picture: {
+      id: "aaaaaaaa-0000-0000-0000-000000000002",
+      alt: "Länkbild",
+      width: 1200,
+      format: "lank",
+      height: 630,
+      version: "20261114112148",
+    },
+  },
+  {
+    slug: "solelen-slar-rekord-4-6-twh-hittills-i-ar",
+    kind: "notis",
+    series: "Dagens framsteg",
+    headline: "Solelen slår rekord: 4,6 TWh hittills i år",
+    lead: "",
+    body: "Första stycket.\n\nAndra stycket.",
+    source_line: "Källa: Energimyndigheten",
+    sources: [
+      {
+        url: "https://example.org/a",
+        date: "2026-11-10",
+        title: "Rapport A",
+        publisher: "Energimyndigheten",
+      },
+      { url: null, date: "2026-11-09", title: "Dålig länk", publisher: "X" },
+    ],
+    published_at: "2026-11-14T12:21:48.82923+01:00",
+    corrected: false,
+    picture: null,
+  },
+];
+
 describe("hubbens värdspärr", () => {
   it("är avstängd tills den uttryckligen aktiveras", () => {
     assert.equal(HUB_LIVE, false);
@@ -108,6 +152,78 @@ describe("svarsvalidering", () => {
       true,
     );
     assert.equal(hubPicturePathSchema.safeParse("company/picture.png").success, true);
+  });
+
+  it("tolkar det ordagranna exempelsvaret med sources null", () => {
+    const result = hubListSchema.parse(realListResponse);
+
+    assert.equal(result.length, 2);
+    assert.deepEqual(result[0]?.sources, []);
+    assert.equal(result[0]?.picture?.format, "lank");
+    assert.equal(result[1]?.sources.length, 2);
+    assert.equal(result[1]?.sources[1]?.url, null);
+  });
+
+  it("gör saknade källor till en tom lista och ofullständiga källfält till tomma strängar", () => {
+    const { sources: _sources, ...articleWithoutSources } = {
+      ...realListResponse[0],
+      picture: null,
+    };
+    const result = hubListSchema.parse([
+      articleWithoutSources,
+      { ...listItem, sources: [{ url: null }] },
+    ]);
+
+    assert.deepEqual(result[0]?.sources, []);
+    assert.deepEqual(result[1]?.sources[0], { title: "", publisher: "", date: "", url: null });
+  });
+
+  it("tar bort bilder med okänt format eller ogiltiga mått utan att fälla texten", () => {
+    const validPicture = {
+      id: "aaaaaaaa-0000-0000-0000-000000000002",
+      alt: "Länkbild",
+      width: 1200,
+      format: "lank",
+      height: 630,
+      version: "20261114112148",
+    };
+    const unknownFormat = { ...validPicture, format: "kvadrat" };
+    const nullWidth = { ...validPicture, width: null };
+    const list = hubListSchema.parse([
+      { ...listItem, picture: unknownFormat },
+      { ...listItem, picture: nullWidth },
+    ]);
+
+    assert.equal(list.length, 2);
+    assert.equal(list[0]?.picture, null);
+    assert.equal(list[1]?.picture, null);
+
+    const item = hubItemResponseSchema.parse({
+      ...listItem,
+      updated_at: null,
+      pictures: [validPicture, unknownFormat, nullWidth],
+      corrections: [],
+    });
+    assert.ok(item);
+    assert.deepEqual(
+      item.pictures.map((picture) => picture.id),
+      [validPicture.id],
+    );
+  });
+
+  it("hoppar över en trasig post men behåller resten av listan", () => {
+    const result = hubListSchema.parse([
+      listItem,
+      { ...listItem, slug: "trasig", headline: null },
+      { ...listItem, slug: "fungerar" },
+    ]);
+
+    assert.deepEqual(
+      result.map((item) => item.slug),
+      ["skogen-vaxer", "fungerar"],
+    );
+    assert.equal(hubListSchema.safeParse([{ ...listItem, headline: null }]).success, false);
+    assert.deepEqual(hubListSchema.parse([]), []);
   });
 
   it("stoppar ofullständiga eller felaktiga svar", () => {

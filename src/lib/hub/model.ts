@@ -9,11 +9,16 @@ const isoDate = z
   });
 
 export const hubSourceSchema = z.object({
-  title: z.string(),
-  publisher: z.string(),
-  date: z.string(),
-  url: z.string().nullable(),
+  title: z.string().catch(""),
+  publisher: z.string().catch(""),
+  date: z.string().catch(""),
+  url: z.string().nullable().catch(null),
 });
+
+const hubSourcesSchema = z
+  .array(hubSourceSchema)
+  .nullish()
+  .transform((sources) => sources ?? []);
 
 export const hubPictureSchema = z.object({
   id: z.string().uuid(),
@@ -24,6 +29,11 @@ export const hubPictureSchema = z.object({
   version: z.union([z.string(), z.number()]),
 });
 
+const hubPicturesSchema = z
+  .array(hubPictureSchema.nullable().catch(null))
+  .catch([])
+  .transform((pictures) => pictures.filter((picture): picture is HubPicture => picture !== null));
+
 export const hubListItemSchema = z.object({
   slug: z.string().min(1),
   kind: z.enum(["notis", "artikel"]),
@@ -32,10 +42,10 @@ export const hubListItemSchema = z.object({
   lead: z.string(),
   body: z.string().nullable(),
   source_line: z.string().nullable().optional().default(null),
-  sources: z.array(hubSourceSchema).optional().default([]),
+  sources: hubSourcesSchema,
   published_at: isoDate,
   corrected: z.boolean(),
-  picture: hubPictureSchema.nullable(),
+  picture: hubPictureSchema.nullable().catch(null),
 });
 
 export const hubCorrectionSchema = z.object({
@@ -53,8 +63,8 @@ export const hubItemSchema = z.object({
   source_line: z.string().nullable(),
   published_at: isoDate,
   updated_at: isoDate.nullable(),
-  sources: z.array(hubSourceSchema),
-  pictures: z.array(hubPictureSchema),
+  sources: hubSourcesSchema,
+  pictures: hubPicturesSchema,
   corrections: z.array(hubCorrectionSchema),
 });
 
@@ -66,7 +76,19 @@ export const hubCorrectionListItemSchema = z.object({
   slug: z.string().nullable(),
 });
 
-export const hubListSchema = z.array(hubListItemSchema);
+export const hubListSchema = z.array(z.unknown()).transform((items, context) => {
+  const parsedItems = items.flatMap((item) => {
+    const parsed = hubListItemSchema.safeParse(item);
+    return parsed.success ? [parsed.data] : [];
+  });
+
+  if (items.length > 0 && parsedItems.length === 0) {
+    context.addIssue({ code: "custom", message: "Inga poster i listan kunde tolkas" });
+    return z.NEVER;
+  }
+
+  return parsedItems;
+});
 export const hubCorrectionsSchema = z.array(hubCorrectionListItemSchema);
 export const hubItemResponseSchema = hubItemSchema.nullable();
 export const hubPicturePathSchema = z.string().min(1).max(1024).nullable();
